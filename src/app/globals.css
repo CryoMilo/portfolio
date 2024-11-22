@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	/* Primary Colors */
+	--color-primary: #6a0dad; /* Violet */
+	--color-primary-light: #b085e5; /* Light Violet */
+	--color-primary-dark: #4b0082; /* Dark Indigo */
+
+	/* Secondary Color */
+	--color-secondary: #d3c9e6; /* Soft Lavender */
+
+	/* Background Colors */
+	--color-background: #ffffff; /* White */
+	--color-dark: #2e2e2e; /* Graphite */
+	--color-muted: #6b6b6b; /* Subtle Gray */
+	--color-light: #e0e0e0; /* Mist Gray */
+	--color-soft: #f7f7f7; /* Cloud White */
+
+	/* Additional Colors */
+	--color-highlight: #ab82ff; /* Lavender Highlight */
+	--color-warning: #ff6347; /* Coral for Alerts */
+	--color-success: #32cd32; /* Lime Green for Success Messages */
+	--color-info: #87ceeb; /* Sky Blue for Info */
+}
+
+/* .dark {
+	--color-primary: #dfd6d1;
+	--color-secondary: #1f232c;
+	--color-accent: #83746e;
+	--color-background: #2e2e2e;
+	--color-dark: #ffffff;
+	--color-muted: #b3b3b3;
+	--color-light: #4a4a4a;
+	--color-soft: #3b3b3b;
+} */
+
+html {
+	scroll-behavior: smooth;
+}
+
+@layer base {
+	body {
+		font-family: var(--font-body);
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
+		font-weight: 700;
+	}
+
+	.btn {
+		@apply min-w-[156px] h-[54px] px-6 bg-accent hover:bg-secondary text-soft text-[13px] uppercase font-semibold;
+	}
+}
