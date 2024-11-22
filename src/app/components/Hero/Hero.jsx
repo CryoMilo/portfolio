@@ -2,8 +2,8 @@
 
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
-import Image from "next/image";
 import { useEffect, useRef } from "react";
+import ProfilePic from "./ProfilePic";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -58,11 +58,13 @@ const Hero = () => {
 
 	return (
 		<section ref={splashRef} className=" h-[100vh] grid place-items-center">
+			{/* Splash Background */}
 			<div
 				id="splash"
 				className="absolute bg-white opacity-100 z-30 h-[100vh] w-full"></div>
 
 			<div className="container relative flex flex-col md:flex-row justify-between">
+				{/* Splash Text */}
 				<div id="splash-text" className="absolute top-0 -left-2 z-40">
 					<span id="splash-hi"></span>
 
@@ -70,6 +72,8 @@ const Hero = () => {
 						id="splash-oak"
 						className="text-primary-light text-6xl font-heading font-[700]"></span>
 				</div>
+
+				{/* Main Text */}
 				<div className="flex flex-col gap-2">
 					<h1 className="text-xl md:text-6xl z-40">
 						<span id="oak" className="text-primary-light opacity-0">
@@ -83,15 +87,10 @@ const Hero = () => {
 						A right guy for your softwares
 					</h2>
 				</div>
+
+				{/* Profile Picture */}
 				<figure className="w-[50%] grid place-items-center">
-					<div className="w-[450px] h-[450px] relative">
-						<Image
-							src="/images/profile-background.jpg"
-							alt="profile-pic"
-							fill
-							className="object-cover object-center rounded-full bg-black"
-						/>
-					</div>
+					<ProfilePic />
 				</figure>
 			</div>
 		</section>
