@@ -1,8 +1,11 @@
 "use client";
 
 import gsap from "gsap";
+import { TextPlugin } from "gsap/TextPlugin";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(TextPlugin);
 
 const Hero = () => {
 	const splashRef = useRef(null);
@@ -10,23 +13,29 @@ const Hero = () => {
 	useEffect(() => {
 		let ctx = gsap.context(() => {
 			const t1 = gsap.timeline({
-				defaults: { duration: 1 },
+				defaults: { duration: 0.6 },
 			});
 
 			t1.to("#splash-hi", {
-				opacity: 0,
-				duration: 0.4,
-				delay: 1,
+				text: "Hi...I'm ",
+				duration: 1.5,
+				ease: "none",
 			})
-				.from(
-					"#splash-oak",
-					{
-						color: "black",
-						fontSize: "16px",
-						fontWeight: 400,
-					},
-					1
-				)
+				.to("#splash-oak", {
+					text: "Oak",
+					duration: 1,
+					ease: "none",
+				})
+				.to("#splash-hi", {
+					opacity: 0,
+					duration: 0.4,
+					delay: 1,
+				})
+				.from("#splash-oak", {
+					color: "black",
+					fontSize: "16px",
+					fontWeight: 400,
+				})
 				.from("#splash-text", {
 					top: "50%",
 					left: "50%",
@@ -55,13 +64,11 @@ const Hero = () => {
 
 			<div className="container relative flex flex-col md:flex-row justify-between">
 				<div id="splash-text" className="absolute top-0 -left-2 z-40">
-					<span id="splash-hi">Hi...I&apos;m </span>
+					<span id="splash-hi"></span>
 
 					<span
 						id="splash-oak"
-						className="text-primary-light text-5xl font-heading font-[700]">
-						Oak
-					</span>
+						className="text-primary-light text-5xl font-heading font-[700]"></span>
 				</div>
 				<div className="flex flex-col gap-2">
 					<h1 className="text-xl md:text-5xl z-40">
