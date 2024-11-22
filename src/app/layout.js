@@ -1,4 +1,4 @@
-import { Montserrat, Nunito } from "next/font/google";
+import { Geist_Mono, Montserrat, Nunito } from "next/font/google";
 import "./globals.css";
 
 // const geistSans = localFont({
@@ -17,6 +17,12 @@ const montserrat = Montserrat({
 	variable: "--font-body",
 });
 
+const geistMono = Geist_Mono({
+	subsets: ["latin"],
+	weights: ["400", "500"],
+	variable: "--font-geistMono",
+});
+
 const nunito = Nunito({
 	subsets: ["latin"],
 	weights: ["600", "700"],
@@ -31,7 +37,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={`${montserrat.variable} ${nunito.variable} antialiased`}>
+			<body
+				className={`${montserrat.variable} ${nunito.variable} ${geistMono.variable} antialiased`}>
 				{children}
 			</body>
 		</html>

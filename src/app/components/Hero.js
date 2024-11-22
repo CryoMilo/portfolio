@@ -68,10 +68,10 @@ const Hero = () => {
 
 					<span
 						id="splash-oak"
-						className="text-primary-light text-5xl font-heading font-[700]"></span>
+						className="text-primary-light text-6xl font-heading font-[700]"></span>
 				</div>
 				<div className="flex flex-col gap-2">
-					<h1 className="text-xl md:text-5xl z-40">
+					<h1 className="text-xl md:text-6xl z-40">
 						<span id="oak" className="text-primary-light opacity-0">
 							Oak{" "}
 						</span>
@@ -79,16 +79,20 @@ const Hero = () => {
 							Soe Htoo Aung
 						</span>
 					</h1>
-					<p>A right guy for your softwares</p>
+					<h2 className="font-body text-2xl font-[400]">
+						A right guy for your softwares
+					</h2>
 				</div>
-				<div className="w-[300px] h-[300px] relative">
-					<Image
-						src="/images/profile-pic.png"
-						alt="profile-pic"
-						fill
-						className="object-contain object-top rounded-full bg-black"
-					/>
-				</div>
+				<figure className="w-[50%] grid place-items-center">
+					<div className="w-[450px] h-[450px] relative">
+						<Image
+							src="/images/profile-pic.png"
+							alt="profile-pic"
+							fill
+							className="object-contain object-top rounded-full bg-black"
+						/>
+					</div>
+				</figure>
 			</div>
 		</section>
 	);

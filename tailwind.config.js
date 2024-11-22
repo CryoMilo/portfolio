@@ -10,6 +10,7 @@ module.exports = {
 			fontFamily: {
 				heading: "var(--font-heading)",
 				body: "var(--font-body)",
+				geistMono: "var(--font-geistMono)",
 			},
 			container: {
 				center: true,
