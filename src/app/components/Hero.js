@@ -86,10 +86,10 @@ const Hero = () => {
 				<figure className="w-[50%] grid place-items-center">
 					<div className="w-[450px] h-[450px] relative">
 						<Image
-							src="/images/profile-pic.png"
+							src="/images/profile-background.jpg"
 							alt="profile-pic"
 							fill
-							className="object-contain object-top rounded-full bg-black"
+							className="object-cover object-center rounded-full bg-black"
 						/>
 					</div>
 				</figure>
