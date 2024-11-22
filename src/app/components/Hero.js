@@ -15,12 +15,32 @@ const Hero = () => {
 
 			t1.to("#splash-hi", {
 				opacity: 0,
+				duration: 0.4,
+				delay: 1,
 			})
+				.from(
+					"#splash-oak",
+					{
+						color: "black",
+						fontSize: "16px",
+						fontWeight: 400,
+					},
+					1
+				)
+				.from("#splash-text", {
+					top: "50%",
+					left: "50%",
+					x: "-50%",
+					y: "-50%",
+					fontSize: "16px",
+				})
 				.to("#splash", {
 					opacity: 0,
 				})
-				.to("#splash-oak", {});
-		});
+				.to("#soehtooaung", {
+					opacity: 1,
+				});
+		}, splashRef);
 
 		return () => {
 			ctx.revert();
@@ -28,24 +48,29 @@ const Hero = () => {
 	}, []);
 
 	return (
-		<section ref={splashRef}>
+		<section ref={splashRef} className=" h-[100vh] grid place-items-center">
 			<div
 				id="splash"
 				className="absolute bg-white opacity-100 z-30 h-[100vh] w-full"></div>
 
-			<div
-				id="splash-text"
-				className="absolute top-[40%] -translate-x-1/2 left-[50%] z-30">
-				<span id="splash-hi">Hi...I&apos;m</span>
-			</div>
+			<div className="container relative flex flex-col md:flex-row justify-between">
+				<div id="splash-text" className="absolute top-0 -left-2 z-40">
+					<span id="splash-hi">Hi...I&apos;m </span>
 
-			<div className="container h-[100vh] grid grid-cols-2 place-items-center">
+					<span
+						id="splash-oak"
+						className="text-primary-light text-5xl font-heading font-[700]">
+						Oak
+					</span>
+				</div>
 				<div className="flex flex-col gap-2">
-					<h1 className="text-5xl">
-						<span id="oak" className="text-primary-light">
-							Oak
+					<h1 className="text-xl md:text-5xl z-40">
+						<span id="oak" className="text-primary-light opacity-0">
+							Oak{" "}
 						</span>
-						<span id="soehtooaung"> Soe Htoo Aung</span>
+						<span id="soehtooaung" className="opacity-0">
+							Soe Htoo Aung
+						</span>
 					</h1>
 					<p>A right guy for your softwares</p>
 				</div>
