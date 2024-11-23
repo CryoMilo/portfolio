@@ -3,7 +3,7 @@
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { useEffect, useRef } from "react";
-import ProfilePic from "./ProfilePic";
+import ProfileNav from "./ProfileNav";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -90,7 +90,7 @@ const Hero = () => {
 
 				{/* Profile Picture */}
 				<figure className="w-[50%] grid place-items-center">
-					<ProfilePic />
+					<ProfileNav />
 				</figure>
 			</div>
 		</section>

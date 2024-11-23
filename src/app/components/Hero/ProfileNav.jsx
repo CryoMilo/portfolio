@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-const ProfilePic = () => {
+const ProfileNav = () => {
 	return (
-		<div className="w-[450px] aspect-square relative">
+		<div className="min-w-[300px] w-[30vw] aspect-square relative">
 			<Image
 				src="/images/profile-background.jpg"
 				alt="profile-pic"
@@ -13,4 +13,4 @@ const ProfilePic = () => {
 	);
 };
 
-export default ProfilePic;
+export default ProfileNav;
