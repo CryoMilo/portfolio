@@ -52,6 +52,9 @@ const Hero = () => {
 					})
 					.to("#soehtooaung", {
 						opacity: 1,
+					})
+					.to("#splash", {
+						zIndex: -99,
 					});
 
 				// Mark the animation as played in localStorage
@@ -68,6 +71,7 @@ const Hero = () => {
 			document.getElementById("oak").style.opacity = "1";
 			document.getElementById("soehtooaung").style.opacity = "1";
 			document.getElementById("splash").style.opacity = "0";
+			document.getElementById("splash").style.zIndex = "-99";
 		}
 	}, []);
 
@@ -104,9 +108,9 @@ const Hero = () => {
 				</div>
 
 				{/* Profile Picture */}
-				<figure className="w-[50%] grid place-items-center">
+				<div className="w-[50%] grid place-items-center cursor-pointer">
 					<ProfileNav />
-				</figure>
+				</div>
 			</div>
 		</section>
 	);

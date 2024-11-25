@@ -60,6 +60,16 @@ module.exports = {
 				"cup-sleeve-gradient":
 					"linear-gradient(to right, #474747 0%, #737272 50.5%, #474747 100%)",
 			},
+			keyframes: {
+				"spin-reverse": {
+					from: { transform: "rotate(0deg)" },
+					to: { transform: "rotate(-360deg)" },
+				},
+			},
+			animation: {
+				"spin-slow": "spin 30s linear infinite",
+				"spin-slow-reverse": "spin-reverse 30s linear infinite",
+			},
 		},
 	},
 	plugins: [],

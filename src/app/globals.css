@@ -57,10 +57,6 @@ html {
 		font-weight: 700;
 	}
 
-	.btn {
-		@apply min-w-[156px] h-[54px] px-6 bg-accent hover:bg-secondary text-soft text-[13px] uppercase font-semibold;
-	}
-
 	.rotating-ring {
 		outline-style: solid;
 		outline-width: 2px;

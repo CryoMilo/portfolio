@@ -10,30 +10,49 @@ import Link from "next/link";
 
 const ProfileNav = () => {
 	const containerRef = useRef(null);
+	const orbitAnimation = useRef(null);
+	const buttonAnimation = useRef(null);
 
 	useEffect(() => {
-		let ctx = gsap.context(() => {
-			gsap.to("#orbit", {
-				rotate: 360,
-				duration: 30,
-				ease: "linear",
-				repeat: -1,
-			});
-			gsap.to(".orbit-btn", {
-				rotate: -360,
-				duration: 30,
-				ease: "linear",
-				repeat: -1,
-			});
-		}, containerRef);
+		// GSAP animations
+		orbitAnimation.current = gsap.to("#orbit", {
+			rotate: 360,
+			duration: 30,
+			ease: "linear",
+			repeat: -1,
+		});
 
-		return () => ctx.revert();
+		buttonAnimation.current = gsap.to(".orbit-btn", {
+			rotate: -360,
+			duration: 30,
+			ease: "linear",
+			repeat: -1,
+		});
+
+		// Cleanup
+		return () => {
+			orbitAnimation.current.kill();
+			buttonAnimation.current.kill();
+		};
 	}, []);
+
+	// Pause/Resume animations on hover
+	const handleMouseEnter = () => {
+		orbitAnimation.current.pause();
+		buttonAnimation.current.pause();
+	};
+
+	const handleMouseLeave = () => {
+		orbitAnimation.current.play();
+		buttonAnimation.current.play();
+	};
 
 	return (
 		<div
 			ref={containerRef}
-			className="min-w-[300px] w-[28vw] aspect-square relative">
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+			className="min-w-[300px] w-[28vw] aspect-square relative cursor-pointer">
 			<div id="orbit" className="absolute top-0 left-0 w-full aspect-square">
 				<div className="absolute top-0 left-0 w-full aspect-square rotating-ring outline-primary-light rounded-full"></div>
 				<Link href="#about-me" className="orbit-btn top-0 left-0">
@@ -44,7 +63,7 @@ const ProfileNav = () => {
 				</Link>
 				<Link
 					href="#projects"
-					className="orbit-btn bottom-[50%] right-[-16.5%]">
+					className="orbit-btn bottom-[45%] right-[-16.5%]">
 					<AiOutlineProject className="text-3xl" />
 				</Link>
 			</div>
