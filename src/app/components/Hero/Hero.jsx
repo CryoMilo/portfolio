@@ -11,49 +11,64 @@ const Hero = () => {
 	const splashRef = useRef(null);
 
 	useEffect(() => {
-		let ctx = gsap.context(() => {
-			const t1 = gsap.timeline({
-				defaults: { duration: 0.6 },
-			});
+		// Check if the animation has already played
+		const hasPlayed = localStorage.getItem("heroAnimationPlayed");
 
-			t1.to("#splash-hi", {
-				text: "Hi...I'm ",
-				duration: 1.5,
-				ease: "none",
-			})
-				.to("#splash-oak", {
-					text: "Oak",
-					duration: 1,
+		if (!hasPlayed) {
+			let ctx = gsap.context(() => {
+				const t1 = gsap.timeline({
+					defaults: { duration: 0.6 },
+				});
+
+				t1.to("#splash-hi", {
+					text: "Hi...I'm ",
+					duration: 1.5,
 					ease: "none",
 				})
-				.to("#splash-hi", {
-					opacity: 0,
-					duration: 0.4,
-					delay: 1,
-				})
-				.from("#splash-oak", {
-					color: "black",
-					fontSize: "16px",
-					fontWeight: 400,
-				})
-				.from("#splash-text", {
-					top: "50%",
-					left: "50%",
-					x: "-50%",
-					y: "-50%",
-					fontSize: "16px",
-				})
-				.to("#splash", {
-					opacity: 0,
-				})
-				.to("#soehtooaung", {
-					opacity: 1,
-				});
-		}, splashRef);
+					.to("#splash-oak", {
+						text: "Oak",
+						duration: 1,
+						ease: "none",
+					})
+					.to("#splash-hi", {
+						opacity: 0,
+						duration: 0.4,
+						delay: 1,
+					})
+					.from("#splash-oak", {
+						color: "black",
+						fontSize: "16px",
+						fontWeight: 400,
+					})
+					.from("#splash-text", {
+						top: "50%",
+						left: "50%",
+						x: "-50%",
+						y: "-50%",
+						fontSize: "16px",
+					})
+					.to("#splash", {
+						opacity: 0,
+					})
+					.to("#soehtooaung", {
+						opacity: 1,
+					});
 
-		return () => {
-			ctx.revert();
-		};
+				// Mark the animation as played in localStorage
+				localStorage.setItem("heroAnimationPlayed", "true");
+			}, splashRef);
+
+			return () => {
+				ctx.revert();
+			};
+		} else {
+			// Skip animation, directly set the final state
+			document.getElementById("splash-hi").style.opacity = "0";
+			document.getElementById("splash-oak").textContent = "";
+			document.getElementById("oak").style.opacity = "1";
+			document.getElementById("soehtooaung").style.opacity = "1";
+			document.getElementById("splash").style.opacity = "0";
+		}
 	}, []);
 
 	return (

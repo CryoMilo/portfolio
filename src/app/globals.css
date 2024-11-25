@@ -63,6 +63,11 @@ html {
 
 	.rotating-ring {
 		outline-style: solid;
+		outline-width: 2px;
 		outline-offset: 18px;
+	}
+
+	.orbit-btn {
+		@apply grid place-content-center absolute w-[20%] aspect-square rounded-full bg-soft border-2 border-primary-light z-20;
 	}
 }
