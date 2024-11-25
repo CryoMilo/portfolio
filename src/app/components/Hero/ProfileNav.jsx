@@ -54,7 +54,7 @@ const ProfileNav = () => {
 			onMouseLeave={handleMouseLeave}
 			className="min-w-[300px] w-[28vw] aspect-square relative cursor-pointer">
 			<div id="orbit" className="absolute top-0 left-0 w-full aspect-square">
-				<div className="absolute top-0 left-0 w-full aspect-square rotating-ring outline-primary-light rounded-full"></div>
+				<div className="absolute top-0 left-0 w-full aspect-square rotating-ring rounded-full"></div>
 				<Link href="#about-me" className="orbit-btn top-0 left-0">
 					<LuInfo className="text-3xl" />
 				</Link>
