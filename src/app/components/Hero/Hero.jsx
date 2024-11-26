@@ -108,7 +108,7 @@ const Hero = () => {
 				</div>
 
 				{/* Profile Picture */}
-				<div className="w-[50%] grid place-items-center cursor-pointer">
+				<div className="w-[50%] grid place-items-center">
 					<ProfileNav />
 				</div>
 			</div>

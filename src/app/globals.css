@@ -64,6 +64,6 @@ html {
 	}
 
 	.orbit-btn {
-		@apply grid place-content-center absolute w-[23%] aspect-square rounded-full bg-soft border-[2px] border-black z-20;
+		@apply grid place-content-center absolute w-[23%] hover:w-[25%] shadow-xl aspect-square rounded-full bg-light z-20;
 	}
 }

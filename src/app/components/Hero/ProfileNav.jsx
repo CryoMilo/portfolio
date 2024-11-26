@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { LuInfo } from "react-icons/lu";
 import { RiContactsBookLine } from "react-icons/ri";
-import { AiOutlineProject } from "react-icons/ai";
+import { FaCode } from "react-icons/fa6";
 import Link from "next/link";
 
 const ProfileNav = () => {
@@ -52,9 +52,9 @@ const ProfileNav = () => {
 			ref={containerRef}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			className="min-w-[300px] w-[28vw] aspect-square relative cursor-pointer">
+			className="min-w-[300px] w-[28vw] aspect-square relative">
 			<div id="orbit" className="absolute top-0 left-0 w-full aspect-square">
-				<div className="absolute top-0 left-0 w-full aspect-square rotating-ring rounded-full"></div>
+				<div className="absolute top-0 left-0 w-full aspect-square rounded-full"></div>
 				<Link href="#about-me" className="orbit-btn top-0 left-0">
 					<LuInfo className="text-3xl" />
 				</Link>
@@ -64,7 +64,7 @@ const ProfileNav = () => {
 				<Link
 					href="#projects"
 					className="orbit-btn bottom-[45%] right-[-16.5%]">
-					<AiOutlineProject className="text-3xl" />
+					<FaCode className="text-3xl" />
 				</Link>
 			</div>
 
@@ -73,7 +73,7 @@ const ProfileNav = () => {
 				src="/images/profile-background.jpg"
 				alt="profile-pic"
 				fill
-				className="object-cover object-center rounded-full bg-black -z-10"
+				className="object-cover object-center rounded-full bg-black shadow-xl -z-10"
 			/>
 		</div>
 	);
