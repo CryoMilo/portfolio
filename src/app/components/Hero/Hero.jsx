@@ -90,7 +90,7 @@ const Hero = () => {
 	return (
 		<section
 			ref={splashRef}
-			className="md:h-[100vh] grid place-items-center mt-10">
+			className="h-[120vh] md:h-[100vh] grid place-items-center mt-10 overflow-hidden">
 			{/* Splash Background */}
 			<div
 				id="splash"
@@ -121,13 +121,13 @@ const Hero = () => {
 						<p>( Fueled by Coffee )</p>
 					</h2>
 
-					<div className="mt-16">
+					<div className="mt-[4vh]">
 						<button>Let&apos;s Work Together</button>
 					</div>
 				</div>
 
 				{/* Profile Picture */}
-				<div className="md:w-[50%] place-items-center">
+				<div className="md:w-[50%] place-items-center lg:place-items-end pb-10">
 					<ProfileNav />
 				</div>
 			</div>
