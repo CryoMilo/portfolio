@@ -88,13 +88,15 @@ const Hero = () => {
 	}, []);
 
 	return (
-		<section ref={splashRef} className=" h-[100vh] grid place-items-center">
+		<section
+			ref={splashRef}
+			className="md:h-[100vh] grid place-items-center mt-10">
 			{/* Splash Background */}
 			<div
 				id="splash"
 				className="absolute bg-white opacity-100 z-30 h-[100vh] w-full"></div>
 
-			<div className="container relative flex flex-col md:flex-row justify-between">
+			<div className="container text-center md:text-left relative flex flex-col md:flex-row justify-between gap-20 xl:gap-10">
 				{/* Splash Text */}
 				<div id="splash-text" className="absolute top-0 z-40">
 					<span id="splash-hi"></span>
@@ -106,7 +108,7 @@ const Hero = () => {
 
 				{/* Main Text */}
 				<div className="flex flex-col gap-2">
-					<h1 className="text-xl md:text-5xl z-40">
+					<h1 className="text-5xl z-40">
 						<span id="oak" className="text-primary-light opacity-0">
 							Oak{" "}
 						</span>
@@ -115,12 +117,17 @@ const Hero = () => {
 						</span>
 					</h1>
 					<h2 className="font-body text-2xl font-[400]">
-						A right guy for your softwares
+						A right guy for your web applications
+						<p>( Fueled by Coffee )</p>
 					</h2>
+
+					<div className="mt-16">
+						<button>Let&apos;s Work Together</button>
+					</div>
 				</div>
 
 				{/* Profile Picture */}
-				<div className="w-[50%] grid place-items-center">
+				<div className="md:w-[50%] place-items-center">
 					<ProfileNav />
 				</div>
 			</div>

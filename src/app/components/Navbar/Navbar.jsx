@@ -1,14 +1,14 @@
-import { MdFileDownload } from "react-icons/md";
+import { PiDownloadSimpleThin } from "react-icons/pi";
 
 const Navbar = () => {
 	return (
-		<div className="container my-4 flex justify-between items-center">
-			<p>Oak</p>
+		<nav className="container my-4 flex justify-between items-center">
 			<div className="flex gap-2 items-center">
-				<button>Download CV</button>
-				<MdFileDownload className="text-xl" />
+				<button>Resume</button>
+				<PiDownloadSimpleThin className="text-xl" />
 			</div>
-		</div>
+			<div>theme switch</div>
+		</nav>
 	);
 };
 
