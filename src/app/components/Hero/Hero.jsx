@@ -39,6 +39,9 @@ const Hero = () => {
 						color: "black",
 						fontSize: "16px",
 						fontWeight: 400,
+						onComplete: () => {
+							document.getElementById("splash-hi").style.display = "none";
+						},
 					})
 					.from("#splash-text", {
 						top: "50%",
@@ -53,11 +56,20 @@ const Hero = () => {
 					.to("#soehtooaung", {
 						opacity: 1,
 					})
+					.to("#splash-oak", {
+						opacity: 0,
+					})
+					.to(
+						"#oak",
+						{
+							opacity: 1,
+						},
+						"<"
+					)
 					.to("#splash", {
 						zIndex: -99,
 					});
 
-				// Mark the animation as played in localStorage
 				localStorage.setItem("heroAnimationPlayed", "true");
 			}, splashRef);
 
@@ -84,17 +96,17 @@ const Hero = () => {
 
 			<div className="container relative flex flex-col md:flex-row justify-between">
 				{/* Splash Text */}
-				<div id="splash-text" className="absolute top-0 -left-2 z-40">
+				<div id="splash-text" className="absolute top-0 z-40">
 					<span id="splash-hi"></span>
 
 					<span
 						id="splash-oak"
-						className="text-primary-light text-6xl font-heading font-[700]"></span>
+						className="text-primary-light text-5xl font-heading font-[700]"></span>
 				</div>
 
 				{/* Main Text */}
 				<div className="flex flex-col gap-2">
-					<h1 className="text-xl md:text-6xl z-40">
+					<h1 className="text-xl md:text-5xl z-40">
 						<span id="oak" className="text-primary-light opacity-0">
 							Oak{" "}
 						</span>
