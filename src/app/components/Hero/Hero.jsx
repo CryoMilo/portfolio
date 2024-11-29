@@ -90,7 +90,7 @@ const Hero = () => {
 	return (
 		<section
 			ref={splashRef}
-			className="h-[120vh] md:h-[100vh] grid place-items-center mt-10 overflow-hidden">
+			className="h-[100vh] grid place-items-center mt-10 overflow-hidden">
 			{/* Splash Background */}
 			<div
 				id="splash"
@@ -103,12 +103,12 @@ const Hero = () => {
 
 					<span
 						id="splash-oak"
-						className="text-primary-light text-5xl font-heading font-[700]"></span>
+						className="text-primary-light text-4xl md:text-3xl xl:text-5xl font-heading font-[700]"></span>
 				</div>
 
 				{/* Main Text */}
 				<div className="flex flex-col gap-2">
-					<h1 className="text-5xl z-40">
+					<h1 className="text-4xl md:text-3xl xl:text-5xl z-40">
 						<span id="oak" className="text-primary-light opacity-0">
 							Oak{" "}
 						</span>
