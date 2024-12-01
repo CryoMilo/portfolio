@@ -52,7 +52,7 @@ const ProfileNav = () => {
 			ref={containerRef}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			className="min-w-[300px] w-[28vw] aspect-square relative">
+			className="min-w-[300px] w-[28vw] xl:w-[400px] aspect-square relative">
 			<div id="orbit" className="absolute top-0 left-0 w-full aspect-square">
 				<div className="absolute top-0 left-0 w-full aspect-square rounded-full"></div>
 				<Link href="#about-me" className="orbit-btn top-0 left-0">

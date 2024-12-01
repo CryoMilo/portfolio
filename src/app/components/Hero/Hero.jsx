@@ -116,18 +116,21 @@ const Hero = () => {
 							Soe Htoo Aung
 						</span>
 					</h1>
-					<h2 className="font-body text-2xl font-[400]">
-						A right guy for your web applications
-						<p>( Fueled by Coffee )</p>
+					<h2 className="font-body text-lg font-[400] max-w-[500px]">
+						{/* A right guy for your web applications
+						<p>( Fueled by Coffee )</p> */}
+						Fueled by coffee, I&apos;ve driven myself through the constant
+						learning journey for past three year in web development field.
 					</h2>
 
 					<div className="mt-16">
-						<button>Let&apos;s Work Together</button>
+						{/* <button>Let&apos;s Work Together</button> */}
+						My Work
 					</div>
 				</div>
 
 				{/* Profile Picture */}
-				<div className="md:w-[50%] place-items-center">
+				<div className="md:w-[50%] place-items-center xl:place-items-end">
 					<ProfileNav />
 				</div>
 			</div>
