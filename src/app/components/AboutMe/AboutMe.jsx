@@ -48,7 +48,7 @@ const AboutMe = () => {
 
 	return (
 		<div id="#about-me" ref={componentRef} className="container h-[80vh]">
-			<div className="text-3xl flex flex-wrap gap-3">
+			<div className="text-4xl flex flex-wrap gap-3">
 				<span className="pl-7 w-[10vw]"></span>
 				{words}
 			</div>
