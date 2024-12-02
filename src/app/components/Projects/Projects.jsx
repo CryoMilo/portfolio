@@ -10,7 +10,7 @@ import {
 
 export function Projects() {
 	return (
-		<BentoGrid className="container">
+		<BentoGrid className="container my-36">
 			{items.map((item, i) => (
 				<BentoGridItem
 					key={i}
@@ -25,7 +25,7 @@ export function Projects() {
 	);
 }
 const Skeleton = () => (
-	<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent bg-neutral-100"></div>
+	<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent bg-primary-light"></div>
 );
 const items = [
 	{
