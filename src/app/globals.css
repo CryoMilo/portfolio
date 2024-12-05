@@ -4,15 +4,15 @@
 
 :root {
 	/* Primary Colors */
-	--color-primary: #6a0dad; /* Violet */
-	--color-primary-light: #b085e5; /* Light Violet */
-	--color-primary-dark: #4b0082; /* Dark Indigo */
+	--color-primary: #6a42c2; /* Violet */
+	--color-primary-light: #8b5dff; /* Light Violet */
+	--color-primary-dark: #563a9c; /* Dark Indigo */
 
 	/* Secondary Color */
 	--color-secondary: #d3c9e6; /* Soft Lavender */
 
 	/* Background Colors */
-	--color-background: #ffffff; /* White */
+	--color-background: #fff7d1; /* White */
 	--color-dark: #2e2e2e; /* Graphite */
 	--color-muted: #6b6b6b; /* Subtle Gray */
 	--color-light: #e0e0e0; /* Mist Gray */
