@@ -107,7 +107,7 @@ const Hero = () => {
 				</div>
 
 				{/* Main Text */}
-				<div className="flex flex-col gap-2">
+				<div className="flex flex-col gap-2 items-center md:items-start">
 					<h1 className="text-5xl z-40">
 						<span id="oak" className="text-primary-light opacity-0">
 							Oak{" "}
@@ -119,8 +119,12 @@ const Hero = () => {
 					<h2 className="font-body text-lg font-[400] max-w-[500px]">
 						{/* A right guy for your web applications
 						<p>( Fueled by Coffee )</p> */}
-						Fueled by coffee, I&apos;ve driven myself through the constant
-						learning journey for past three year in web development field.
+						Fueled by coffee and curiosity, I&apos;ve been navigating the
+						ever-evolving world of{" "}
+						<span className="font-semibold underline underline-offset-4 decoration-primary-light decoration-solid decoration-2">
+							web development
+						</span>{" "}
+						for the past three years, constantly learning and growing.
 					</h2>
 
 					<div className="mt-16">
