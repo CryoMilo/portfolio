@@ -17,7 +17,7 @@ module.exports = {
 				padding: {
 					DEFAULT: "1rem",
 					sm: "2rem",
-					lg: "6rem",
+					md: "4rem",
 					xl: "10rem",
 				},
 			},
@@ -64,21 +64,22 @@ module.exports = {
 			backgroundImage: {
 				"cup-sleeve-gradient":
 					"linear-gradient(to right, #474747 0%, #737272 50.5%, #474747 100%)",
+				"project-background": "url('/images/project-background.png')",
 			},
 			keyframes: {
 				"spin-reverse": {
 					from: { transform: "rotate(0deg)" },
 					to: { transform: "rotate(-360deg)" },
 				},
-				scroll: {
-					"0%": { transform: "translateY(0)" },
-					"100%": { transform: "translateY(-65%)" }, // Full height scroll
+				"custom-pulse": {
+					"0%, 100%": { transform: "translateY(0)", opacity: 1 },
+					"50%": { transform: "translateY(10px)", opacity: 0.5 },
 				},
 			},
 			animation: {
 				"spin-slow": "spin 30s linear infinite",
 				"spin-slow-reverse": "spin-reverse 30s linear infinite",
-				scroll: "scroll 5s linear infinite", // 10s infinite scrolling
+				"custom-pulse": "custom-pulse 1.5s infinite",
 			},
 		},
 	},

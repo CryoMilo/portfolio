@@ -10,7 +10,7 @@ export function Projects() {
 					title={item.title}
 					description={item.description}
 					videoSrc={item.videoSrc}
-					sliderImg={item.images}
+					images={item.images}
 					className={item.className}
 				/>
 			))}
@@ -49,12 +49,12 @@ const items = [
 	{
 		title: "The Digital Revolution",
 		description: "Dive into the transformative power of technology.",
-		className: "md:col-span-1",
+		className: "hidden lg:block lg:col-span-1",
 	},
 	{
 		title: "The Art of Design",
 		description: "Discover the beauty of thoughtful and functional design.",
-		className: "md:col-span-1",
+		className: "hidden lg:block lg:col-span-1",
 	},
 	{
 		videoSrc: "/videos/urban-coffee-club-hero.mp4",
@@ -87,19 +87,19 @@ const items = [
 		videoSrc: "/videos/lightwave.mp4",
 		images: [
 			{
-				src: "/images/urban/urban-desktop.png",
+				src: "/images/lightwave/lightwave-desktop.png",
 				alt: "Desktop",
 				width: 300,
 				height: 100,
 			},
 			{
-				src: "/images/urban/urban-tablet.png",
+				src: "/images/lightwave/lightwave-tablet.png",
 				alt: "Tablet",
 				width: 120,
 				height: 100,
 			},
 			{
-				src: "/images/urban/urban-mobile.png",
+				src: "/images/lightwave/lightwave-mobile.png",
 				alt: "Mobile",
 				width: 80,
 				height: 100,
@@ -113,6 +113,6 @@ const items = [
 	{
 		title: "The Digital Revolution",
 		description: "Dive into the transformative power of technology.",
-		className: "md:col-span-1",
+		className: "hidden lg:block lg:col-span-1",
 	},
 ];

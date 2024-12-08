@@ -2,14 +2,14 @@
 
 import { cn } from "@/app/lib/utils";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 
 export const BentoGrid = ({ className, children }) => {
 	return (
 		<div
 			className={cn(
-				"grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 mx-auto",
+				"grid md:auto-rows-[18rem] grid-cols-1 lg:grid-cols-3 gap-4 mx-auto",
 				className
 			)}>
 			{children}
@@ -30,55 +30,53 @@ export const BentoGridItem = ({
 }) => {
 	const imageContainerRef = useRef(null);
 
-	useEffect(() => {
+	const handleMouseEnter = () => {
 		const container = imageContainerRef.current;
+		gsap.fromTo(
+			container,
+			{ y: "60%" }, // Start position
+			{
+				y: "0%", // End position
+				duration: 5,
+				ease: "none",
+				repeat: 0,
+			}
+		);
+	};
 
-		// Clone images for seamless scrolling
-		const items = container.children;
-		const cloneCount = 2; // Number of clones
-		for (let i = 0; i < cloneCount; i++) {
-			Array.from(items).forEach((item) => {
-				const clone = item.cloneNode(true);
-				container.appendChild(clone);
-			});
-		}
-
-		// GSAP scrolling animation
-		const scrollAnimation = gsap.to(container, {
-			y: "-50%", // Scroll upwards
-			duration: 10, // Adjust speed
+	const handleMouseLeave = () => {
+		const container = imageContainerRef.current;
+		gsap.to(container, {
+			y: "60%", // Return to initial position
+			duration: 5,
 			ease: "none",
-			repeat: -1,
 		});
-
-		// Cleanup
-		return () => {
-			scrollAnimation.kill();
-		};
-	}, []);
+	};
 
 	return (
 		<div
 			className={cn(
-				"row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input bg-primary-light justify-between flex flex-col space-y-4",
+				"row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input bg-primary-light hover:bg-background-dark justify-between flex flex-col space-y-4",
 				className
-			)}>
+			)}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}>
 			<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden relative group">
 				<video
 					src={videoSrc}
 					alt={videoAlt}
-					className="w-full h-full object-cover"
+					className="w-full h-full object-cover group-hover:blur-md"
 					loop={loop}
 					autoPlay={autoPlay}
 					muted={muted}></video>
-				<div className="w-full h-full absolute bg-white top-0 left-0 grid-cols-2 group-hover:grid hidden">
-					<div className="p-4 font-body">
+				<div className="w-full h-full absolute top-0 left-0 grid-cols-2 group-hover:grid hidden">
+					<div className="p-8 font-body text-white">
 						<p className="text-3xl">{title}</p>
 						<p className="text-sm">{description}</p>
 					</div>
 					<div
 						ref={imageContainerRef}
-						className="relative flex flex-col gap-4 overflow-hidden">
+						className="absolute bottom-0 right-0 flex flex-col items-center gap-6 overflow-hidden p-8">
 						{images.map(({ src, alt, width, height }, index) => (
 							<Image
 								key={index}

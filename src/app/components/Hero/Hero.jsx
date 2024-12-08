@@ -2,10 +2,13 @@
 
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import ProfileNav from "./ProfileNav";
+import ScrollGuide from "../ui/scroll-guide";
+import SocialBar from "../ui/socal-bar";
 
-gsap.registerPlugin(TextPlugin);
+gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
 const Hero = () => {
 	const splashRef = useRef(null);
@@ -85,12 +88,31 @@ const Hero = () => {
 			document.getElementById("splash").style.opacity = "0";
 			document.getElementById("splash").style.zIndex = "-99";
 		}
+
+		// GSAP ScrollTrigger for visibility
+		const ctx = gsap.context(() => {
+			gsap.to("#social-bar, #scroll-guide", {
+				opacity: 0,
+				scrollTrigger: {
+					trigger: splashRef.current,
+					start: "top top",
+					end: "bottom bottom",
+					markers: true,
+					scrub: true,
+					toggleActions: "play none none reverse",
+				},
+			});
+		}, splashRef);
+
+		return () => {
+			ctx.revert();
+		};
 	}, []);
 
 	return (
 		<section
 			ref={splashRef}
-			className="md:h-[100vh] grid place-items-center mt-10">
+			className="md:h-[91vh] grid place-items-center mt-10 relative">
 			{/* Splash Background */}
 			<div
 				id="splash"
@@ -117,8 +139,6 @@ const Hero = () => {
 						</span>
 					</h1>
 					<h2 className="font-body text-lg font-[400] max-w-[500px]">
-						{/* A right guy for your web applications
-						<p>( Fueled by Coffee )</p> */}
 						Fueled by coffee and curiosity, I&apos;ve been navigating the
 						ever-evolving world of{" "}
 						<span className="font-semibold underline underline-offset-4 decoration-primary-light decoration-solid decoration-2">
@@ -126,17 +146,26 @@ const Hero = () => {
 						</span>{" "}
 						for the past three years, constantly learning and growing.
 					</h2>
-
-					<div className="mt-16">
-						{/* <button>Let&apos;s Work Together</button> */}
-						My Work
-					</div>
 				</div>
 
 				{/* Profile Picture */}
 				<div className="md:w-[50%] place-items-center xl:place-items-end">
 					<ProfileNav />
 				</div>
+			</div>
+
+			{/* Social Bar */}
+			<div
+				id="social-bar"
+				className="absolute bottom-0 left-[4vw] hidden xl:block opacity-100 transition-opacity duration-500">
+				<SocialBar />
+			</div>
+
+			{/* Scroll Guide */}
+			<div
+				id="scroll-guide"
+				className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-100 transition-opacity duration-500">
+				<ScrollGuide text="My Latest Works" />
 			</div>
 		</section>
 	);
