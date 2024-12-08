@@ -97,7 +97,6 @@ const Hero = () => {
 					trigger: splashRef.current,
 					start: "top top",
 					end: "bottom bottom",
-					markers: true,
 					scrub: true,
 					toggleActions: "play none none reverse",
 				},
