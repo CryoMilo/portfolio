@@ -1,12 +1,5 @@
-"use client";
-
+import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
-import {
-	TbClipboardCopy,
-	TbFileBroken,
-	TbSignature,
-	TbTableColumn,
-} from "react-icons/tb";
 
 export function Projects() {
 	return (
@@ -16,74 +9,110 @@ export function Projects() {
 					key={i}
 					title={item.title}
 					description={item.description}
-					header={item.header}
+					videoSrc={item.videoSrc}
+					sliderImg={item.images}
 					className={item.className}
-					icon={item.icon}
 				/>
 			))}
 		</BentoGrid>
 	);
 }
-const Skeleton = ({
-	videoSrc,
-	videoAlt = "Video",
-	loop = true,
-	autoPlay = true,
-	muted = true,
-}) => (
-	<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden">
-		<video
-			src={videoSrc}
-			alt={videoAlt}
-			className="w-full h-full object-cover"
-			loop={loop}
-			autoPlay={autoPlay}
-			muted={muted}></video>
-	</div>
-);
 
 const items = [
 	{
-		title: "The Dawn of Innovation",
-		description: "Explore the birth of groundbreaking ideas and inventions.",
-		header: <Skeleton videoSrc="/videos/earth-spinning.mp4" />,
+		videoSrc: "/videos/earth-spinning.mp4",
+		images: [
+			{
+				src: "/images/urban/urban-desktop.png",
+				alt: "Desktop",
+				width: 300,
+				height: 100,
+			},
+			{
+				src: "/images/urban/urban-tablet.png",
+				alt: "Tablet",
+				width: 120,
+				height: 100,
+			},
+			{
+				src: "/images/urban/urban-mobile.png",
+				alt: "Mobile",
+				width: 80,
+				height: 100,
+			},
+		],
+		title: "Space Tour",
+		description:
+			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
 		className: "md:col-span-2",
-		icon: <TbClipboardCopy className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "The Digital Revolution",
 		description: "Dive into the transformative power of technology.",
-		header: <Skeleton />,
 		className: "md:col-span-1",
-		icon: <TbFileBroken className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "The Art of Design",
 		description: "Discover the beauty of thoughtful and functional design.",
-		header: <Skeleton />,
 		className: "md:col-span-1",
-		icon: <TbSignature className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Power of Communication",
+		videoSrc: "/videos/urban-coffee-club-hero.mp4",
+		images: [
+			{
+				src: "/images/urban/urban-desktop.png",
+				alt: "Desktop",
+				width: 300,
+				height: 100,
+			},
+			{
+				src: "/images/urban/urban-tablet.png",
+				alt: "Tablet",
+				width: 120,
+				height: 100,
+			},
+			{
+				src: "/images/urban/urban-mobile.png",
+				alt: "Mobile",
+				width: 80,
+				height: 100,
+			},
+		],
+		title: "Urban Coffee Club",
 		description:
-			"Understand the impact of effective communication in our lives.",
-		header: <Skeleton videoSrc="/videos/urban-coffee-club-hero.mp4" />,
+			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
 		className: "md:col-span-2",
-		icon: <TbTableColumn className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Dawn of Innovation",
-		description: "Explore the birth of groundbreaking ideas and inventions.",
-		header: <Skeleton videoSrc="/videos/lightwave.mp4" />,
+		videoSrc: "/videos/lightwave.mp4",
+		images: [
+			{
+				src: "/images/urban/urban-desktop.png",
+				alt: "Desktop",
+				width: 300,
+				height: 100,
+			},
+			{
+				src: "/images/urban/urban-tablet.png",
+				alt: "Tablet",
+				width: 120,
+				height: 100,
+			},
+			{
+				src: "/images/urban/urban-mobile.png",
+				alt: "Mobile",
+				width: 80,
+				height: 100,
+			},
+		],
+		title: "Lightwave",
+		description:
+			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
 		className: "md:col-span-2",
-		icon: <TbClipboardCopy className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "The Digital Revolution",
 		description: "Dive into the transformative power of technology.",
-		header: <Skeleton />,
 		className: "md:col-span-1",
-		icon: <TbFileBroken className="h-4 w-4 text-neutral-500" />,
 	},
 ];

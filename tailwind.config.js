@@ -70,10 +70,15 @@ module.exports = {
 					from: { transform: "rotate(0deg)" },
 					to: { transform: "rotate(-360deg)" },
 				},
+				scroll: {
+					"0%": { transform: "translateY(0)" },
+					"100%": { transform: "translateY(-65%)" }, // Full height scroll
+				},
 			},
 			animation: {
 				"spin-slow": "spin 30s linear infinite",
 				"spin-slow-reverse": "spin-reverse 30s linear infinite",
+				scroll: "scroll 5s linear infinite", // 10s infinite scrolling
 			},
 		},
 	},
