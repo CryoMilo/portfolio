@@ -831,6 +831,16 @@ detect-libc@^2.0.3:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.3.tgz#f0cd503b40f9939b894697d19ad50895e30cf700"
   integrity sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==
 
+devicon@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/devicon/-/devicon-2.16.0.tgz#67ca4200b44eb74bf35e4be1d63b6d34f6e07de5"
+  integrity sha512-PE5a2HBNeN4av+Iu975OiiWEwS8LJPw5HAvlv0JUHb62jZTdYxTpz4ga+cQyvdtb3x1side2P9Sr1mmOmUkO/g==
+
+devicons-react@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/devicons-react/-/devicons-react-1.4.0.tgz#c5ed0b0cc0b4063f0cbc4c773c8e0f30e646fc61"
+  integrity sha512-RePDf19W/x66OA6GciO9rcNakbbXCvo3z8QN5WfoZ38ahPTPTZehhIyxxoBd4UDit0U6j8Szq7G11ZKRAEogSg==
+
 didyoumean@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/didyoumean/-/didyoumean-1.2.2.tgz#989346ffe9e839b4555ecf5666edea0d3e8ad037"

@@ -3,18 +3,21 @@ import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 
 export function Projects() {
 	return (
-		<BentoGrid className="container my-24">
-			{items.map((item, i) => (
-				<BentoGridItem
-					key={i}
-					title={item.title}
-					description={item.description}
-					videoSrc={item.videoSrc}
-					images={item.images}
-					className={item.className}
-				/>
-			))}
-		</BentoGrid>
+		<div className="container my-24">
+			<h3 className="text-4xl pb-10">My Latest Works</h3>
+			<BentoGrid>
+				{items.map((item, i) => (
+					<BentoGridItem
+						key={i}
+						title={item.title}
+						description={item.description}
+						videoSrc={item.videoSrc}
+						images={item.images}
+						className={item.className}
+					/>
+				))}
+			</BentoGrid>
+		</div>
 	);
 }
 
