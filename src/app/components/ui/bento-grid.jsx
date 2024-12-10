@@ -69,14 +69,14 @@ export const BentoGridItem = ({
 					loop={loop}
 					autoPlay={autoPlay}
 					muted={muted}></video>
-				<div className="w-full h-full absolute top-0 left-0 grid-cols-2 group-hover:grid hidden">
+				<div className="w-full h-full absolute top-0 left-0 grid-cols-1 lg:grid-cols-2 group-hover:grid hidden">
 					<div className="p-8 font-body text-white">
 						<p className="text-3xl">{title}</p>
 						<p className="text-sm">{description}</p>
 					</div>
 					<div
 						ref={imageContainerRef}
-						className="absolute bottom-0 right-0 flex flex-col items-center gap-6 overflow-hidden p-8">
+						className="absolute hidden lg:flex bottom-0 right-0 flex-col items-center gap-6 overflow-hidden p-8">
 						{images.map(({ src, alt, width, height }, index) => (
 							<Image
 								key={index}
