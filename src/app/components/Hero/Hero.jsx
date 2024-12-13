@@ -117,7 +117,7 @@ const Hero = () => {
 				id="splash"
 				className="absolute bg-white opacity-100 z-30 h-[100vh] w-full"></div>
 
-			<div className="container text-center md:text-left relative flex flex-col md:flex-row justify-between gap-20 xl:gap-10">
+			<div className="container text-center md:text-left relative flex flex-col-reverse md:flex-row justify-between gap-20 xl:gap-10">
 				{/* Splash Text */}
 				<div id="splash-text" className="absolute top-0 z-40">
 					<span id="splash-hi"></span>

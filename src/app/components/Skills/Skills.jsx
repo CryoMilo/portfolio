@@ -20,7 +20,7 @@ const skillIcons = [
 	{
 		component: TailwindcssOriginal,
 		size: "5em",
-		position: { top: "20%", left: "60%" },
+		position: { top: "10%", left: "60%" },
 		animation: "md:animate-float-2",
 	},
 	{
@@ -38,32 +38,32 @@ const skillIcons = [
 	{
 		component: MongodbOriginal,
 		size: "5em",
-		position: { top: "70%", left: "40%" },
+		position: { top: "70%", left: "45%" },
 		animation: "md:animate-float-5",
-	},
-	{
-		component: ExpressOriginal,
-		size: "5em",
-		position: { top: "24%", left: "30%" },
-		animation: "md:animate-float-6",
 	},
 	{
 		component: Html5Original,
 		size: "5em",
+		position: { top: "13%", left: "30%" },
+		animation: "md:animate-float-4",
+	},
+	{
+		component: ExpressOriginal,
+		size: "5em",
 		position: { top: "80%", left: "70%" },
-		animation: "md:animate-float-6",
+		animation: "md:animate-float-2",
 	},
 	{
 		component: Css3Original,
 		size: "5em",
 		position: { top: "60%", left: "80%" },
-		animation: "md:animate-float-6",
+		animation: "md:animate-float-5",
 	},
 	{
 		component: FigmaOriginal,
 		size: "5em",
 		position: { top: "80%", left: "20%" },
-		animation: "md:animate-float-6",
+		animation: "md:animate-float-1",
 	},
 ];
 
