@@ -51,16 +51,8 @@ const items = [
 			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
 		className: "md:col-span-2",
 	},
-	{
-		title: "The Digital Revolution",
-		description: "Dive into the transformative power of technology.",
-		className: "hidden lg:block lg:col-span-1",
-	},
-	{
-		title: "The Art of Design",
-		description: "Discover the beauty of thoughtful and functional design.",
-		className: "hidden lg:block lg:col-span-1",
-	},
+	{},
+	{},
 	{
 		videoSrc: "/videos/urban-coffee-club-hero.mp4",
 		images: [
@@ -115,9 +107,5 @@ const items = [
 			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
 		className: "md:col-span-2",
 	},
-	{
-		title: "The Digital Revolution",
-		description: "Dive into the transformative power of technology.",
-		className: "hidden lg:block lg:col-span-1",
-	},
+	{},
 ];
