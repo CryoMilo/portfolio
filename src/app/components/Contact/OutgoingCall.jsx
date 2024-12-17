@@ -3,10 +3,11 @@ import Image from "next/image";
 import { BsCameraVideoOff, BsMicMute } from "react-icons/bs";
 import { MdOutlineCallEnd } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
-import { FaX } from "react-icons/fa6";
+import { FaMessage } from "react-icons/fa6";
 
 const OutgoingCallModal = ({ isOpen, onClose, callEnded, setCallEnded }) => {
 	const audioRef = useRef(null);
+	const [hungUp, setHungUp] = useState(false);
 
 	// Play sound when modal mounts
 	useEffect(() => {
@@ -28,7 +29,7 @@ const OutgoingCallModal = ({ isOpen, onClose, callEnded, setCallEnded }) => {
 
 	return (
 		<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-			{!callEnded ? (
+			{!hungUp ? (
 				<div className="bg-white text-black rounded-lg shadow-lg w-96 py-12">
 					{/* Call Body */}
 					<div className="flex flex-col items-center justify-center p-6">
@@ -66,7 +67,7 @@ const OutgoingCallModal = ({ isOpen, onClose, callEnded, setCallEnded }) => {
 						<button
 							onClick={() => {
 								audioRef.current.pause();
-								setCallEnded(true);
+								setHungUp(true);
 							}}
 							className="flex items-center justify-center w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full">
 							<MdOutlineCallEnd />
@@ -90,23 +91,26 @@ const OutgoingCallModal = ({ isOpen, onClose, callEnded, setCallEnded }) => {
 						</div>
 						<h2 className="text-xl font-semibold mb-2">Oak Soe Htoo Aung</h2>
 						<p className="text-gray-400 mb-6">Call Ended</p>
+						<p className="text-gray-400 my-8 text-center">
+							Looks like Oak is not Available
+						</p>
 					</div>
 
 					{/* Call Actions */}
-					<div className="flex justify-center gap-6 pb-4">
+					<div className="flex justify-center gap-12 pb-4">
 						{/* Resume Call */}
 						<button
 							onClick={() => setCallEnded(false)}
 							className="flex items-center justify-center w-12 h-12 bg-success rounded-full">
 							<FaPhoneAlt />
 						</button>
-						{/* Close Modal */}
 						<button
 							onClick={() => {
 								onClose();
+								setCallEnded(true);
 							}}
-							className="flex items-center justify-center w-12 h-12 bg-muted rounded-full">
-							<FaX />
+							className="flex items-center justify-center w-12 h-12 bg-secondary rounded-full">
+							<FaMessage />
 						</button>
 					</div>
 				</div>
