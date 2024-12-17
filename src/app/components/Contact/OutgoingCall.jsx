@@ -5,7 +5,7 @@ import { MdOutlineCallEnd } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 
-const OutgoingCallModal = ({ isOpen, onClose, callEnded, setCallEnded }) => {
+const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 	const audioRef = useRef(null);
 	const [hungUp, setHungUp] = useState(false);
 

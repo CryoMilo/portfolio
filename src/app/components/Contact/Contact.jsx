@@ -28,7 +28,7 @@ const Contact = () => {
 			const centerY = rect.top + rect.height / 2;
 
 			// Calculate offset relative to cursor
-			const deltaX = (clientX - centerX) * 0.5; // Magnetic pull factor
+			const deltaX = (clientX - centerX) * 0.5;
 			const deltaY = (clientY - centerY) * 0.5;
 
 			// GSAP Animation

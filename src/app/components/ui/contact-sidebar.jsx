@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useFormContext } from "react-hook-form";
 
 const ContactSidebar = () => {
+	const { register } = useFormContext();
+
 	return (
 		<div className="w-80 bg-white flex-col border-2 m-4 rounded-xl hidden lg:flex">
 			{/* Profile */}
@@ -14,8 +19,18 @@ const ContactSidebar = () => {
 						className="rounded-full"
 					/>
 				</div>
-				<h3 className="font-semibold">Anonymous</h3>
-				<span className="text-sm">anonymous@gmail.com</span>
+				<input
+					{...register("name")}
+					type="text"
+					defaultValue="Anonymous"
+					className="font-semibold text-center bg-transparent border-none outline-none"
+				/>
+				<input
+					{...register("email")}
+					type="email"
+					defaultValue="anonymous@gmail.com"
+					className="text-sm text-center bg-transparent border-none outline-none"
+				/>
 			</div>
 
 			{/* Chat List */}

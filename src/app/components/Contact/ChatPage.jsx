@@ -6,10 +6,15 @@ import { IoCallOutline, IoVideocamOutline } from "react-icons/io5";
 import ContactSidebar from "../ui/contact-sidebar";
 import MessageInput from "../ui/message-input";
 import MessageList from "../ui/message-list";
+import { FormProvider, useForm } from "react-hook-form";
 
 const ChatPage = () => {
-	// Ref to target the main container
 	const chatContainerRef = useRef(null);
+	const methods = useForm();
+
+	const onSubmit = (data) => {
+		console.log("Form Data Submitted:", data);
+	};
 
 	useEffect(() => {
 		gsap.fromTo(
@@ -19,15 +24,18 @@ const ChatPage = () => {
 				opacity: 1,
 				y: 0,
 				duration: 1,
-				delay: 1,
+				delay: 0.5,
 				ease: "power2.out",
 			}
 		);
 	}, []);
 
 	return (
-		<div className="mb-20">
-			<div className="flex h-[80vh]" ref={chatContainerRef}>
+		<FormProvider {...methods}>
+			<form
+				className="flex h-[80vh] mb-20"
+				ref={chatContainerRef}
+				onSubmit={methods.handleSubmit(onSubmit)}>
 				{/* Sidebar */}
 				<ContactSidebar />
 
@@ -52,8 +60,8 @@ const ChatPage = () => {
 					{/* Input */}
 					<MessageInput />
 				</div>
-			</div>
-		</div>
+			</form>
+		</FormProvider>
 	);
 };
 
