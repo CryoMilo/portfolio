@@ -57,7 +57,7 @@ const Contact = () => {
 	}, []);
 
 	return (
-		<div className="container min-h-[60vh] relative">
+		<div id="contact" className="container min-h-[60vh] relative">
 			{!callEnded && (
 				<div
 					ref={magneticRef}

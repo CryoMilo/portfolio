@@ -3,7 +3,7 @@ import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 
 export function Projects() {
 	return (
-		<div className="container my-24">
+		<div id="projects" className="container my-24">
 			<h3 className="text-4xl pb-10 font-body">
 				My <span className="text-primary-light">Latest</span> Works
 			</h3>
