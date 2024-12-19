@@ -2,14 +2,14 @@ import Image from "next/image";
 
 const IncomingMsg = ({ text }) => (
 	<div className="flex items-start gap-4">
-		<div className="w-12 h-12 relative">
+		{/* <div className="w-12 h-12 relative">
 			<Image
 				src="/images/profile-placeholder.png"
 				alt="Profile"
 				fill
 				className="rounded-full object-cover"
 			/>
-		</div>
+		</div> */}
 		<div className="bg-white p-3 rounded-lg shadow-sm max-w-md">
 			<p>{text}</p>
 		</div>

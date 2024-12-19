@@ -8,7 +8,7 @@ const ContactSidebar = () => {
 	} = useFormContext();
 
 	return (
-		<div className="w-80 bg-white flex-col border-2 m-4 rounded-xl hidden lg:flex">
+		<div className="lg:w-80 bg-white flex-col border-2 m-4 rounded-xl">
 			{/* Profile */}
 			<div className="p-6 text-center border-b">
 				<div className="flex justify-center mb-2">
@@ -20,33 +20,35 @@ const ContactSidebar = () => {
 						className="rounded-full"
 					/>
 				</div>
-				<input
-					{...register("name", { required: "Please insert your name" })}
-					type="text"
-					defaultValue=""
-					placeholder="Anonymous"
-					className="font-semibold text-center bg-transparent border-none outline-none"
-				/>
-				<input
-					{...register("email", {
-						required: "Please insert your email",
-						pattern: {
-							value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-							message: "Invalid email format",
-						},
-					})}
-					type="email"
-					defaultValue=""
-					placeholder="anonymous@gmail.com"
-					className="text-sm text-center bg-transparent border-none outline-none"
-				/>
-				<p className="text-red-500 text-sm">
-					{errors.name?.message || errors.email?.message}
-				</p>
+				<div className="flex items-center flex-col">
+					<input
+						{...register("name", { required: "Please insert your name" })}
+						type="text"
+						defaultValue=""
+						placeholder="Anonymous"
+						className="font-semibold text-center bg-transparent border-none outline-none"
+					/>
+					<input
+						{...register("email", {
+							required: "Please insert your email",
+							pattern: {
+								value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+								message: "Invalid email format",
+							},
+						})}
+						type="email"
+						defaultValue=""
+						placeholder="anonymous@gmail.com"
+						className="text-sm text-center bg-transparent border-none outline-none"
+					/>
+					<p className="text-red-500 text-sm">
+						{errors.name?.message || errors.email?.message}
+					</p>
+				</div>
 			</div>
 
 			{/* Chat List */}
-			<div className="flex-1 overflow-y-auto">
+			<div className="flex-1 overflow-y-auto hidden lg:block">
 				<div className="m-4 p-3 gap-4 flex items-center bg-gray-200 rounded-md">
 					<div className="w-12 h-12 relative">
 						<Image

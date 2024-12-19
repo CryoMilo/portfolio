@@ -40,7 +40,7 @@ const ChatPage = () => {
 	return (
 		<FormProvider {...methods}>
 			<form
-				className="flex h-[80vh] mb-20"
+				className="flex flex-col lg:flex-row h-[80vh] mb-20"
 				ref={chatContainerRef}
 				onSubmit={methods.handleSubmit(onSubmit)}>
 				{/* Sidebar */}
