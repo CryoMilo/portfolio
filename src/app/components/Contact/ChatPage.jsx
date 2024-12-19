@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { IoCallOutline, IoVideocamOutline } from "react-icons/io5";
 import ContactSidebar from "../ui/contact-sidebar";
@@ -11,9 +11,16 @@ import { FormProvider, useForm } from "react-hook-form";
 const ChatPage = () => {
 	const chatContainerRef = useRef(null);
 	const methods = useForm();
+	const [messages, setMessages] = useState([]);
 
 	const onSubmit = (data) => {
-		console.log("Form Data Submitted:", data);
+		if (data.msg) {
+			setMessages((prevMessages) => [
+				...prevMessages,
+				{ type: "incoming", text: data.msg },
+			]);
+			methods.reset({ msg: "" });
+		}
 	};
 
 	useEffect(() => {
@@ -55,7 +62,7 @@ const ChatPage = () => {
 					</div>
 
 					{/* Messages */}
-					<MessageList />
+					<MessageList messages={messages} />
 
 					{/* Input */}
 					<MessageInput />

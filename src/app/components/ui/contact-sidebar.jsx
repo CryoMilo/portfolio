@@ -1,10 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import { useFormContext } from "react-hook-form";
 
 const ContactSidebar = () => {
-	const { register } = useFormContext();
+	const {
+		register,
+		formState: { errors },
+	} = useFormContext();
 
 	return (
 		<div className="w-80 bg-white flex-col border-2 m-4 rounded-xl hidden lg:flex">
@@ -20,17 +21,28 @@ const ContactSidebar = () => {
 					/>
 				</div>
 				<input
-					{...register("name")}
+					{...register("name", { required: "Please insert your name" })}
 					type="text"
-					defaultValue="Anonymous"
+					defaultValue=""
+					placeholder="Anonymous"
 					className="font-semibold text-center bg-transparent border-none outline-none"
 				/>
 				<input
-					{...register("email")}
+					{...register("email", {
+						required: "Please insert your email",
+						pattern: {
+							value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+							message: "Invalid email format",
+						},
+					})}
 					type="email"
-					defaultValue="anonymous@gmail.com"
+					defaultValue=""
+					placeholder="anonymous@gmail.com"
 					className="text-sm text-center bg-transparent border-none outline-none"
 				/>
+				<p className="text-red-500 text-sm">
+					{errors.name?.message || errors.email?.message}
+				</p>
 			</div>
 
 			{/* Chat List */}
