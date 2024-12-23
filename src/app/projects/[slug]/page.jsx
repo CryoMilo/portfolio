@@ -2,7 +2,7 @@ const ProjectDetails = () => {
 	return (
 		<section className="container pt-10">
 			<div className="w-full h-[400px] bg-gray-400"></div>
-			<div className="flex justify-between items-center py-5">
+			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">
 				<p>linktowebsite.github.repo</p>
 				<div className="flex gap-2">
 					<div className="bg-gray-400 w-10 h-10"></div>
@@ -11,11 +11,11 @@ const ProjectDetails = () => {
 					<div className="bg-gray-400 w-10 h-10"></div>
 				</div>
 			</div>
-			<div className="grid grid-cols-2 mt-20 divide-x-2 relative">
+			<div className="flex flex-col-reverse md:grid md:grid-cols-2 mt-20 md:divide-x-2 relative">
 				{/* Colors Section */}
-				<div className=" pb-64 pr-10">
+				<div className="pb-64 pr-10">
 					<p className="text-2xl font-semibold mb-4">Colors</p>
-					<div className="flex gap-5">
+					<div className="flex gap-5 flex-wrap">
 						<div className="flex flex-col items-center">
 							<div className="w-20 h-20 bg-gray-300"></div>
 							<p className="mt-2">Primary</p>
@@ -30,9 +30,9 @@ const ProjectDetails = () => {
 						</div>
 					</div>
 				</div>
-				<article className="text-right">
+				<article className="md:text-right">
 					<p className="text-2xl font-semibold mb-4">About</p>
-					<p className="pl-10 pb-64">
+					<p className="md:pl-10 pb-20 md:pb-64">
 						Lorem ipsum odor amet, consectetuer adipiscing elit. Pellentesque
 						quis est scelerisque faucibus sodales ultrices. Viverra himenaeos
 						sem lobortis fames arcu nascetur habitant fringilla. Pulvinar proin
