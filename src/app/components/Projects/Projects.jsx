@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 
 export function Projects() {

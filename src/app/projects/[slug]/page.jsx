@@ -1,7 +1,43 @@
 const ProjectDetails = () => {
+	const projectData = {
+		projectName: "Urban Coffee Club",
+		colors: [
+			{
+				name: "Primary",
+				color: "bg-[#1f232c]",
+			},
+			{
+				name: "Secondary",
+				color: "bg-[#dfd6d1]",
+			},
+			{
+				name: "Accent",
+				color: "bg-[#83746e]",
+			},
+		],
+		techList: [],
+		demoLink: "",
+		githubLink: "",
+		description: "",
+		images: [],
+	};
+
 	return (
 		<section className="container pt-10">
-			<div className="w-full h-[400px] bg-gray-400"></div>
+			<div className="w-full h-[400px] bg-white relative overflow-hidden">
+				<h1 className="text-6xl w-[40%]">{projectData.projectName}</h1>
+				<div className="absolute right-0 bottom-0 w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
+					<div className="bg-pink-300 col-span-2 w-full h-40"></div>
+					<div className="bg-pink-300 w-full h-40"></div>
+					<div className="bg-pink-300 w-full h-40"></div>
+					<div className="bg-pink-300 col-span-2 w-full h-40"></div>
+					<div className="bg-pink-300 w-full h-40"></div>
+					<div className="bg-pink-300 w-full h-40"></div>
+					<div className="bg-pink-300 w-full h-40"></div>
+					<div className="bg-pink-300 w-full h-40"></div>
+					<div className="bg-pink-300 w-full h-40"></div>
+				</div>
+			</div>
 			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">
 				<p>linktowebsite.github.repo</p>
 				<div className="flex gap-2">
@@ -16,18 +52,20 @@ const ProjectDetails = () => {
 				<div className="pb-64 pr-10">
 					<p className="text-2xl font-semibold mb-4">Colors</p>
 					<div className="flex gap-5 flex-wrap">
-						<div className="flex flex-col items-center">
+						{/* <div className="flex flex-col items-center">
 							<div className="w-20 h-20 bg-gray-300"></div>
 							<p className="mt-2">Primary</p>
 						</div>
 						<div className="flex flex-col items-center">
 							<div className="w-20 h-20 bg-gray-300"></div>
 							<p className="mt-2">Secondary</p>
-						</div>
-						<div className="flex flex-col items-center">
-							<div className="w-20 h-20 bg-gray-300"></div>
-							<p className="mt-2">Accent</p>
-						</div>
+						</div> */}
+						{projectData.colors.map((color, index) => (
+							<div key={index} className="flex flex-col items-center">
+								<div className={`w-20 h-20 ${color.color}`}></div>
+								<p className="mt-2">{color.name}</p>
+							</div>
+						))}
 					</div>
 				</div>
 				<article className="md:text-right">
