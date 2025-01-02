@@ -1,18 +1,6 @@
 import { Geist_Mono, Montserrat, Nunito } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 const montserrat = Montserrat({
 	subsets: ["latin"],
 	weights: ["400", "500"],
@@ -41,9 +29,7 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body
 				className={`${montserrat.variable} ${nunito.variable} ${geistMono.variable} antialiased`}>
-				<Navbar />
 				{children}
-				<Footer />
 			</body>
 		</html>
 	);

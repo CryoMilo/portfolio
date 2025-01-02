@@ -9,58 +9,59 @@ import {
 	ReactOriginal,
 	TailwindcssOriginal,
 } from "devicons-react";
+import { getTechSkillIcon } from "../utils/getTechSkills";
 
 const skillIcons = [
 	{
-		component: ReactOriginal,
+		skillName: "react",
 		size: "5em",
 		position: { top: "15%", left: "10%" },
 		animation: "md:animate-float-1",
 	},
 	{
-		component: TailwindcssOriginal,
+		skillName: "tailwind",
 		size: "5em",
 		position: { top: "10%", left: "60%" },
 		animation: "md:animate-float-2",
 	},
 	{
-		component: JavascriptOriginal,
+		skillName: "javascript",
 		size: "5em",
 		position: { top: "50%", left: "10%" },
 		animation: "md:animate-float-3",
 	},
 	{
-		component: NextjsOriginal,
+		skillName: "nextjs",
 		size: "5em",
 		position: { top: "20%", left: "80%" },
 		animation: "md:animate-float-4",
 	},
 	{
-		component: MongodbOriginal,
+		skillName: "mongodb",
 		size: "5em",
 		position: { top: "70%", left: "45%" },
 		animation: "md:animate-float-5",
 	},
 	{
-		component: Html5Original,
+		skillName: "html",
 		size: "5em",
 		position: { top: "13%", left: "30%" },
 		animation: "md:animate-float-4",
 	},
 	{
-		component: ExpressOriginal,
+		skillName: "express",
 		size: "5em",
 		position: { top: "80%", left: "70%" },
 		animation: "md:animate-float-2",
 	},
 	{
-		component: Css3Original,
+		skillName: "css",
 		size: "5em",
 		position: { top: "60%", left: "80%" },
 		animation: "md:animate-float-5",
 	},
 	{
-		component: FigmaOriginal,
+		skillName: "figma",
 		size: "5em",
 		position: { top: "80%", left: "20%" },
 		animation: "md:animate-float-1",
@@ -78,16 +79,17 @@ const Skills = () => {
 					<p>I am confident in these</p>
 				</div>
 				<div className="flex flex-wrap gap-8 justify-evenly">
-					{skillIcons.map(
-						({ component: Icon, size, position, animation }, index) => (
+					{skillIcons.map(({ skillName, size, position, animation }, index) => {
+						const Icon = getTechSkillIcon(skillName);
+						return Icon ? (
 							<div
 								key={index}
 								className={`icon md:absolute ${animation}`}
 								style={{ top: position.top, left: position.left }}>
 								<Icon size={size} />
 							</div>
-						)
-					)}
+						) : null;
+					})}
 				</div>
 			</div>
 		</div>

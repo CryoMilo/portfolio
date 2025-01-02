@@ -1,6 +1,10 @@
+import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
+import Image from "next/image";
+import DemoBtn from "./DemoBtn";
+
 const ProjectDetails = () => {
 	const projectData = {
-		projectName: "Urban Coffee Club",
+		projectName: "Space Tour",
 		colors: [
 			{
 				name: "Primary",
@@ -15,10 +19,11 @@ const ProjectDetails = () => {
 				color: "bg-[#83746e]",
 			},
 		],
-		techList: [],
-		demoLink: "",
-		githubLink: "",
-		description: "",
+		techList: ["nextjs", "tailwind", "figma"],
+		demoLink: "https://urban-coffee-club.vercel.app/",
+		githubLink: "https://github.com/CryoMilo/urban-coffee-club",
+		description:
+			"Lorem ipsum odor amet, consectetuer adipiscing elit. Pellentesque quis est scelerisque faucibus sodales ultrices. Viverra himenaeos sem lobortis fames arcu nascetur habitant fringilla. Pulvinar proin mi pellentesque condimentum turpis. Fringilla etiam at interdum, inceptos sem leo. Diam in non neque hendrerit ante odio nascetur.",
 		images: [],
 	};
 
@@ -26,25 +31,54 @@ const ProjectDetails = () => {
 		<section className="container pt-10">
 			<div className="w-full h-[400px] bg-white relative overflow-hidden">
 				<h1 className="text-6xl w-[40%]">{projectData.projectName}</h1>
-				<div className="absolute right-0 bottom-0 w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
-					<div className="bg-pink-300 col-span-2 w-full h-40"></div>
-					<div className="bg-pink-300 w-full h-40"></div>
-					<div className="bg-pink-300 w-full h-40"></div>
-					<div className="bg-pink-300 col-span-2 w-full h-40"></div>
-					<div className="bg-pink-300 w-full h-40"></div>
-					<div className="bg-pink-300 w-full h-40"></div>
-					<div className="bg-pink-300 w-full h-40"></div>
-					<div className="bg-pink-300 w-full h-40"></div>
-					<div className="bg-pink-300 w-full h-40"></div>
+				<div className="absolute right-0 bottom-0 w-[60%] xl:w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
+					<div className="bg-pink-300 col-span-2 w-full h-52 relative">
+						<Image
+							src="/images/urban/urban-hl-1.png"
+							alt="profile-pic"
+							fill
+							className="object-cover"
+						/>
+					</div>
+					<div className="bg-pink-300 w-full h-52 relative">
+						<Image
+							src="/images/urban/urban-hl-3.png"
+							alt="profile-pic"
+							fill
+							className="object-cover"
+						/>
+					</div>
+					<div className="bg-pink-300 w-full h-52 relative">
+						<Image
+							src="/images/urban/urban-hl-2.png"
+							alt="profile-pic"
+							fill
+							className="object-cover"
+						/>
+					</div>
+					<div className="bg-pink-300 col-span-2 w-full h-52 relative">
+						<Image
+							src="/images/urban/urban-hl-4.png"
+							alt="profile-pic"
+							fill
+							className="object-cover"
+						/>
+					</div>
+					<div className="bg-pink-300 col-span-2 w-full h-52"></div>
+					<div className="bg-pink-300 w-full h-52"></div>
 				</div>
 			</div>
 			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">
-				<p>linktowebsite.github.repo</p>
+				<a href={projectData.githubLink}>Github</a>
 				<div className="flex gap-2">
-					<div className="bg-gray-400 w-10 h-10"></div>
-					<div className="bg-gray-400 w-10 h-10"></div>
-					<div className="bg-gray-400 w-10 h-10"></div>
-					<div className="bg-gray-400 w-10 h-10"></div>
+					{projectData.techList.map((tech, index) => {
+						const Icon = getTechSkillIcon(tech);
+						return Icon ? (
+							<div key={index} className="w-10 h-10">
+								<Icon size="80%" />
+							</div>
+						) : null;
+					})}
 				</div>
 			</div>
 			<div className="flex flex-col-reverse md:grid md:grid-cols-2 mt-20 md:divide-x-2 relative">
@@ -52,14 +86,6 @@ const ProjectDetails = () => {
 				<div className="pb-64 pr-10">
 					<p className="text-2xl font-semibold mb-4">Colors</p>
 					<div className="flex gap-5 flex-wrap">
-						{/* <div className="flex flex-col items-center">
-							<div className="w-20 h-20 bg-gray-300"></div>
-							<p className="mt-2">Primary</p>
-						</div>
-						<div className="flex flex-col items-center">
-							<div className="w-20 h-20 bg-gray-300"></div>
-							<p className="mt-2">Secondary</p>
-						</div> */}
 						{projectData.colors.map((color, index) => (
 							<div key={index} className="flex flex-col items-center">
 								<div className={`w-20 h-20 ${color.color}`}></div>
@@ -70,17 +96,12 @@ const ProjectDetails = () => {
 				</div>
 				<article className="md:text-right">
 					<p className="text-2xl font-semibold mb-4">About</p>
-					<p className="md:pl-10 pb-20 md:pb-64">
-						Lorem ipsum odor amet, consectetuer adipiscing elit. Pellentesque
-						quis est scelerisque faucibus sodales ultrices. Viverra himenaeos
-						sem lobortis fames arcu nascetur habitant fringilla. Pulvinar proin
-						mi pellentesque condimentum turpis. Fringilla etiam at interdum,
-						inceptos sem leo. Diam in non neque hendrerit ante odio nascetur.
-					</p>
+					<p className="md:pl-10 pb-20 md:pb-64">{projectData.description}</p>
 				</article>
-				<div className="w-[200px] h-[100px] rounded-tr-full rounded-tl-full bg-gray-400 absolute left-1/2 bottom-0 -translate-x-1/2 grid place-items-center">
-					<p className="text-lg translate-y-1/2">Demo</p>
-				</div>
+				<DemoBtn
+					color={projectData.colors[2].color}
+					link={projectData.demoLink}
+				/>
 			</div>
 		</section>
 	);
