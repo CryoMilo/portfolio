@@ -1,10 +1,11 @@
 import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
 import Image from "next/image";
 import DemoBtn from "./DemoBtn";
+import ProjectHighlights from "./ProjectHighlights";
 
 const ProjectDetails = () => {
 	const projectData = {
-		projectName: "Space Tour",
+		projectName: "Urban Coffee Club",
 		colors: [
 			{
 				name: "Primary",
@@ -31,42 +32,7 @@ const ProjectDetails = () => {
 		<section className="container pt-10">
 			<div className="w-full h-[400px] bg-white relative overflow-hidden">
 				<h1 className="text-6xl w-[40%]">{projectData.projectName}</h1>
-				<div className="absolute right-0 bottom-0 w-[60%] xl:w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
-					<div className="bg-pink-300 col-span-2 w-full h-52 relative">
-						<Image
-							src="/images/urban/urban-hl-1.png"
-							alt="profile-pic"
-							fill
-							className="object-cover"
-						/>
-					</div>
-					<div className="bg-pink-300 w-full h-52 relative">
-						<Image
-							src="/images/urban/urban-hl-3.png"
-							alt="profile-pic"
-							fill
-							className="object-cover"
-						/>
-					</div>
-					<div className="bg-pink-300 w-full h-52 relative">
-						<Image
-							src="/images/urban/urban-hl-2.png"
-							alt="profile-pic"
-							fill
-							className="object-cover"
-						/>
-					</div>
-					<div className="bg-pink-300 col-span-2 w-full h-52 relative">
-						<Image
-							src="/images/urban/urban-hl-4.png"
-							alt="profile-pic"
-							fill
-							className="object-cover"
-						/>
-					</div>
-					<div className="bg-pink-300 col-span-2 w-full h-52"></div>
-					<div className="bg-pink-300 w-full h-52"></div>
-				</div>
+				<ProjectHighlights />
 			</div>
 			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">
 				<a href={projectData.githubLink}>Github</a>
