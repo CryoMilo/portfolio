@@ -1,14 +1,3 @@
-import {
-	Css3Original,
-	ExpressOriginal,
-	FigmaOriginal,
-	Html5Original,
-	JavascriptOriginal,
-	MongodbOriginal,
-	NextjsOriginal,
-	ReactOriginal,
-	TailwindcssOriginal,
-} from "devicons-react";
 import { getTechSkillIcon } from "../utils/getTechSkills";
 
 const skillIcons = [
@@ -65,6 +54,18 @@ const skillIcons = [
 		size: "5em",
 		position: { top: "80%", left: "20%" },
 		animation: "md:animate-float-1",
+	},
+	{
+		skillName: "gsap",
+		size: "4em",
+		position: { top: "50%", left: "25%" },
+		animation: "md:animate-float-3",
+	},
+	{
+		skillName: "strapi",
+		size: "4em",
+		position: { top: "50%", left: "65%" },
+		animation: "md:animate-float-5",
 	},
 ];
 

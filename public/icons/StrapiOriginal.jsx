@@ -1,9 +1,9 @@
-const StrapiOriginal = () => {
+const StrapiOriginal = ({ size }) => {
 	return (
 		<svg
-			height="36"
+			height={size || "36"}
 			viewBox=".24262095 .26549587 243.32256626 243.58072911"
-			width="36"
+			width={size || "36"}
 			xmlns="http://www.w3.org/2000/svg">
 			<g fill="#8e75ff" fillRule="evenodd">
 				<path d="m161.893 165.833v-78.73a5.077 5.077 0 0 0 -5.077-5.076h-78.638v-81.267h159.815a5.077 5.077 0 0 1 5.078 5.077v159.996z" />
