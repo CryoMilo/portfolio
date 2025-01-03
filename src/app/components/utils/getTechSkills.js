@@ -10,6 +10,8 @@ import {
 	TailwindcssOriginal,
 	TypescriptOriginal,
 } from "devicons-react";
+import StrapiOriginal from "../../../../public/icons/StrapiOriginal";
+import GsapOriginal from "../../../../public/icons/GsapOriginal";
 
 const techSkillIcons = {
 	css: Css3Original,
@@ -22,6 +24,8 @@ const techSkillIcons = {
 	react: ReactOriginal,
 	tailwind: TailwindcssOriginal,
 	typescript: TypescriptOriginal,
+	strapi: StrapiOriginal,
+	gsap: GsapOriginal,
 };
 
 export const getTechSkillIcon = (skillName) => {
