@@ -1,5 +1,5 @@
 const formatImageUrl = (url) => {
-	const baseUrl = process.env.NEXT_PUBLIC_STRAPI_API || ""; // Ensure base URL is set
+	const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL || "";
 	return `${baseUrl}${url}`;
 };
 

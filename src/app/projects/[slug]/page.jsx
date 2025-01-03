@@ -14,25 +14,24 @@ const ProjectDetails = async ({ params }) => {
 		console.error("Error fetching project:", error);
 
 		projectData = {
-			project_name: "Urban Coffee Club",
+			project_name: "Not Found",
 			palette: [
 				{ name: "Primary", color: "bg-[#1f232c]" },
 				{ name: "Secondary", color: "bg-[#dfd6d1]" },
 				{ name: "Accent", color: "bg-[#83746e]" },
 			],
-			techList: ["nextjs", "tailwind", "figma"],
+			techList: [],
 			demoLink: "https://urban-coffee-club.vercel.app/",
 			githubLink: "https://github.com/CryoMilo/urban-coffee-club",
-			description:
-				"Lorem ipsum odor amet, consectetuer adipiscing elit. Pellentesque quis est scelerisque faucibus sodales ultrices. Viverra himenaeos sem lobortis fames arcu nascetur habitant fringilla. Pulvinar proin mi pellentesque condimentum turpis. Fringilla etiam at interdum, inceptos sem leo. Diam in non neque hendrerit ante odio nascetur.",
+			description: "There seems to be an error. Project is not found!",
 			images: [],
 		};
 	}
 
 	return (
 		<section className="container pt-10">
-			<div className="w-full h-[400px] bg-white relative overflow-hidden">
-				<h1 className="text-6xl w-[40%]">{projectData.project_name}</h1>
+			<div className="w-full h-[400px] border rounded-md bg-white relative overflow-hidden">
+				<h1 className="text-6xl w-[20%] px-5">{projectData.project_name}</h1>
 				<ProjectHighlights images={projectData.image} />
 			</div>
 			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">
