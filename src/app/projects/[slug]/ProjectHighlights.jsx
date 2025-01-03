@@ -67,8 +67,22 @@ const ProjectHighlights = ({ images }) => {
 					className="object-cover"
 				/>
 			</div>
-			<div className="bg-pink-300 col-span-2 w-full h-52 skew-x-[30deg] -skew-[20deg]"></div>
-			<div className="bg-pink-300 w-full h-52 skew-x-[30deg] -skew-[20deg]"></div>
+			<div className="bg-pink-300 col-span-2 w-full h-52 skew-x-[30deg] -skew-[20deg]">
+				<Image
+					src="/images/urban/urban-hl-1.png"
+					alt="profile-pic"
+					fill
+					className="object-cover"
+				/>
+			</div>
+			<div className="bg-pink-300 w-full h-52 skew-x-[30deg] -skew-[20deg]">
+				<Image
+					src="/images/urban/urban-hl-2.png"
+					alt="profile-pic"
+					fill
+					className="object-cover"
+				/>
+			</div>
 		</div>
 	);
 };
