@@ -1,11 +1,15 @@
 "use client";
 
+import { formatImageData } from "@/app/components/utils/formatImageData";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const ProjectHighlights = () => {
+const ProjectHighlights = ({ images }) => {
 	const imageGrid = useRef();
+
+	const formattedImages = formatImageData(images);
+	console.log(formattedImages);
 
 	useEffect(() => {
 		gsap.fromTo(
@@ -33,7 +37,7 @@ const ProjectHighlights = () => {
 			className="absolute right-0 bottom-0 w-[60%] xl:w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
 			<div className="bg-pink-300 col-span-2 w-full h-52 relative skew-x-[30deg] -skew-[20deg]">
 				<Image
-					src="/images/urban/urban-hl-1.png"
+					src={formattedImages[0].url}
 					alt="profile-pic"
 					fill
 					className="object-cover"

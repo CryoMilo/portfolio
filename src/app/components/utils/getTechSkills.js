@@ -8,6 +8,7 @@ import {
 	NextjsOriginal,
 	ReactOriginal,
 	TailwindcssOriginal,
+	TypescriptOriginal,
 } from "devicons-react";
 
 const techSkillIcons = {
@@ -20,6 +21,7 @@ const techSkillIcons = {
 	nextjs: NextjsOriginal,
 	react: ReactOriginal,
 	tailwind: TailwindcssOriginal,
+	typescript: TypescriptOriginal,
 };
 
 export const getTechSkillIcon = (skillName) => {

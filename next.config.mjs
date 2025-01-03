@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+	images: {
+		remotePatterns: [
+			{
+				protocol: "http",
+				hostname: "localhost",
+				port: "1337",
+				pathname: "/uploads/**", // Use "/uploads/**" to match the typical path for Strapi uploads
+			},
+		],
+	},
+};
 
 export default nextConfig;

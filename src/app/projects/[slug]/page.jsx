@@ -1,38 +1,39 @@
 import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
-import Image from "next/image";
 import DemoBtn from "./DemoBtn";
 import ProjectHighlights from "./ProjectHighlights";
+import { fetcher } from "@/app/api/fetcher";
 
-const ProjectDetails = () => {
-	const projectData = {
-		projectName: "Urban Coffee Club",
-		colors: [
-			{
-				name: "Primary",
-				color: "bg-[#1f232c]",
-			},
-			{
-				name: "Secondary",
-				color: "bg-[#dfd6d1]",
-			},
-			{
-				name: "Accent",
-				color: "bg-[#83746e]",
-			},
-		],
-		techList: ["nextjs", "tailwind", "figma"],
-		demoLink: "https://urban-coffee-club.vercel.app/",
-		githubLink: "https://github.com/CryoMilo/urban-coffee-club",
-		description:
-			"Lorem ipsum odor amet, consectetuer adipiscing elit. Pellentesque quis est scelerisque faucibus sodales ultrices. Viverra himenaeos sem lobortis fames arcu nascetur habitant fringilla. Pulvinar proin mi pellentesque condimentum turpis. Fringilla etiam at interdum, inceptos sem leo. Diam in non neque hendrerit ante odio nascetur.",
-		images: [],
-	};
+const ProjectDetails = async ({ params }) => {
+	const slug = (await params).slug;
+	let projectData;
+
+	try {
+		const data = await fetcher(`/projects/${slug}`);
+		projectData = data?.data;
+	} catch (error) {
+		console.error("Error fetching project:", error);
+
+		projectData = {
+			project_name: "Urban Coffee Club",
+			palette: [
+				{ name: "Primary", color: "bg-[#1f232c]" },
+				{ name: "Secondary", color: "bg-[#dfd6d1]" },
+				{ name: "Accent", color: "bg-[#83746e]" },
+			],
+			techList: ["nextjs", "tailwind", "figma"],
+			demoLink: "https://urban-coffee-club.vercel.app/",
+			githubLink: "https://github.com/CryoMilo/urban-coffee-club",
+			description:
+				"Lorem ipsum odor amet, consectetuer adipiscing elit. Pellentesque quis est scelerisque faucibus sodales ultrices. Viverra himenaeos sem lobortis fames arcu nascetur habitant fringilla. Pulvinar proin mi pellentesque condimentum turpis. Fringilla etiam at interdum, inceptos sem leo. Diam in non neque hendrerit ante odio nascetur.",
+			images: [],
+		};
+	}
 
 	return (
 		<section className="container pt-10">
 			<div className="w-full h-[400px] bg-white relative overflow-hidden">
-				<h1 className="text-6xl w-[40%]">{projectData.projectName}</h1>
-				<ProjectHighlights />
+				<h1 className="text-6xl w-[40%]">{projectData.project_name}</h1>
+				<ProjectHighlights images={projectData.image} />
 			</div>
 			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">
 				<a href={projectData.githubLink}>Github</a>
@@ -52,7 +53,7 @@ const ProjectDetails = () => {
 				<div className="pb-64 pr-10">
 					<p className="text-2xl font-semibold mb-4">Colors</p>
 					<div className="flex gap-5 flex-wrap">
-						{projectData.colors.map((color, index) => (
+						{projectData.palette.map((color, index) => (
 							<div key={index} className="flex flex-col items-center">
 								<div className={`w-20 h-20 ${color.color}`}></div>
 								<p className="mt-2">{color.name}</p>
@@ -65,7 +66,7 @@ const ProjectDetails = () => {
 					<p className="md:pl-10 pb-20 md:pb-64">{projectData.description}</p>
 				</article>
 				<DemoBtn
-					color={projectData.colors[2].color}
+					color={projectData.palette[2].color}
 					link={projectData.demoLink}
 				/>
 			</div>
