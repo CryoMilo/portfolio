@@ -56,7 +56,7 @@ export const BentoGridItem = ({
 	return (
 		<div
 			className={cn(
-				"row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input bg-primary-light hover:bg-background-dark justify-between flex flex-col space-y-4",
+				"row-span-1 rounded-xl group hover:shadow-xl transition duration-200 shadow-input bg-primary-light justify-between flex flex-col space-y-4",
 				className
 			)}
 			onMouseEnter={handleMouseEnter}
@@ -73,6 +73,9 @@ export const BentoGridItem = ({
 					<div className="p-8 font-body text-white">
 						<p className="text-3xl">{title}</p>
 						<p className="text-sm">{description}</p>
+						<p className="underline-offset-4 hover:underline pt-5 cursor-pointer">
+							See More
+						</p>
 					</div>
 					<div
 						ref={imageContainerRef}
