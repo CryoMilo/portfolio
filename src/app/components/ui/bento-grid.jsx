@@ -56,7 +56,7 @@ export const BentoGridItem = ({
 	return (
 		<div
 			className={cn(
-				"row-span-1 rounded-xl group hover:shadow-xl transition duration-200 shadow-input bg-primary-light justify-between flex flex-col space-y-4",
+				"row-span-1 rounded-xl group hover:shadow-xl transition duration-200 shadow-input hover:bg-background-dark bg-primary-light justify-between flex flex-col space-y-4",
 				className
 			)}
 			onMouseEnter={handleMouseEnter}
@@ -80,13 +80,13 @@ export const BentoGridItem = ({
 					<div
 						ref={imageContainerRef}
 						className="absolute hidden lg:flex bottom-0 right-0 flex-col items-center gap-6 overflow-hidden p-8">
-						{images.map(({ src, alt, width, height }, index) => (
+						{images.map(({ url, name }, index) => (
 							<Image
 								key={index}
-								src={src}
-								alt={alt}
-								width={width}
-								height={height}
+								src={url}
+								alt={name}
+								width={300}
+								height={300}
 							/>
 						))}
 					</div>

@@ -1,4 +1,4 @@
-const formatImageUrl = (url) => {
+export const formatImageUrl = (url) => {
 	const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL || "";
 	return `${baseUrl}${url}`;
 };

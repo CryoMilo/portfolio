@@ -1,6 +1,6 @@
 import { fetcher } from "@/app/api/fetcher";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
-import { items } from "./projectData";
+import { formatImageData, formatImageUrl } from "../utils/formatImageData";
 
 export const Projects = async () => {
 	let projects;
@@ -20,14 +20,14 @@ export const Projects = async () => {
 				My <span className="text-primary-light">Latest</span> Works
 			</h3>
 			<BentoGrid>
-				{items.map((item, i) => (
+				{projects?.map((item, i) => (
 					<BentoGridItem
 						key={i}
-						title={item.title}
+						title={item.project_name}
 						description={item.description}
-						videoSrc={item.videoSrc}
-						images={item.images}
-						className={item.className}
+						videoSrc={formatImageUrl(item.splash_video.url)}
+						images={formatImageData(item.mockup_images)}
+						className="md:col-span-2"
 					/>
 				))}
 			</BentoGrid>
