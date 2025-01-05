@@ -10,22 +10,10 @@ const ProjectDetails = async ({ params }) => {
 	try {
 		const data = await fetcher(`/projects/${slug}`);
 		projectData = data?.data;
+
+		console.log("My Palette", projectData.palette);
 	} catch (error) {
 		console.error("Error fetching project:", error);
-
-		projectData = {
-			project_name: "Not Found",
-			palette: [
-				{ name: "Primary", color: "bg-[#1f232c]" },
-				{ name: "Secondary", color: "bg-[#dfd6d1]" },
-				{ name: "Accent", color: "bg-[#83746e]" },
-			],
-			techList: [],
-			demoLink: "https://urban-coffee-club.vercel.app/",
-			githubLink: "https://github.com/CryoMilo/urban-coffee-club",
-			description: "There seems to be an error. Project is not found!",
-			images: [],
-		};
 	}
 
 	return (
@@ -54,7 +42,9 @@ const ProjectDetails = async ({ params }) => {
 					<div className="flex gap-5 flex-wrap">
 						{projectData.palette.map((color, index) => (
 							<div key={index} className="flex flex-col items-center">
-								<div className={`w-20 h-20 ${color.color}`}></div>
+								<div
+									className="w-20 h-20"
+									style={{ backgroundColor: color.color }}></div>
 								<p className="mt-2">{color.name}</p>
 							</div>
 						))}
@@ -65,7 +55,10 @@ const ProjectDetails = async ({ params }) => {
 					<p className="md:pl-10 pb-20 md:pb-64">{projectData.description}</p>
 				</article>
 				<DemoBtn
-					color={projectData.palette[2].color}
+					color={
+						projectData.palette.find((color) => color.name === "Accent")
+							?.color || "var(--color-primary-light)"
+					}
 					link={projectData.demoLink}
 				/>
 			</div>

@@ -4,6 +4,7 @@ import { cn } from "@/app/lib/utils";
 import Image from "next/image";
 import { useRef } from "react";
 import { gsap } from "gsap";
+import Link from "next/link";
 
 export const BentoGrid = ({ className, children }) => {
 	return (
@@ -23,20 +24,19 @@ export const BentoGridItem = ({
 	images = [],
 	title,
 	description,
-	videoAlt = "Video",
-	loop = true,
-	autoPlay = true,
-	muted = true,
+	documentId,
 }) => {
 	const imageContainerRef = useRef(null);
+
+	console.log("Images", images);
 
 	const handleMouseEnter = () => {
 		const container = imageContainerRef.current;
 		gsap.fromTo(
 			container,
-			{ y: "60%" }, // Start position
+			{ y: "60%" },
 			{
-				y: "0%", // End position
+				y: "0%",
 				duration: 5,
 				ease: "none",
 				repeat: 0,
@@ -64,29 +64,33 @@ export const BentoGridItem = ({
 			<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden relative group">
 				<video
 					src={videoSrc}
-					alt={videoAlt}
+					alt={title}
 					className="w-full h-full object-cover group-hover:blur-md"
-					loop={loop}
-					autoPlay={autoPlay}
-					muted={muted}></video>
+					loop
+					autoPlay
+					muted></video>
 				<div className="w-full h-full absolute top-0 left-0 grid-cols-1 lg:grid-cols-2 group-hover:grid hidden">
 					<div className="p-8 font-body text-white">
 						<p className="text-3xl">{title}</p>
-						<p className="text-sm">{description}</p>
-						<p className="underline-offset-4 hover:underline pt-5 cursor-pointer">
-							See More
-						</p>
+						<p className="text-sm line-clamp-3">{description}</p>
+						{title !== null && (
+							<Link
+								href={`/projects/${documentId}`}
+								className="underline-offset-4 hover:underline pt-5 cursor-pointer">
+								See More
+							</Link>
+						)}
 					</div>
 					<div
 						ref={imageContainerRef}
 						className="absolute hidden lg:flex bottom-0 right-0 flex-col items-center gap-6 overflow-hidden p-8">
-						{images.map(({ url, name }, index) => (
+						{images.map(({ url, name, width, height }, index) => (
 							<Image
 								key={index}
 								src={url}
 								alt={name}
-								width={300}
-								height={300}
+								width={width * 0.5}
+								height={height * 0.5}
 							/>
 						))}
 					</div>

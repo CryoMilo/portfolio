@@ -8,7 +8,6 @@ export const Projects = async () => {
 	try {
 		const data = await fetcher(`/projects`);
 		projects = data?.data;
-
 		console.log("MY PROJECT LIST", projects);
 	} catch (error) {
 		console.error("Error fetching project:", error);
@@ -20,16 +19,19 @@ export const Projects = async () => {
 				My <span className="text-primary-light">Latest</span> Works
 			</h3>
 			<BentoGrid>
-				{projects?.map((item, i) => (
+				<BentoGridItem className="lg:col-span-1 hidden lg:block" />
+				{projects?.map((project, index) => (
 					<BentoGridItem
-						key={i}
-						title={item.project_name}
-						description={item.description}
-						videoSrc={formatImageUrl(item.splash_video.url)}
-						images={formatImageData(item.mockup_images)}
-						className="md:col-span-2"
+						key={index}
+						title={project.project_name}
+						description={project.description}
+						videoSrc={formatImageUrl(project.splash_video.url)}
+						images={formatImageData(project.mockup_images)}
+						documentId={project.documentId}
+						className="lg:col-span-2 col-span-3"
 					/>
 				))}
+				<BentoGridItem className="lg:col-span-1 hidden lg:block" />
 			</BentoGrid>
 		</div>
 	);

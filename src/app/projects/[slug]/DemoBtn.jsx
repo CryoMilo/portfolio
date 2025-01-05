@@ -28,11 +28,13 @@ const DemoBtn = ({ color, link }) => {
 	return (
 		<div
 			onClick={handleClick}
-			className={`w-[200px] h-[100px] rounded-tr-full rounded-tl-full ${color} absolute left-1/2 bottom-0 -translate-x-1/2 grid place-items-center cursor-pointer`}>
+			style={{ backgroundColor: color }}
+			className={`w-[200px] h-[100px] rounded-tr-full rounded-tl-full absolute left-1/2 bottom-0 -translate-x-1/2 grid place-items-center cursor-pointer`}>
 			<p className="text-lg translate-y-1/2 text-white">Demo</p>
 			<div
 				ref={btnRef}
-				className={`${color} rounded-full absolute w-20 h-20 -z-10`}></div>
+				className={`rounded-full absolute w-20 h-20 -z-10`}
+				style={{ backgroundColor: color }}></div>
 		</div>
 	);
 };
