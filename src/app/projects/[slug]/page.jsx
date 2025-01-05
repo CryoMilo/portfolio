@@ -18,8 +18,10 @@ const ProjectDetails = async ({ params }) => {
 
 	return (
 		<section className="container pt-10">
-			<div className="w-full h-[400px] border rounded-md bg-white relative overflow-hidden">
-				<h1 className="text-6xl w-[20%] px-5">{projectData.project_name}</h1>
+			<div className="w-full h-[400px] border border-black rounded-md bg-white relative overflow-hidden">
+				<h1 className="text-6xl w-[40%] px-5 hidden xl:block">
+					{projectData.project_name}
+				</h1>
 				<ProjectHighlights images={projectData.image} />
 			</div>
 			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">

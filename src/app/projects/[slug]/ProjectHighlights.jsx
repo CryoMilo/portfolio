@@ -15,12 +15,12 @@ const ProjectHighlights = ({ images }) => {
 			imageGrid.current,
 			{
 				right: "-10%",
-				bottom: "-10%",
+				bottom: "-25%",
 				opacity: 0,
 			},
 			{
 				right: "0",
-				bottom: "0",
+				bottom: "-15%",
 				opacity: 1,
 				duration: 2,
 				delay: 0.5,
@@ -33,7 +33,7 @@ const ProjectHighlights = ({ images }) => {
 		<div
 			ref={imageGrid}
 			id="imageGrid"
-			className="absolute right-0 bottom-0 w-[60%] xl:w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
+			className="absolute md:right-0 bottom-0 w-[500px] xl:w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
 			{formattedImages.map((image, index) => {
 				const isFirst = index === 0;
 				const isFourth = index === 3;
@@ -41,9 +41,9 @@ const ProjectHighlights = ({ images }) => {
 				return (
 					<div
 						key={index}
-						className={`bg-gray-300 ${
+						className={`bg-transparent ${
 							isFirst || isFourth ? "col-span-2" : ""
-						} w-full h-52 relative shadow-xl shadow-gray-400 skew-x-[30deg] -skew-[20deg]`}>
+						} w-full h-full relative shadow-xl shadow-gray-400 md:skew-x-[30deg] md:-skew-[20deg]`}>
 						{image.url && (
 							<Image
 								src={image.url}
