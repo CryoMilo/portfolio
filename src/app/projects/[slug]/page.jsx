@@ -25,25 +25,27 @@ const ProjectDetails = async ({ params }) => {
 					{projectData.project_name}
 				</h1>
 				<div className="md:hidden relative h-[400px]">
-					{mockupImgs.map((img, index) => {
-						const sizeMultiplier = [0.7, 0.5, 0.4][index];
-						const positions = [
-							{ top: "12%", right: "50%", translateX: "50%" },
-							{ top: "28%", right: "6%", translateX: "0" },
-							{ top: "44%", right: "30%", translateX: "0" },
-						];
-
-						return (
-							<Image
-								key={index}
-								src={img.url}
-								alt={img.name}
-								width={img.width * sizeMultiplier}
-								height={img.height * sizeMultiplier}
-								className={`absolute top-[${positions[index].top}] right-[${positions[index].right}] translate-x-[${positions[index].translateX}]`}
-							/>
-						);
-					})}
+					<Image
+						src={mockupImgs[0].url}
+						alt={mockupImgs[0].name}
+						width={mockupImgs[0].width * 0.7}
+						height={mockupImgs[0].height * 0.7}
+						className="absolute top-[12%] right-[50%] translate-x-[50%]"
+					/>
+					<Image
+						src={mockupImgs[1].url}
+						alt={mockupImgs[1].name}
+						width={mockupImgs[1].width * 0.5}
+						height={mockupImgs[1].height * 0.5}
+						className="absolute top-[28%] right-[6%] "
+					/>
+					<Image
+						src={mockupImgs[2].url}
+						alt={mockupImgs[2].name}
+						width={mockupImgs[2].width * 0.4}
+						height={mockupImgs[2].height * 0.4}
+						className="absolute top-[44%] right-[30%]"
+					/>
 				</div>
 			</div>
 			<div className="hidden md:block w-full h-[400px] border border-black rounded-md bg-white relative overflow-hidden">
