@@ -28,8 +28,6 @@ export const BentoGridItem = ({
 }) => {
 	const imageContainerRef = useRef(null);
 
-	console.log("Images", images);
-
 	const handleMouseEnter = () => {
 		const container = imageContainerRef.current;
 		gsap.fromTo(

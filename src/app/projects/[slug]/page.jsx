@@ -2,6 +2,8 @@ import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
 import DemoBtn from "./DemoBtn";
 import ProjectHighlights from "./ProjectHighlights";
 import { fetcher } from "@/app/api/fetcher";
+import Image from "next/image";
+import { formatImageData } from "@/app/components/utils/formatImageData";
 
 const ProjectDetails = async ({ params }) => {
 	const slug = (await params).slug;
@@ -10,15 +12,41 @@ const ProjectDetails = async ({ params }) => {
 	try {
 		const data = await fetcher(`/projects/${slug}`);
 		projectData = data?.data;
-
-		console.log("My Palette", projectData.palette);
 	} catch (error) {
 		console.error("Error fetching project:", error);
 	}
 
+	const mockupImgs = formatImageData(projectData.mockup_images);
+
 	return (
 		<section className="container pt-10">
-			<div className="w-full h-[400px] border border-black rounded-md bg-white relative overflow-hidden">
+			<div>
+				<h1 className="text-4xl w-full xl:hidden">
+					{projectData.project_name}
+				</h1>
+				<div className="md:hidden relative h-[400px]">
+					{mockupImgs.map((img, index) => {
+						const sizeMultiplier = [0.7, 0.5, 0.4][index];
+						const positions = [
+							{ top: "12%", right: "50%", translateX: "50%" },
+							{ top: "28%", right: "6%", translateX: "0" },
+							{ top: "44%", right: "30%", translateX: "0" },
+						];
+
+						return (
+							<Image
+								key={index}
+								src={img.url}
+								alt={img.name}
+								width={img.width * sizeMultiplier}
+								height={img.height * sizeMultiplier}
+								className={`absolute top-[${positions[index].top}] right-[${positions[index].right}] translate-x-[${positions[index].translateX}]`}
+							/>
+						);
+					})}
+				</div>
+			</div>
+			<div className="hidden md:block w-full h-[400px] border border-black rounded-md bg-white relative overflow-hidden">
 				<h1 className="text-6xl w-[40%] px-5 hidden xl:block">
 					{projectData.project_name}
 				</h1>

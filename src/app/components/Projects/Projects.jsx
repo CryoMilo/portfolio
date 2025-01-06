@@ -8,7 +8,6 @@ export const Projects = async () => {
 	try {
 		const data = await fetcher(`/projects`);
 		projects = data?.data;
-		console.log("MY PROJECT LIST", projects);
 	} catch (error) {
 		console.error("Error fetching project:", error);
 	}
