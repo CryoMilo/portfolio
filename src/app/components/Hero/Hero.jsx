@@ -89,7 +89,6 @@ const Hero = () => {
 			document.getElementById("splash").style.zIndex = "-99";
 		}
 
-		// GSAP ScrollTrigger for visibility
 		const ctx = gsap.context(() => {
 			gsap.to("#social-bar, #scroll-guide", {
 				opacity: 0,
@@ -163,7 +162,7 @@ const Hero = () => {
 			{/* Scroll Guide */}
 			<div
 				id="scroll-guide"
-				className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-100 transition-opacity duration-500">
+				className="absolute hidden md:block bottom-4 left-1/2 -translate-x-1/2 opacity-100 transition-opacity duration-500">
 				<ScrollGuide text="My Armory" />
 			</div>
 		</section>
