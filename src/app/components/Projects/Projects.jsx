@@ -25,11 +25,12 @@ export const Projects = async () => {
 							title={project.project_name}
 							description={project.description}
 							videoSrc={formatImageUrl(project.splash_video.url)}
-							images={formatImageData(project.mockup_images)}
 							documentId={project.documentId}
-							className="lg:col-span-2 col-span-3"
+							images={formatImageData(project.mockup_images)}
 						/>
-						<BentoGridItem className="lg:col-span-1 hidden lg:block" />
+						<div className="flex items-center justify-center gap-4 last:hidden">
+							<div className="border-b-2 border-primary-light w-40"></div>
+						</div>
 					</>
 				))}
 			</BentoGrid>
