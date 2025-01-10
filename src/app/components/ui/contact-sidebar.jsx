@@ -8,7 +8,7 @@ const ContactSidebar = () => {
 	} = useFormContext();
 
 	return (
-		<div className="lg:w-80 bg-white flex-col border-2 m-4 rounded-xl">
+		<div className="lg:w-80 bg-white flex-col border-2 rounded-xl">
 			{/* Profile */}
 			<div className="p-6 text-center border-b">
 				<div className="flex justify-center mb-2">

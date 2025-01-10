@@ -13,14 +13,14 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 	useEffect(() => {
 		if (isOpen) {
 			audioRef.current = new Audio("/audios/discord-call-sound.mp3");
-			audioRef.current.loop = true; // Loop sound if needed
+			audioRef.current.loop = true;
 			audioRef.current.play();
 		}
 
 		return () => {
 			if (audioRef.current) {
 				audioRef.current.pause();
-				audioRef.current.currentTime = 0; // Reset to start
+				audioRef.current.currentTime = 0;
 			}
 		};
 	}, [isOpen]);

@@ -8,7 +8,7 @@ import MessageInput from "../ui/message-input";
 import MessageList from "../ui/message-list";
 import { FormProvider, useForm } from "react-hook-form";
 
-const ChatPage = () => {
+const ChatPage = ({ openModal }) => {
 	const chatContainerRef = useRef(null);
 	const methods = useForm();
 	const [messages, setMessages] = useState([]);
@@ -40,22 +40,25 @@ const ChatPage = () => {
 	return (
 		<FormProvider {...methods}>
 			<form
-				className="flex flex-col lg:flex-row h-[80vh] mb-20"
+				className="flex flex-col lg:flex-row h-[80vh] mb-20 gap-8"
 				ref={chatContainerRef}
 				onSubmit={methods.handleSubmit(onSubmit)}>
 				{/* Sidebar */}
 				<ContactSidebar />
 
 				{/* Main Chat */}
-				<div className="flex flex-col flex-1 bg-white rounded-xl border-2 m-4">
+				<div className="flex flex-col flex-1 bg-white rounded-xl border-2">
 					{/* Header */}
 					<div className="flex items-center justify-between border-b p-4">
 						<h2 className="text-lg font-semibold">Oak Soe Htoo Aung</h2>
 						<div className="flex gap-4">
-							<button className="font-medium">
+							<button
+								type="button"
+								className="font-medium"
+								onClick={() => openModal()}>
 								<IoCallOutline size={20} />
 							</button>
-							<button className="font-medium">
+							<button type="button" className="font-medium">
 								<IoVideocamOutline size={24} />
 							</button>
 						</div>
