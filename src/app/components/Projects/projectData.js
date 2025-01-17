@@ -1,86 +1,82 @@
-export const items = [
+export const projectData = [
 	{
-		videoSrc: "/videos/earth-spinning.mp4",
-		images: [
+		documentId: 1,
+		project_name: "Urban Coffee Club",
+		description:
+			"A modern and responsive coffee shop website focused on showcasing my Animations skills.",
+		palette: [
+			{ name: "Primary", color: "#6c63ff" },
+			{ name: "Secondary", color: "#3f3d56" },
+			{ name: "Accent", color: "#ff6584" },
+		],
+		demoLink: "https://urban-coffee-club.vercel.app/",
+		githubLink: "https://github.com/CryoMilo/urban-coffee-club",
+		techList: ["nextjs", "tailwind", "gsap", "javascript", "html"],
+		image: [],
+		splash_video: {
+			url: "/videos/urban-coffee-club-hero.mp4",
+		},
+		mockup_images: [
 			{
-				src: "/images/urban/urban-desktop.png",
-				alt: "Desktop",
-				width: 300,
-				height: 100,
+				url: "/images/urban/urban-desktop.png",
+				alt: "Portfolio Desktop Mockup",
+				width: 571,
+				height: 356,
 			},
 			{
-				src: "/images/urban/urban-tablet.png",
-				alt: "Tablet",
-				width: 120,
-				height: 100,
+				url: "/images/urban/urban-tablet.png",
+				alt: "Portfolio Tablet Mockup",
+				width: 328,
+				height: 431,
 			},
 			{
-				src: "/images/urban/urban-mobile.png",
-				alt: "Mobile",
-				width: 80,
-				height: 100,
+				url: "/images/urban/urban-mobile.png",
+				alt: "Portfolio Mobile Mockup",
+				width: 212,
+				height: 406,
 			},
 		],
-		title: "Space Tour",
-		description:
-			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
-		className: "md:col-span-2",
-	},
-	{},
-	{},
-	{
-		videoSrc: "/videos/urban-coffee-club-hero.mp4",
-		images: [
-			{
-				src: "/images/urban/urban-desktop.png",
-				alt: "Desktop",
-				width: 300,
-				height: 100,
-			},
-			{
-				src: "/images/urban/urban-tablet.png",
-				alt: "Tablet",
-				width: 120,
-				height: 100,
-			},
-			{
-				src: "/images/urban/urban-mobile.png",
-				alt: "Mobile",
-				width: 80,
-				height: 100,
-			},
-		],
-		title: "Urban Coffee Club",
-		description:
-			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
-		className: "md:col-span-2",
+		intro_text:
+			"A modern and responsive coffee shop website focused on showcasing my Animations skills.",
 	},
 	{
-		videoSrc: "/videos/lightwave.mp4",
-		images: [
+		documentId: 2,
+		project_name: "Lightwave",
+		description:
+			"A fully functional Nextjs application that fetches the data of various cars on market",
+		palette: [
+			{ name: "Primary", color: "#009688" },
+			{ name: "Secondary", color: "#004d40" },
+			{ name: "Accent", color: "#ff5722" },
+		],
+		demoLink: "https://lightwave-beta.vercel.app/",
+		githubLink: "https://github.com/CryoMilo/Lightwave",
+		techList: ["nextjs", "tailwind", "html", "typescript"],
+		image: [],
+		splash_video: {
+			url: "/videos/lightwave.mp4",
+		},
+		mockup_images: [
 			{
-				src: "/images/lightwave/lightwave-desktop.png",
-				alt: "Desktop",
-				width: 300,
-				height: 100,
+				url: "/images/lightwave/lightwave-desktop.png",
+				alt: "Lightwave Desktop Mockup",
+				width: 571,
+				height: 356,
 			},
 			{
-				src: "/images/lightwave/lightwave-tablet.png",
-				alt: "Tablet",
-				width: 120,
-				height: 100,
+				url: "/images/lightwave/lightwave-tablet.png",
+				alt: "Lightwave Tablet Mockup",
+				width: 328,
+				height: 431,
 			},
 			{
-				src: "/images/lightwave/lightwave-mobile.png",
-				alt: "Mobile",
-				width: 80,
-				height: 100,
+				url: "/images/lightwave/lightwave-mobile.png",
+				alt: "Lightwave Mobile Mockup",
+				width: 212,
+				height: 406,
 			},
 		],
-		title: "Lightwave",
-		description:
-			"An animation-rich Next.js website with smooth transitions, modern visuals via Framer Motion, and a fast, responsive user experience.",
-		className: "md:col-span-2",
+		intro_text:
+			"A fully functional Nextjs application to explore various locomotives on market",
 	},
-	{},
 ];

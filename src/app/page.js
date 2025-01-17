@@ -7,7 +7,7 @@ import Skills from "./components/Skills/Skills";
 export default function Home() {
 	return (
 		<main>
-			<Navbar />
+			{/* <Navbar /> */}
 			<Hero />
 			<Skills />
 			<Projects />

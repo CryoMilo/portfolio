@@ -153,18 +153,18 @@ const Hero = () => {
 			</div>
 
 			{/* Social Bar */}
-			<div
+			{/* <div
 				id="social-bar"
 				className="absolute bottom-0 left-[4vw] hidden xl:block opacity-100 transition-opacity duration-500">
 				<SocialBar />
-			</div>
+			</div> */}
 
 			{/* Scroll Guide */}
-			<div
+			{/* <div
 				id="scroll-guide"
 				className="absolute hidden md:block bottom-4 left-1/2 -translate-x-1/2 opacity-100 transition-opacity duration-500">
 				<ScrollGuide text="My Armory" />
-			</div>
+			</div> */}
 		</section>
 	);
 };

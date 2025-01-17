@@ -1,4 +1,3 @@
-import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
 import DemoBtn from "./DemoBtn";
 import ProjectHighlights from "./ProjectHighlights";
 import { fetcher } from "@/app/api/fetcher";

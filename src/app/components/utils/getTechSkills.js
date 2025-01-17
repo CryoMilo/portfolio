@@ -13,7 +13,7 @@ import {
 import StrapiOriginal from "../../../../public/icons/StrapiOriginal";
 import GsapOriginal from "../../../../public/icons/GsapOriginal";
 
-const techSkillIcons = {
+export const techSkillIcons = {
 	css: Css3Original,
 	express: ExpressOriginal,
 	figma: FigmaOriginal,

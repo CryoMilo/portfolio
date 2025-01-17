@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { gsap } from "gsap";
 import Link from "next/link";
+import { getTechSkillIcon } from "../utils/getTechSkills";
 
 export const BentoGrid = ({ className, children }) => {
 	return (
@@ -19,8 +20,10 @@ export const BentoGridItem = ({
 	videoSrc,
 	images = [],
 	title,
+	githubLink,
 	description,
 	documentId,
+	techList,
 }) => {
 	const imageContainerRef = useRef(null);
 
@@ -68,9 +71,20 @@ export const BentoGridItem = ({
 						<div className="mb-6">
 							<p className="text-3xl">{title}</p>
 							<p className="text-sm line-clamp-3">{description}</p>
+							<div className="flex gap-2 my-4">
+								{techList.map((tech, index) => {
+									const Icon = getTechSkillIcon(tech);
+									return Icon ? (
+										<div key={index} className="w-10 h-10">
+											<Icon size="60%" />
+										</div>
+									) : null;
+								})}
+							</div>
 						</div>
 						<Link
-							href={`projects/${documentId}`}
+							// href={`projects/${documentId}`}
+							href={`${githubLink}`}
 							className="bg-white/30 border-none backdrop-blur-2xl rounded-md px-4 py-2 text-white hover:bg-white/40 transition">
 							See More
 						</Link>
