@@ -3,7 +3,7 @@ export const formatImageUrl = (url) => {
 	return `${baseUrl}${url}`;
 };
 
-export const formatImageData = (images) => {
+export const formatImageData = (images = "") => {
 	return images.map((image) => ({
 		...image,
 		url: formatImageUrl(image.url),

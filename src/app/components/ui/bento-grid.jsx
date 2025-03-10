@@ -83,8 +83,7 @@ export const BentoGridItem = ({
 							</div>
 						</div>
 						<Link
-							// href={`projects/${documentId}`}
-							href={`${githubLink}`}
+							href={`projects/${documentId}`}
 							className="bg-white/30 border-none backdrop-blur-2xl rounded-md px-4 py-2 text-white hover:bg-white/40 transition">
 							See More
 						</Link>

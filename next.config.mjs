@@ -3,10 +3,9 @@ const nextConfig = {
 	images: {
 		remotePatterns: [
 			{
-				protocol: "http",
-				hostname: "localhost",
-				port: "1337",
-				pathname: "/uploads/**", // Use "/uploads/**" to match the typical path for Strapi uploads
+				protocol: "https",
+				hostname: "ssnrczwkkznqqygncxti.supabase.co", // Supabase Storage domain
+				pathname: "/storage/v1/object/public/media/**", // Adjust to match your storage path
 			},
 		],
 	},

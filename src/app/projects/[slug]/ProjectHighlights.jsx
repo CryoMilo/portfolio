@@ -1,14 +1,11 @@
 "use client";
 
-import { formatImageData } from "@/app/components/utils/formatImageData";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 const ProjectHighlights = ({ images }) => {
 	const imageGrid = useRef();
-
-	const formattedImages = formatImageData(images);
 
 	useEffect(() => {
 		gsap.fromTo(
@@ -34,7 +31,7 @@ const ProjectHighlights = ({ images }) => {
 			ref={imageGrid}
 			id="imageGrid"
 			className="absolute md:right-0 bottom-0 w-[500px] xl:w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
-			{formattedImages.map((image, index) => {
+			{images?.map((image, index) => {
 				const isFirst = index === 0;
 				const isFourth = index === 3;
 

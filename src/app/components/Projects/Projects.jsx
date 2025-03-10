@@ -1,17 +1,12 @@
-import { fetcher } from "@/app/api/fetcher";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
-import { formatImageData, formatImageUrl } from "../utils/formatImageData";
-import { projectData } from "./projectData";
+import { createClient } from "@/app/utils/supabase/server";
 
 export const Projects = async () => {
-	// let projects;
+	let projects;
 
-	// try {
-	// 	const data = await fetcher(`/projects`);
-	// 	projects = data?.data;
-	// } catch (error) {
-	// 	console.error("Error fetching project:", error);
-	// }
+	const supabase = await createClient();
+	const { data } = await supabase.from("projects").select();
+	projects = data;
 
 	return (
 		<div id="projects" className="container my-24">
@@ -19,22 +14,21 @@ export const Projects = async () => {
 				My <span className="text-primary-light">Latest</span> Works
 			</h3>
 			<BentoGrid>
-				{projectData?.map((project, index) => (
-					<>
+				{projects?.map((project, index) => (
+					<div key={index}>
 						<BentoGridItem
 							githubLink={project.githubLink}
-							key={index}
 							title={project.project_name}
 							description={project.description}
 							videoSrc={project.splash_video.url}
-							documentId={project.documentId}
+							documentId={project.document_id}
 							images={project.mockup_images}
-							techList={project.techList}
+							techList={project.tech_list}
 						/>
 						<div className="flex items-center justify-center gap-4 last:hidden">
 							<div className="border-b-2 border-primary-light w-40"></div>
 						</div>
-					</>
+					</div>
 				))}
 			</BentoGrid>
 		</div>
