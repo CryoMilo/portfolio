@@ -37,14 +37,14 @@ const ProjectHighlights = ({ images }) => {
 
 				return (
 					<div
-						key={index}
+						key={image.id}
 						className={`bg-transparent ${
 							isFirst || isFourth ? "col-span-2" : ""
 						} w-full h-full relative shadow-xl shadow-gray-400 md:skew-x-[30deg] md:-skew-[20deg]`}>
 						{image.url && (
 							<Image
 								src={image.url}
-								alt={`highlight-image-${index}`}
+								alt={`highlight-image-${image.id}`}
 								fill
 								className="object-cover"
 							/>

@@ -47,7 +47,7 @@ const ProjectDetails = async ({ params }) => {
 				<h1 className="text-6xl w-[40%] px-5 hidden xl:block">
 					{projectData.project_name}
 				</h1>
-				<ProjectHighlights images={projectData.mockup_images} />
+				<ProjectHighlights images={projectData.highlight_images} />
 			</div>
 			<div className="flex justify-between items-start md:items-center py-5 flex-col-reverse md:flex-row gap-5">
 				<a href={projectData.github_link}>Github</a>
