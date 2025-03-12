@@ -28,7 +28,7 @@ const ContactSidebar = () => {
 						placeholder="Anonymous"
 						className="font-semibold text-center bg-transparent border-none outline-none"
 					/>
-					<input
+					{/* <input
 						{...register("email", {
 							required: "Please insert your email",
 							pattern: {
@@ -40,19 +40,17 @@ const ContactSidebar = () => {
 						defaultValue=""
 						placeholder="anonymous@gmail.com"
 						className="text-sm text-center bg-transparent border-none outline-none"
-					/>
-					<p className="text-red-500 text-sm">
-						{errors.name?.message || errors.email?.message}
-					</p>
+					/> */}
+					<p className="text-red-500 text-sm">{errors.name?.message}</p>
 				</div>
 			</div>
 
 			{/* Chat List */}
 			<div className="flex-1 overflow-y-auto hidden lg:block">
 				<div className="m-4 p-3 gap-4 flex items-center bg-gray-200 rounded-md">
-					<div className="w-12 h-12 relative">
+					<div className="w-24 h-24 relative">
 						<Image
-							src="/images/profile-background.jpg"
+							src="/images/Milo.png"
 							alt="Profile"
 							fill
 							className="rounded-full object-cover"
@@ -60,8 +58,8 @@ const ContactSidebar = () => {
 					</div>
 					<div className="flex items-center justify-between">
 						<div>
-							<h4 className="font-semibold">Oak Soe Htoo Aung</h4>
-							<p className="text-sm text-gray-400">Active 2min ago</p>
+							<h4 className="font-semibold">Milo</h4>
+							<p className="text-sm text-gray-400">Active 24/7</p>
 						</div>
 					</div>
 				</div>

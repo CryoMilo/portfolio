@@ -91,23 +91,18 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 						</div>
 						<h2 className="text-xl font-semibold mb-2">Oak Soe Htoo Aung</h2>
 						<p className="text-gray-400 mb-6">Call Ended</p>
-						<p className="text-gray-400 my-8 text-center">
-							Looks like Oak is not Available
+						<p className="text-gray-400 my-3 text-center">
+							Looks like Oak is not Available. Chat with Milo Instead?
 						</p>
 					</div>
 
 					{/* Call Actions */}
 					<div className="flex justify-center gap-12 pb-4">
-						{/* Resume Call */}
-						<button
-							onClick={() => setCallEnded(false)}
-							className="flex items-center justify-center w-12 h-12 bg-success rounded-full">
-							<FaPhoneAlt />
-						</button>
 						<button
 							onClick={() => {
 								onClose();
 								setCallEnded(true);
+								setHungUp(false);
 							}}
 							className="flex items-center justify-center w-12 h-12 bg-secondary rounded-full">
 							<FaMessage />

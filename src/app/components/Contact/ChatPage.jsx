@@ -8,11 +8,27 @@ import MessageInput from "../ui/message-input";
 import MessageList from "../ui/message-list";
 import { FormProvider, useForm } from "react-hook-form";
 import { myData } from "@/app/lib/myData";
+import IncomingMsg from "../ui/incoming-msg";
 
 const ChatPage = ({ openModal }) => {
 	const chatContainerRef = useRef(null);
+	const messagesEndRef = useRef(null);
 	const methods = useForm();
-	const [messages, setMessages] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [messages, setMessages] = useState([
+		{
+			type: "incoming",
+			text: "Hi! I am Milo. Oak's Personal Assistant. What Can I help you today?",
+		},
+	]);
+
+	const scrollToBottom = () => {
+		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
+
+	useEffect(() => {
+		scrollToBottom();
+	}, [messages]);
 
 	const onSubmit = (data) => {
 		if (data.msg) {
@@ -20,22 +36,20 @@ const ChatPage = ({ openModal }) => {
 				...prevMessages,
 				{ type: "outgoing", text: data.msg },
 			]);
-			sendMessage(data.msg);
+			sendMessage({ text: data.msg, sender: data.name });
 			methods.reset({ msg: "" });
 		}
 	};
 
-	const sendMessage = async (text) => {
+	const sendMessage = async ({ text, sender }) => {
+		setLoading(true);
 		try {
 			const response = await fetch(
 				"https://openrouter.ai/api/v1/chat/completions",
 				{
 					method: "POST",
 					headers: {
-						Authorization:
-							"Bearer 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",
-						// "HTTP-Referer": "<YOUR_SITE_URL>",
-						// "X-Title": "<YOUR_SITE_NAME>",
+						Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENROUTER_KEY}`,
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
@@ -46,11 +60,15 @@ const ChatPage = ({ openModal }) => {
 								content: [
 									{
 										type: "text",
-										text: `"You are IRIS, assistance of Oak,the owner of this portfolio. You are responsible to provide everything about Oak.The one you're texting with is a visitor to Oak's portfolio. Here's is Oak(He/Him)'s information for you to provide the visitor=> ${JSON.stringify(
+										text: `You are Milo, the assistant of Oak, the owner of this portfolio. Your role is to provide detailed and accurate information about Oak to visitors. You are currently chatting with a visitor (${sender}).
+Here is Oak’s information to assist you in responding: ${JSON.stringify(
 											myData
-										)}.Here are previous messages => ${JSON.stringify(
+										)}.
+Additionally, here is the conversation history for context: ${JSON.stringify(
 											messages
-										)}. Now reply to this ${text}`,
+										)}.
+Now, based on this, generate an appropriate response to the following message from the visitor: ${text}.
+`,
 									},
 								],
 							},
@@ -62,7 +80,8 @@ const ChatPage = ({ openModal }) => {
 			const data = await response.json();
 
 			const markdownText =
-				data.choices?.[0]?.message.content || "No Response Recieved";
+				data.choices?.[0]?.message.content ||
+				"Looks like Milo is Busy. Please return later!";
 
 			setMessages((prevMessages) => [
 				...prevMessages,
@@ -70,6 +89,8 @@ const ChatPage = ({ openModal }) => {
 			]);
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -100,7 +121,7 @@ const ChatPage = ({ openModal }) => {
 				<div className="flex flex-col flex-1 bg-white rounded-xl border-2">
 					{/* Header */}
 					<div className="flex items-center justify-between border-b p-4">
-						<h2 className="text-lg font-semibold">Oak Soe Htoo Aung</h2>
+						<h2 className="text-lg font-semibold">Milo</h2>
 						<div className="flex gap-4">
 							<button
 								type="button"
@@ -115,7 +136,15 @@ const ChatPage = ({ openModal }) => {
 					</div>
 
 					{/* Messages */}
-					<MessageList messages={messages} />
+					<div className="flex-1 overflow-y-auto bg-gray-50">
+						<MessageList messages={messages} />
+						{loading && (
+							<div className="p-6">
+								<IncomingMsg text="Typing..." />
+							</div>
+						)}
+						<div ref={messagesEndRef}></div>
+					</div>
 
 					{/* Input */}
 					<MessageInput />
