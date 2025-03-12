@@ -16,7 +16,7 @@ const skillIcons = [
 	{
 		skillName: "javascript",
 		size: "5em",
-		position: { top: "50%", left: "10%" },
+		position: { top: "46%", left: "10%" },
 		animation: "md:animate-float-3",
 	},
 	{
@@ -52,7 +52,7 @@ const skillIcons = [
 	{
 		skillName: "figma",
 		size: "5em",
-		position: { top: "80%", left: "20%" },
+		position: { top: "80%", left: "25%" },
 		animation: "md:animate-float-1",
 	},
 	{
@@ -66,6 +66,12 @@ const skillIcons = [
 		size: "4em",
 		position: { top: "50%", left: "65%" },
 		animation: "md:animate-float-5",
+	},
+	{
+		skillName: "supabase",
+		size: "4em",
+		position: { top: "76%", left: "8%" },
+		animation: "md:animate-float-3",
 	},
 ];
 

@@ -25,7 +25,7 @@ const ContactSidebar = () => {
 						{...register("name", { required: "Please insert your name" })}
 						type="text"
 						defaultValue=""
-						placeholder="Anonymous"
+						placeholder="You are?"
 						className="font-semibold text-center bg-transparent border-none outline-none"
 					/>
 					{/* <input

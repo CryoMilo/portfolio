@@ -24,7 +24,7 @@ const ProjectDetails = async ({ params }) => {
 				<h1 className="text-4xl w-full xl:hidden">
 					{projectData.project_name}
 				</h1>
-				<div className="md:hidden relative h-[400px]">
+				<div className="md:hidden relative h-[400px] mb-32">
 					{mockupImgs.map((img, index) => (
 						<Image
 							key={index}

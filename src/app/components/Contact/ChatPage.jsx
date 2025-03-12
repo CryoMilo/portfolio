@@ -22,14 +22,6 @@ const ChatPage = ({ openModal }) => {
 		},
 	]);
 
-	const scrollToBottom = () => {
-		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	};
-
-	useEffect(() => {
-		scrollToBottom();
-	}, [messages]);
-
 	const onSubmit = (data) => {
 		if (data.msg) {
 			setMessages((prevMessages) => [
@@ -118,7 +110,7 @@ Now, based on this, generate an appropriate response to the following message fr
 				<ContactSidebar />
 
 				{/* Main Chat */}
-				<div className="flex flex-col flex-1 bg-white rounded-xl border-2">
+				<div className="flex h-[80vh] flex-col flex-1 mb-20 bg-white rounded-xl border-2">
 					{/* Header */}
 					<div className="flex items-center justify-between border-b p-4">
 						<h2 className="text-lg font-semibold">Milo</h2>
@@ -139,7 +131,7 @@ Now, based on this, generate an appropriate response to the following message fr
 					<div className="flex-1 overflow-y-auto bg-gray-50">
 						<MessageList messages={messages} />
 						{loading && (
-							<div className="p-6">
+							<div className="p-3">
 								<IncomingMsg text="Typing..." />
 							</div>
 						)}

@@ -140,7 +140,7 @@ const Hero = () => {
 						Fueled by coffee and curiosity, I&apos;ve been navigating the
 						ever-evolving world of{" "}
 						<span className="font-semibold underline underline-offset-4 decoration-primary-light decoration-solid decoration-2">
-							web development
+							software development
 						</span>{" "}
 						for the past three years, constantly learning and growing.
 					</h2>
