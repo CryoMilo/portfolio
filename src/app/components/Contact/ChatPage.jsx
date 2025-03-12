@@ -17,9 +17,54 @@ const ChatPage = ({ openModal }) => {
 		if (data.msg) {
 			setMessages((prevMessages) => [
 				...prevMessages,
-				{ type: "incoming", text: data.msg },
+				{ type: "outgoing", text: data.msg },
 			]);
+			sendMessage(data.msg);
 			methods.reset({ msg: "" });
+		}
+	};
+
+	const sendMessage = async (text) => {
+		try {
+			const response = await fetch(
+				"https://openrouter.ai/api/v1/chat/completions",
+				{
+					method: "POST",
+					headers: {
+						Authorization:
+							"Bearer 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",
+						// "HTTP-Referer": "<YOUR_SITE_URL>",
+						// "X-Title": "<YOUR_SITE_NAME>",
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						model: "google/gemma-3-27b-it:free",
+						messages: [
+							{
+								role: "user",
+								content: [
+									{
+										type: "text",
+										text: text,
+									},
+								],
+							},
+						],
+					}),
+				}
+			);
+
+			const data = await response.json();
+
+			const markdownText =
+				data.choices?.[0]?.message.content || "No Response Recieved";
+
+			setMessages((prevMessages) => [
+				...prevMessages,
+				{ type: "incoming", text: markdownText },
+			]);
+		} catch (error) {
+			console.log(error);
 		}
 	};
 

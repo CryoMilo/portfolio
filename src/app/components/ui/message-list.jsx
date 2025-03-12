@@ -1,20 +1,4 @@
-import Image from "next/image";
-
-const IncomingMsg = ({ text }) => (
-	<div className="flex items-start gap-4">
-		{/* <div className="w-12 h-12 relative">
-			<Image
-				src="/images/profile-placeholder.png"
-				alt="Profile"
-				fill
-				className="rounded-full object-cover"
-			/>
-		</div> */}
-		<div className="bg-white p-3 rounded-lg shadow-sm max-w-md">
-			<p>{text}</p>
-		</div>
-	</div>
-);
+import IncomingMsg from "./incoming-msg";
 
 const OutgoingMsg = ({ text }) => (
 	<div className="flex justify-end">
@@ -28,10 +12,10 @@ const MessageList = ({ messages }) => {
 	return (
 		<div className="flex-1 overflow-y-auto p-6 bg-gray-50 space-y-4">
 			{messages.map((message, index) =>
-				message.type === "outgoing" ? (
-					<OutgoingMsg key={index} text={message.text} />
-				) : (
+				message.type === "incoming" ? (
 					<IncomingMsg key={index} text={message.text} />
+				) : (
+					<OutgoingMsg key={index} text={message.text} />
 				)
 			)}
 		</div>
