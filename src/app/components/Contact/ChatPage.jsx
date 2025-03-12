@@ -7,6 +7,7 @@ import ContactSidebar from "../ui/contact-sidebar";
 import MessageInput from "../ui/message-input";
 import MessageList from "../ui/message-list";
 import { FormProvider, useForm } from "react-hook-form";
+import { myData } from "@/app/lib/myData";
 
 const ChatPage = ({ openModal }) => {
 	const chatContainerRef = useRef(null);
@@ -45,7 +46,11 @@ const ChatPage = ({ openModal }) => {
 								content: [
 									{
 										type: "text",
-										text: text,
+										text: `"You are IRIS, assistance of Oak,the owner of this portfolio. You are responsible to provide everything about Oak.The one you're texting with is a visitor to Oak's portfolio. Here's is Oak(He/Him)'s information for you to provide the visitor=> ${JSON.stringify(
+											myData
+										)}.Here are previous messages => ${JSON.stringify(
+											messages
+										)}. Now reply to this ${text}`,
 									},
 								],
 							},
