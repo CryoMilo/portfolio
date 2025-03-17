@@ -56,7 +56,7 @@ const Contact = () => {
 	}, []);
 
 	return (
-		<div id="contact" className="container min-h-[60vh] relative">
+		<div id="contact" className="container relative">
 			<>
 				<h3 className="text-4xl pb-10 font-body">
 					Contact <span className="text-primary-light">Me</span>

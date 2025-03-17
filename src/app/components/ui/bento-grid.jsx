@@ -21,7 +21,7 @@ export const BentoGridItem = ({
 	images = [],
 	title,
 	githubLink,
-	description,
+	intro_text,
 	documentId,
 	techList,
 }) => {
@@ -70,7 +70,7 @@ export const BentoGridItem = ({
 					<div className="p-8 font-body text-white">
 						<div className="mb-6">
 							<p className="text-3xl">{title}</p>
-							<p className="text-sm line-clamp-3">{description}</p>
+							<p className="text-sm line-clamp-3">{intro_text}</p>
 							<div className="flex gap-2 my-4">
 								{techList.map((tech, index) => {
 									const Icon = getTechSkillIcon(tech);

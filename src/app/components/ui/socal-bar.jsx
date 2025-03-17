@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LuFacebook, LuInstagram, LuGithub, LuLinkedin } from "react-icons/lu";
 
-const socialLinks = [
+export const socialLinks = [
 	{
 		id: 1,
 		name: "GitHub",

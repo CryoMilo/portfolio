@@ -29,7 +29,7 @@ const ProjectDetails = async ({ params }) => {
 						<Image
 							key={index}
 							src={img.url}
-							alt={img.name}
+							alt={img.url}
 							width={img.width * 0.7}
 							height={img.height * 0.7}
 							className={`absolute ${

@@ -110,7 +110,7 @@ Now, based on this, generate an appropriate response to the following message fr
 				<ContactSidebar />
 
 				{/* Main Chat */}
-				<div className="flex h-[80vh] flex-col flex-1 mb-20 bg-white rounded-xl border-2">
+				<div className="flex h-[80vh] flex-col flex-1 bg-white rounded-xl border-2">
 					{/* Header */}
 					<div className="flex items-center justify-between border-b p-4">
 						<h2 className="text-lg font-semibold">Milo</h2>

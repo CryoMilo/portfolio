@@ -19,7 +19,7 @@ export const Projects = async () => {
 						<BentoGridItem
 							githubLink={project.githubLink}
 							title={project.project_name}
-							description={project.description}
+							intro_text={project.intro_text}
 							videoSrc={project.splash_video.url}
 							documentId={project.document_id}
 							images={project.mockup_images}

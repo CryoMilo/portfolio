@@ -47,21 +47,14 @@ const ContactSidebar = () => {
 
 			{/* Chat List */}
 			<div className="flex-1 overflow-y-auto hidden lg:block">
-				<div className="m-4 p-3 gap-4 flex items-center bg-gray-200 rounded-md">
-					<div className="w-24 h-24 relative">
-						<Image
-							src="/images/Milo.png"
-							alt="Profile"
-							fill
-							className="rounded-full object-cover"
-						/>
-					</div>
-					<div className="flex items-center justify-between">
-						<div>
-							<h4 className="font-semibold">Milo</h4>
-							<p className="text-sm text-gray-400">Active 24/7</p>
-						</div>
-					</div>
+				<div className="w-full h-full pt-[50%]">
+					<video
+						autoPlay
+						muted
+						playsInline
+						src="/videos/milo.mov"
+						className="rounded-md object-cover w-auto h-auto max-w-full max-h-full"
+					/>
 				</div>
 			</div>
 		</div>

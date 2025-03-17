@@ -1,20 +1,15 @@
 "use client";
 
+import { socialLinks } from "../ui/socal-bar";
 import footerLinks from "./footerLinks.json";
-import { FaTwitter, FaFacebook, FaInstagram, FaCoffee } from "react-icons/fa";
+import { FaCoffee } from "react-icons/fa";
 
 export default function Footer() {
-	const socialIcons = {
-		twitter: <FaTwitter />,
-		facebook: <FaFacebook />,
-		instagram: <FaInstagram />,
-	};
-
 	return (
-		<footer className="bg-black text-white py-10 font-primary-light">
+		<footer className="text-black py-10 font-primary-light">
 			<div className="max-w-5xl mx-auto text-center flex flex-col gap-5 items-center">
 				{/* Brand Name */}
-				<div className="select-none text-white font-primary uppercase font-bold text-3xl">
+				<div className="select-none text-black font-primary uppercase font-bold text-3xl">
 					Oak
 				</div>
 
@@ -25,7 +20,7 @@ export default function Footer() {
 							<li key={index}>
 								<a
 									href={link.url}
-									className="text-gray-300 hover:text-white transition">
+									className="text-black hover:text-gray-400 transition">
 									{link.name.toUpperCase()}
 								</a>
 							</li>
@@ -35,14 +30,14 @@ export default function Footer() {
 
 				{/* Social Icons */}
 				<div className="flex justify-center gap-6 text-accent mb-6">
-					{footerLinks.socialLinks.map((social, index) => (
+					{socialLinks.map((social, index) => (
 						<a
 							key={index}
 							href={social.url}
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-2xl hover:text-primary-light transition">
-							{socialIcons[social.icon]}
+							{social.icon}
 						</a>
 					))}
 				</div>
@@ -50,8 +45,7 @@ export default function Footer() {
 				{/* Copyright Text */}
 				<div className="flex gap-2 items-center">
 					<p className="text-sm text-gray">
-						Copyright ©{new Date().getFullYear()} All rights reserved | Urban
-						Coffee Club{" "}
+						Crafted with Caffine and Sleepless Nights by Oak
 					</p>
 					<FaCoffee />
 				</div>
