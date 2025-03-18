@@ -46,7 +46,7 @@ const ProjectHighlights = ({ images }) => {
 								src={image.url}
 								alt={`highlight-image-${image.id}`}
 								fill
-								className="object-cover"
+								className="object-fill"
 							/>
 						)}
 					</div>

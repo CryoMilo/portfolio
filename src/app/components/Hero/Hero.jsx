@@ -163,7 +163,7 @@ const Hero = () => {
 			<div
 				id="scroll-guide"
 				className="absolute hidden md:block bottom-4 left-1/2 -translate-x-1/2 opacity-100 transition-opacity duration-500">
-				<ScrollGuide text="My Armory" />
+				<ScrollGuide text="Scroll To Explore" />
 			</div>
 		</section>
 	);

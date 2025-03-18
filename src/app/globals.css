@@ -64,6 +64,16 @@ html {
 	}
 
 	.orbit-btn {
-		@apply grid place-content-center absolute w-[23%] hover:w-[25%] shadow-xl aspect-square rounded-full bg-light z-20;
+		@apply grid place-content-center absolute w-[23%] hover:w-[25%] aspect-square rounded-full bg-light z-20;
+
+		/* Neumorphic effect */
+		box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2),
+			/* Dark shadow */ -6px -6px 12px rgba(255, 255, 255, 0.6); /* Light shadow */
+		transition: all 0.1s ease-in-out;
+	}
+
+	.orbit-btn:active {
+		box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2),
+			/* Inner dark shadow */ inset -4px -4px 10px rgba(255, 255, 255, 0.6); /* Inner light shadow */
 	}
 }

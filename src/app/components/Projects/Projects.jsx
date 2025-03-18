@@ -17,6 +17,7 @@ export const Projects = async () => {
 				{projects?.map((project, index) => (
 					<div key={index}>
 						<BentoGridItem
+							responsive={project.responsive}
 							githubLink={project.githubLink}
 							title={project.project_name}
 							intro_text={project.intro_text}

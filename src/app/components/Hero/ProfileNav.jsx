@@ -57,9 +57,6 @@ const ProfileNav = () => {
 				id="orbit"
 				className="hidden md:block absolute top-0 left-0 w-full aspect-square">
 				<div className="absolute top-0 left-0 w-full aspect-square rounded-full"></div>
-				{/* <Link href="#about-me" className="orbit-btn top-0 left-0">
-					<LuInfo className="text-3xl" />
-				</Link> */}
 				<Link
 					href="https://www.linkedin.com/in/oak-soe-htoo-aung/"
 					className="orbit-btn top-0 left-0">

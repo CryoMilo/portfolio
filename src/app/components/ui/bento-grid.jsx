@@ -20,7 +20,7 @@ export const BentoGridItem = ({
 	videoSrc,
 	images = [],
 	title,
-	githubLink,
+	responsive = true,
 	intro_text,
 	documentId,
 	techList,
@@ -88,19 +88,29 @@ export const BentoGridItem = ({
 							See More
 						</Link>
 					</div>
-					<div
-						ref={imageContainerRef}
-						className="absolute hidden lg:flex bottom-0 right-[3%] xl:right-[8%] flex-col items-center gap-6 overflow-hidden p-8">
-						{images.map(({ url, name, width, height }, index) => (
-							<Image
-								key={index}
-								src={url}
-								alt={name}
-								width={width * 0.5}
-								height={height * 0.5}
-							/>
-						))}
-					</div>
+					{responsive ? (
+						<div
+							ref={imageContainerRef}
+							className="absolute hidden lg:flex bottom-0 right-[3%] xl:right-[8%] flex-col items-center gap-6 overflow-hidden p-8">
+							{images.map(({ url, width, height }, index) => (
+								<Image
+									key={index}
+									src={url}
+									alt={index}
+									width={width * 0.5}
+									height={height * 0.5}
+								/>
+							))}
+						</div>
+					) : (
+						<Image
+							className="absolute hidden lg:flex bottom-[17%] right-[3%] xl:right-[8%] flex-col items-center gap-6 overflow-hidden"
+							src={images[0].url}
+							alt="Mockup Static"
+							width={images[0].width * 0.5}
+							height={images[0].height * 0.5}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
