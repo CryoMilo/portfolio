@@ -26,9 +26,9 @@ const skillIcons = [
 		animation: "md:animate-float-4",
 	},
 	{
-		skillName: "mongodb",
+		skillName: "redux",
 		size: "5em",
-		position: { top: "70%", left: "45%" },
+		position: { top: "70%", left: "40%" },
 		animation: "md:animate-float-5",
 	},
 	{
@@ -46,7 +46,7 @@ const skillIcons = [
 	{
 		skillName: "css",
 		size: "5em",
-		position: { top: "60%", left: "80%" },
+		position: { top: "50%", left: "80%" },
 		animation: "md:animate-float-5",
 	},
 	{
@@ -73,11 +73,23 @@ const skillIcons = [
 		position: { top: "76%", left: "8%" },
 		animation: "md:animate-float-3",
 	},
+	{
+		skillName: "postgres",
+		size: "4em",
+		position: { top: "80%", left: "85%" },
+		animation: "md:animate-float-3",
+	},
+	{
+		skillName: "nodejs",
+		size: "4em",
+		position: { top: "70%", left: "55%" },
+		animation: "md:animate-float-2",
+	},
 ];
 
 const Skills = () => {
 	return (
-		<div className="my-40 md:mb-36 md:mt-0 container">
+		<div className="my-40 md:mb-36 md:mt-0 container md:p-0">
 			<div className="md:h-[70vh] relative overflow-hidden">
 				<div className="md:absolute top-1/2 left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:text-center pb-20">
 					<p className="text-4xl md:text-5xl font-bold font-body">

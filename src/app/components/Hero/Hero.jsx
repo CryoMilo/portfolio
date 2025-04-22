@@ -14,13 +14,19 @@ const Hero = () => {
 	const splashRef = useRef(null);
 
 	useEffect(() => {
-		// Check if the animation has already played
 		const hasPlayed = localStorage.getItem("heroAnimationPlayed");
 
 		if (!hasPlayed) {
+			// Disable scrolling
+			document.body.style.overflow = "hidden";
+
 			let ctx = gsap.context(() => {
 				const t1 = gsap.timeline({
 					defaults: { duration: 0.6 },
+					onComplete: () => {
+						// Enable scrolling after animation finishes
+						document.body.style.overflow = "auto";
+					},
 				});
 
 				t1.to("#splash-hi", {
@@ -87,6 +93,8 @@ const Hero = () => {
 			document.getElementById("soehtooaung").style.opacity = "1";
 			document.getElementById("splash").style.opacity = "0";
 			document.getElementById("splash").style.zIndex = "-99";
+
+			document.body.style.overflow = "auto";
 		}
 
 		const ctx = gsap.context(() => {
