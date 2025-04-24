@@ -1,4 +1,11 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getTechSkillIcon } from "../utils/getTechSkills";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const skillIcons = [
 	{
@@ -87,7 +94,39 @@ const skillIcons = [
 	},
 ];
 
+const capitalizeFirstLetter = (text) => {
+	if (!text) {
+		return;
+	}
+
+	return text.charAt(0).toUpperCase() + text.slice(1);
+};
+
 const Skills = () => {
+	const iconRefs = useRef([]);
+
+	useEffect(() => {
+		iconRefs.current.forEach((el, index) => {
+			if (!el) return;
+			gsap.fromTo(
+				el,
+				{ opacity: 0, y: 50 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.8,
+					delay: index * 0.1,
+					ease: "power2.out",
+					scrollTrigger: {
+						trigger: el,
+						start: "top 85%",
+						toggleActions: "play none none reverse",
+					},
+				}
+			);
+		});
+	}, []);
+
 	return (
 		<div className="my-40 md:mb-36 md:mt-0 container md:p-0">
 			<div className="md:h-[70vh] relative overflow-hidden">
@@ -97,15 +136,19 @@ const Skills = () => {
 					</p>
 					<p>I am confident in these</p>
 				</div>
-				<div className="flex flex-wrap gap-8 justify-evenly">
+				<div className="flex flex-wrap gap-8 justify-evenly text-center">
 					{skillIcons.map(({ skillName, size, position, animation }, index) => {
 						const Icon = getTechSkillIcon(skillName);
 						return Icon ? (
 							<div
 								key={index}
-								className={`icon md:absolute ${animation}`}
+								ref={(el) => (iconRefs.current[index] = el)}
+								className={`icon md:absolute group ${animation}`}
 								style={{ top: position.top, left: position.left }}>
 								<Icon size={size} />
+								<p className="group-hover:block hidden pt-2">
+									{capitalizeFirstLetter(skillName)}
+								</p>
 							</div>
 						) : null;
 					})}
