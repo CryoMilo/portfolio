@@ -45,18 +45,18 @@ const ContactSidebar = () => {
 				</div>
 			</div>
 
-			{/* Chat List */}
-			<div className="flex-1 overflow-y-auto hidden lg:block">
+			{/* <div className="flex-1 overflow-y-auto hidden lg:block">
 				<div className="w-full h-full pt-[50%]">
 					<video
 						autoPlay
 						muted
 						playsInline
+						loop
 						src="/videos/milo.mov"
-						className="rounded-md object-cover w-auto h-auto max-w-full max-h-full"
+						className="rounded-md object-cover bg-transparent w-auto h-auto max-w-full max-h-full"
 					/>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
