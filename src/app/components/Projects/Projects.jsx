@@ -18,7 +18,8 @@ export const Projects = async () => {
 					<div key={index}>
 						<BentoGridItem
 							responsive={project.responsive}
-							githubLink={project.githubLink}
+							demoLink={project.demo_link}
+							githubLink={project.github_link}
 							title={project.project_name}
 							intro_text={project.intro_text}
 							videoSrc={project.splash_video.url}

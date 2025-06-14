@@ -4,7 +4,8 @@ import { PiDownloadSimpleThin } from "react-icons/pi";
 
 const Navbar = () => {
 	const handleDownload = () => {
-		const resumePath = "/documents/Oak_Soe_Htoo_Aung_Resume.pdf";
+		const resumePath =
+			"https://ssnrczwkkznqqygncxti.supabase.co/storage/v1/object/public/media/resume/Software%20Engineer%20Resume%20-%20Oak%20Soe%20Htoo%20Aung.pdf";
 		const link = document.createElement("a");
 		link.href = resumePath;
 		link.download = "Oak_Soe_Htoo_Aung_Resume.pdf";

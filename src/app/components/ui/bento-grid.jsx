@@ -18,11 +18,13 @@ export const BentoGrid = ({ className, children }) => {
 export const BentoGridItem = ({
 	className,
 	videoSrc,
+	githubLink,
 	images = [],
 	title,
 	responsive = true,
 	intro_text,
 	documentId,
+	demoLink,
 	techList,
 }) => {
 	const imageContainerRef = useRef(null);
@@ -35,7 +37,7 @@ export const BentoGridItem = ({
 			{
 				y: "0%",
 				duration: 8,
-				ease: "none",
+				ease: "power1.in",
 				repeat: 0,
 			}
 		);
@@ -53,7 +55,7 @@ export const BentoGridItem = ({
 	return (
 		<div
 			className={cn(
-				"w-full rounded-xl h-[18rem] group hover:shadow-xl transition duration-200 shadow-input hover:bg-background-dark bg-primary-light justify-between flex flex-col space-y-4",
+				"w-full rounded-xl h-[18rem] group hover:shadow-xl transition duration-200 shadow-input hover:bg-background-dark justify-between flex flex-col space-y-4",
 				className
 			)}
 			onMouseEnter={handleMouseEnter}
@@ -84,8 +86,14 @@ export const BentoGridItem = ({
 						</div>
 						<Link
 							href={`projects/${documentId}`}
-							className="bg-white/30 border-none backdrop-blur-2xl rounded-md px-4 py-2 text-white hover:bg-white/40 transition">
+							// href={githubLink}
+							className="bg-white/30 border-none backdrop-blur-2xl rounded-md px-4 py-2 text-white hover:bg-white/40 transition mr-4">
 							See More
+						</Link>
+						<Link
+							href={demoLink}
+							className="bg-white/30 border-none backdrop-blur-2xl rounded-md px-4 py-2 text-white hover:bg-white/40 transition">
+							Demo
 						</Link>
 					</div>
 					{responsive ? (

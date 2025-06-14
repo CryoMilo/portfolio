@@ -28,35 +28,31 @@ const ContactSidebar = () => {
 						placeholder="You are?"
 						className="font-semibold text-center bg-transparent border-none outline-none"
 					/>
-					{/* <input
-						{...register("email", {
-							required: "Please insert your email",
-							pattern: {
-								value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-								message: "Invalid email format",
-							},
-						})}
-						type="email"
-						defaultValue=""
-						placeholder="anonymous@gmail.com"
-						className="text-sm text-center bg-transparent border-none outline-none"
-					/> */}
 					<p className="text-red-500 text-sm">{errors.name?.message}</p>
 				</div>
 			</div>
 
-			{/* <div className="flex-1 overflow-y-auto hidden lg:block">
-				<div className="w-full h-full pt-[50%]">
-					<video
-						autoPlay
-						muted
-						playsInline
-						loop
-						src="/videos/milo.mov"
-						className="rounded-md object-cover bg-transparent w-auto h-auto max-w-full max-h-full"
-					/>
+			<div className="flex-1 overflow-y-auto hidden lg:block">
+				<div className="w-full h-full">
+					<div className="flex justify-left gap-2 items-center m-4 rounded-md bg-gray-200 border">
+						<div className="relative rounded-full">
+							<Image
+								src="/images/Milo.png"
+								alt="milo"
+								width={100}
+								height={100}
+							/>
+						</div>
+						<div className="flex flex-col">
+							<h3>Milo</h3>
+							<p className="text-xs opacity-50 flex gap-1 items-center">
+								<span className="w-2 h-2 bg-success rounded-full"></span>
+								Active 24/7
+							</p>
+						</div>
+					</div>
 				</div>
-			</div> */}
+			</div>
 		</div>
 	);
 };

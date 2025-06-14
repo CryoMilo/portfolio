@@ -62,8 +62,6 @@ module.exports = {
 				xxl: "1600px",
 			},
 			backgroundImage: {
-				"cup-sleeve-gradient":
-					"linear-gradient(to right, #474747 0%, #737272 50.5%, #474747 100%)",
 				"project-background": "url('/images/project-background.png')",
 			},
 			keyframes: {
