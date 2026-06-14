@@ -14,17 +14,19 @@ const Hero = () => {
 	const splashRef = useRef(null);
 
 	useEffect(() => {
-		const hasPlayed = localStorage.getItem("heroAnimationPlayed");
+		// Using sessionStorage so the splash screen pops up once per session. 
+		// Better for testing and less annoying for returning users.
+		const hasPlayed = sessionStorage.getItem("heroAnimationPlayed");
 
 		if (!hasPlayed) {
-			// Disable scrolling
+			// Stop scrolling while the intro is playing
 			document.body.style.overflow = "hidden";
 
 			let ctx = gsap.context(() => {
 				const t1 = gsap.timeline({
 					defaults: { duration: 0.6 },
 					onComplete: () => {
-						// Enable scrolling after animation finishes
+						// Let them scroll once we're done
 						document.body.style.overflow = "auto";
 					},
 				});
@@ -46,10 +48,11 @@ const Hero = () => {
 					})
 					.from("#splash-oak", {
 						color: "black",
-						fontSize: "16px",
+						fontSize: "1.25rem", // Start smaller for a nice "growing" effect
 						fontWeight: 400,
 						onComplete: () => {
-							document.getElementById("splash-hi").style.display = "none";
+							const hiText = document.getElementById("splash-hi");
+							if (hiText) hiText.style.display = "none";
 						},
 					})
 					.from("#splash-text", {
@@ -57,10 +60,11 @@ const Hero = () => {
 						left: "50%",
 						x: "-50%",
 						y: "-50%",
-						fontSize: "16px",
+						textAlign: "center",
 					})
 					.to("#splash", {
 						opacity: 0,
+						duration: 0.8,
 					})
 					.to("#soehtooaung", {
 						opacity: 1,
@@ -79,20 +83,28 @@ const Hero = () => {
 						zIndex: -99,
 					});
 
-				localStorage.setItem("heroAnimationPlayed", "true");
+				sessionStorage.setItem("heroAnimationPlayed", "true");
 			}, splashRef);
 
 			return () => {
 				ctx.revert();
 			};
 		} else {
-			// Skip animation, directly set the final state
-			document.getElementById("splash-hi").style.opacity = "0";
-			document.getElementById("splash-oak").textContent = "";
-			document.getElementById("oak").style.opacity = "1";
-			document.getElementById("soehtooaung").style.opacity = "1";
-			document.getElementById("splash").style.opacity = "0";
-			document.getElementById("splash").style.zIndex = "-99";
+			// If already played, just skip straight to the main hero
+			const splashHi = document.getElementById("splash-hi");
+			const splashOak = document.getElementById("splash-oak");
+			const oak = document.getElementById("oak");
+			const soehtooaung = document.getElementById("soehtooaung");
+			const splash = document.getElementById("splash");
+
+			if (splashHi) splashHi.style.opacity = "0";
+			if (splashOak) splashOak.textContent = "";
+			if (oak) oak.style.opacity = "1";
+			if (soehtooaung) soehtooaung.style.opacity = "1";
+			if (splash) {
+				splash.style.opacity = "0";
+				splash.style.zIndex = "-99";
+			}
 
 			document.body.style.overflow = "auto";
 		}
@@ -125,13 +137,13 @@ const Hero = () => {
 				className="absolute bg-white opacity-100 z-30 h-[100vh] w-full"></div>
 
 			<div className="container text-center md:text-left relative flex flex-col-reverse md:flex-row justify-between gap-20 xl:gap-10">
-				{/* Splash Text */}
+				{/* Intro animation text - we want this to be big, but not too big on phones */}
 				<div id="splash-text" className="absolute top-0 z-40">
-					<span id="splash-hi"></span>
+					<span id="splash-hi" className="text-3xl md:text-5xl font-heading"></span>
 
 					<span
 						id="splash-oak"
-						className="text-primary-light text-5xl font-heading font-[700]"></span>
+						className="text-primary-light text-3xl md:text-5xl font-heading font-[700]"></span>
 				</div>
 
 				{/* Main Text */}

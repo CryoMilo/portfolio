@@ -10,6 +10,8 @@ import { FormProvider, useForm } from "react-hook-form";
 import { myData } from "@/app/lib/myData";
 import IncomingMsg from "../ui/incoming-msg";
 
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 const ChatPage = ({ openModal }) => {
 	const chatContainerRef = useRef(null);
 	const messagesEndRef = useRef(null);
@@ -22,65 +24,57 @@ const ChatPage = ({ openModal }) => {
 		},
 	]);
 
+	// Let's set up Gemini with a clear identity
+	const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
+	const model = genAI.getGenerativeModel({
+		model: "gemini-3.5-flash",
+		systemInstruction: `You are Milo, the friendly and professional AI assistant for Oak Soe Htoo Aung (Oak). 
+		Your job is to help visitors learn about Oak's skills, projects, and experience.
+		
+		Here is the "source of truth" about Oak: ${JSON.stringify(myData)}.
+		
+		Keep your responses helpful, concise, and stay in character as Milo. 
+		If you don't know something, just say so politely and suggest they contact Oak directly via email.`,
+	});
+
 	const onSubmit = (data) => {
 		if (data.msg) {
-			setMessages((prevMessages) => [
-				...prevMessages,
-				{ type: "outgoing", text: data.msg },
-			]);
-			sendMessage({ text: data.msg, sender: data.name });
+			const userMessage = { type: "outgoing", text: data.msg };
+			// We update the UI immediately
+			setMessages((prev) => [...prev, userMessage]);
+
+			// And then we trigger the API call with the full context
+			sendMessage(data.msg, data.name);
 			methods.reset({ msg: "" });
 		}
 	};
 
-	const sendMessage = async ({ text, sender }) => {
+	const sendMessage = async (text, sender) => {
 		setLoading(true);
 		try {
-			const response = await fetch(
-				"https://openrouter.ai/api/v1/chat/completions",
-				{
-					method: "POST",
-					headers: {
-						Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENROUTER_KEY}`,
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						model: "google/gemma-3-27b-it:free",
-						messages: [
-							{
-								role: "user",
-								content: [
-									{
-										type: "text",
-										text: `You are Milo, the assistant of Oak, the owner of this portfolio. Your role is to provide detailed and accurate information about Oak to visitors. You are currently chatting with a visitor (${sender}).
-Here is Oak’s information to assist you in responding: ${JSON.stringify(
-											myData
-										)}.
-Additionally, here is the conversation history for context: ${JSON.stringify(
-											messages
-										)}.
-Now, based on this, generate an appropriate response to the following message from the visitor: ${text}.
-`,
-									},
-								],
-							},
-						],
-					}),
-				}
-			);
+			const history = messages.slice(1).map((m) => ({
+				role: m.type === "outgoing" ? "user" : "model",
+				parts: [{ text: m.text }],
+			}));
 
-			const data = await response.json();
+			// Start a fresh chat session with the existing history
+			const chat = model.startChat({ history });
 
-			const markdownText =
-				data.choices?.[0]?.message.content ||
-				"Looks like Milo is Busy. Please return later!";
+			// Send the new message and wait for the magic
+			const result = await chat.sendMessage(text);
+			const response = await result.response;
+			const botText = response.text();
 
-			setMessages((prevMessages) => [
-				...prevMessages,
-				{ type: "incoming", text: markdownText },
-			]);
+			setMessages((prev) => [...prev, { type: "incoming", text: botText }]);
 		} catch (error) {
-			console.log(error);
+			console.error("Milo had a hiccup:", error);
+			setMessages((prev) => [
+				...prev,
+				{
+					type: "incoming",
+					text: "I'm having a bit of trouble connecting right now. Maybe try again in a second?",
+				},
+			]);
 		} finally {
 			setLoading(false);
 		}
@@ -96,7 +90,7 @@ Now, based on this, generate an appropriate response to the following message fr
 				duration: 1,
 				delay: 0.5,
 				ease: "power2.out",
-			}
+			},
 		);
 	}, []);
 

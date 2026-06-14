@@ -112,4 +112,48 @@ export const myData = {
 	],
 	resume:
 		"https://ssnrczwkkznqqygncxti.supabase.co/storage/v1/object/public/media/resume/Software%20Engineer%20Resume%20-%20Oak%20Soe%20Htoo%20Aung.pdf",
+	projects: [
+		{
+			project_name: "Portfolio Website",
+			intro_text:
+				"A minimalist, SEO-optimized portfolio site built with Next.js and GSAP.",
+			demo_link: "https://portfolio-de-oak.netlify.app/",
+			github_link: "https://github.com/OakSoeHtooAung/portfolio",
+			document_id: "portfolio-website",
+			responsive: true,
+			splash_video: { url: null },
+			mockup_images: [
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+			],
+			tech_list: ["javascript", "nextjs", "gsap", "tailwind"],
+		},
+		{
+			project_name: "Urban Coffee Club",
+			intro_text:
+				"Responsive, animation-rich coffee shop website with clean UX.",
+			demo_link: "https://urban-coffee-club.vercel.app/",
+			github_link: "https://github.com/OakSoeHtooAung/urban-coffee-club",
+			document_id: "urban-coffee-club",
+			responsive: true,
+			splash_video: { url: null },
+			mockup_images: [
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+			],
+			tech_list: ["javascript", "gsap", "tailwind"],
+		},
+		{
+			project_name: "Shal Phyoke POS",
+			intro_text:
+				"MVP POS system for a Burmese restaurant with inventory and order handling.",
+			demo_link: "https://shal-phyoke-pos.netlify.app/order",
+			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
+			document_id: "shal-phyoke-pos",
+			responsive: false,
+			splash_video: { url: null },
+			mockup_images: [
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+			],
+			tech_list: ["javascript", "nextjs", "supabase", "tailwind"],
+		},
+	],
 };

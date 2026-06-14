@@ -1,12 +1,8 @@
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
-import { createClient } from "@/app/utils/supabase/server";
+import { myData } from "@/app/lib/myData";
 
-export const Projects = async () => {
-	let projects;
-
-	const supabase = await createClient();
-	const { data } = await supabase.from("projects").select();
-	projects = data;
+export const Projects = () => {
+	const projects = myData.projects;
 
 	return (
 		<div id="projects" className="container my-24">
@@ -27,7 +23,8 @@ export const Projects = async () => {
 							images={project.mockup_images}
 							techList={project.tech_list}
 						/>
-						<div className="flex items-center justify-center gap-4 last:hidden">
+						{/* Subtle separator between items, except the last one */}
+						<div className="flex items-center justify-center gap-4 last:hidden mt-8">
 							<div className="border-b-2 border-primary-light w-40"></div>
 						</div>
 					</div>
