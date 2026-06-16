@@ -113,16 +113,16 @@ export const myData = {
 	resume: "/documents/resume.pdf",
 	projects: [
 		{
-			project_name: "Portfolio Website",
+			project_name: "Shal Phyoke POS",
 			intro_text:
-				"A minimalist, SEO-optimized portfolio site built with Next.js and GSAP.",
+				"POS system for a real-life Burmese restaurant with inventory and order handling.",
 			description:
-				"Designed and developed a minimalist, SEO-optimized portfolio site using Next.js. Integrated a chatbot using Gemini AI via OpenRouter and added smooth transitions with GSAP. Visuals were AI-generated for consistency.",
-			demo_link: "https://portfolio-de-oak.netlify.app/",
-			github_link: "https://github.com/OakSoeHtooAung/portfolio",
-			document_id: "portfolio-website",
-			responsive: true,
-			splash_video: { url: null },
+				"Built a functional POS system for a real Burmese restaurant using Next.js and Supabase. Included features like inventory, order handling, and authentication. UI was enhanced with GSAP.",
+			demo_link: "https://shal-phyoke-pos.netlify.app/order",
+			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
+			document_id: "shal-phyoke-pos",
+			responsive: false,
+			splash_video: { url: "/videos/me-working-fast.webm" },
 			mockup_images: [
 				{ url: "/images/project-background.png", width: 1000, height: 600 },
 				{ url: "/images/project-background.png", width: 1000, height: 600 },
@@ -132,6 +132,46 @@ export const myData = {
 				{ url: "/images/project-background.png" },
 				{ url: "/images/project-background.png" },
 				{ url: "/images/project-background.png" },
+			],
+			tech_list: ["javascript", "nextjs", "supabase", "tailwind"],
+			palette: [
+				{ name: "Brand", color: "#EF4444" },
+				{ name: "Accent", color: "#F59E0B" },
+				{ name: "Dark", color: "#1F2937" },
+			],
+		},
+		{
+			project_name: "Portfolio Website",
+			intro_text:
+				"A minimalist, SEO-optimized portfolio site built with Next.js and GSAP.",
+			description:
+				"Designed and developed a minimalist, SEO-optimized portfolio site using Next.js. Integrated a chatbot using Gemini AI via OpenRouter and added smooth transitions with GSAP. Visuals were AI-generated for consistency.",
+			demo_link: "https://portfolio-de-oak.netlify.app/",
+			github_link: "https://github.com/OakSoeHtooAung/portfolio",
+			document_id: "portfolio-website",
+			responsive: true,
+			splash_video: { url: "/videos/me-working-fast.webm" },
+			mockup_images: [
+				{
+					url: "/images/portfolio-showcase/portfolio-1.webp",
+					width: 1000,
+					height: 600,
+				},
+				{
+					url: "/images/portfolio-showcase/portfolio-2.webp",
+					width: 1000,
+					height: 600,
+				},
+				{
+					url: "/images/portfolio-showcase/portfolio-3.webp",
+					width: 1000,
+					height: 600,
+				},
+			],
+			highlight_images: [
+				{ url: "/images/portfolio-showcase/portfolio-hl-1.jpeg" },
+				{ url: "/images/portfolio-showcase/portfolio-hl-1.jpeg" },
+				{ url: "/images/portfolio-showcase/portfolio-hl-1.jpeg" },
 			],
 			tech_list: ["javascript", "nextjs", "gsap", "tailwind"],
 			palette: [
@@ -150,7 +190,7 @@ export const myData = {
 			github_link: "https://github.com/OakSoeHtooAung/urban-coffee-club",
 			document_id: "urban-coffee-club",
 			responsive: true,
-			splash_video: { url: null },
+			splash_video: { url: "/videos/urban-coffee-club-hero.mp4" },
 			mockup_images: [
 				{ url: "/images/project-background.png", width: 1000, height: 600 },
 				{ url: "/images/project-background.png", width: 1000, height: 600 },
@@ -166,34 +206,6 @@ export const myData = {
 				{ name: "Coffee", color: "#4B2C20" },
 				{ name: "Accent", color: "#D4A373" },
 				{ name: "Cream", color: "#FAEDCD" },
-			],
-		},
-		{
-			project_name: "Shal Phyoke POS",
-			intro_text:
-				"MVP POS system for a Burmese restaurant with inventory and order handling.",
-			description:
-				"Built a functional POS system for a real Burmese restaurant using Next.js and Supabase. Included features like inventory, order handling, and authentication. UI was enhanced with GSAP.",
-			demo_link: "https://shal-phyoke-pos.netlify.app/order",
-			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
-			document_id: "shal-phyoke-pos",
-			responsive: false,
-			splash_video: { url: null },
-			mockup_images: [
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
-			],
-			highlight_images: [
-				{ url: "/images/project-background.png" },
-				{ url: "/images/project-background.png" },
-				{ url: "/images/project-background.png" },
-			],
-			tech_list: ["javascript", "nextjs", "supabase", "tailwind"],
-			palette: [
-				{ name: "Brand", color: "#EF4444" },
-				{ name: "Accent", color: "#F59E0B" },
-				{ name: "Dark", color: "#1F2937" },
 			],
 		},
 	],

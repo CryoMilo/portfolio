@@ -1,5 +1,6 @@
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
+import FloatingMilo from "./components/ui/floating-milo";
 
 const montserrat = Montserrat({
 	subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
 		<html lang="en" suppressHydrationWarning>
 			<body className={`${montserrat.variable} ${inter.variable} antialiased`}>
 				{children}
+				<FloatingMilo />
 			</body>
 		</html>
 	);
