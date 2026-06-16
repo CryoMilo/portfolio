@@ -1,11 +1,11 @@
 "use client";
 
 import { PiDownloadSimpleThin } from "react-icons/pi";
+import { myData } from "@/app/lib/myData";
 
 const Navbar = () => {
 	const handleDownload = () => {
-		const resumePath =
-			"https://ssnrczwkkznqqygncxti.supabase.co/storage/v1/object/public/media/resume/Software%20Engineer%20Resume%20-%20Oak%20Soe%20Htoo%20Aung.pdf";
+		const resumePath = myData.resume;
 		const link = document.createElement("a");
 		link.href = resumePath;
 		link.download = "Oak_Soe_Htoo_Aung_Resume.pdf";

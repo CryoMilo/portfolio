@@ -90,7 +90,7 @@ const ChatPage = ({ openModal }) => {
 				duration: 1,
 				delay: 0.5,
 				ease: "power2.out",
-			},
+			}
 		);
 	}, []);
 

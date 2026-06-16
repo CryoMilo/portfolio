@@ -110,13 +110,14 @@ export const myData = {
 			url: "https://shal-phyoke-pos.netlify.app/order",
 		},
 	],
-	resume:
-		"https://ssnrczwkkznqqygncxti.supabase.co/storage/v1/object/public/media/resume/Software%20Engineer%20Resume%20-%20Oak%20Soe%20Htoo%20Aung.pdf",
+	resume: "/documents/resume.pdf",
 	projects: [
 		{
 			project_name: "Portfolio Website",
 			intro_text:
 				"A minimalist, SEO-optimized portfolio site built with Next.js and GSAP.",
+			description:
+				"Designed and developed a minimalist, SEO-optimized portfolio site using Next.js. Integrated a chatbot using Gemini AI via OpenRouter and added smooth transitions with GSAP. Visuals were AI-generated for consistency.",
 			demo_link: "https://portfolio-de-oak.netlify.app/",
 			github_link: "https://github.com/OakSoeHtooAung/portfolio",
 			document_id: "portfolio-website",
@@ -124,13 +125,27 @@ export const myData = {
 			splash_video: { url: null },
 			mockup_images: [
 				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+			],
+			highlight_images: [
+				{ url: "/images/project-background.png" },
+				{ url: "/images/project-background.png" },
+				{ url: "/images/project-background.png" },
 			],
 			tech_list: ["javascript", "nextjs", "gsap", "tailwind"],
+			palette: [
+				{ name: "Primary", color: "#000000" },
+				{ name: "Accent", color: "#8B5CF6" },
+				{ name: "Background", color: "#FFFFFF" },
+			],
 		},
 		{
 			project_name: "Urban Coffee Club",
 			intro_text:
 				"Responsive, animation-rich coffee shop website with clean UX.",
+			description:
+				"Created a responsive, animation-rich coffee shop website using Vite.js and GSAP. Focused on showcasing animation design skills and clean UX.",
 			demo_link: "https://urban-coffee-club.vercel.app/",
 			github_link: "https://github.com/OakSoeHtooAung/urban-coffee-club",
 			document_id: "urban-coffee-club",
@@ -138,13 +153,27 @@ export const myData = {
 			splash_video: { url: null },
 			mockup_images: [
 				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+			],
+			highlight_images: [
+				{ url: "/images/project-background.png" },
+				{ url: "/images/project-background.png" },
+				{ url: "/images/project-background.png" },
 			],
 			tech_list: ["javascript", "gsap", "tailwind"],
+			palette: [
+				{ name: "Coffee", color: "#4B2C20" },
+				{ name: "Accent", color: "#D4A373" },
+				{ name: "Cream", color: "#FAEDCD" },
+			],
 		},
 		{
 			project_name: "Shal Phyoke POS",
 			intro_text:
 				"MVP POS system for a Burmese restaurant with inventory and order handling.",
+			description:
+				"Built a functional POS system for a real Burmese restaurant using Next.js and Supabase. Included features like inventory, order handling, and authentication. UI was enhanced with GSAP.",
 			demo_link: "https://shal-phyoke-pos.netlify.app/order",
 			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
 			document_id: "shal-phyoke-pos",
@@ -152,8 +181,20 @@ export const myData = {
 			splash_video: { url: null },
 			mockup_images: [
 				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/project-background.png", width: 1000, height: 600 },
+			],
+			highlight_images: [
+				{ url: "/images/project-background.png" },
+				{ url: "/images/project-background.png" },
+				{ url: "/images/project-background.png" },
 			],
 			tech_list: ["javascript", "nextjs", "supabase", "tailwind"],
+			palette: [
+				{ name: "Brand", color: "#EF4444" },
+				{ name: "Accent", color: "#F59E0B" },
+				{ name: "Dark", color: "#1F2937" },
+			],
 		},
 	],
 };

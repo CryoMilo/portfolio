@@ -1,23 +1,19 @@
 import DemoBtn from "./DemoBtn";
 import ProjectHighlights from "./ProjectHighlights";
 import Image from "next/image";
-import { getSingleProject } from "@/app/actions/project";
+import { myData } from "@/app/lib/myData";
 import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
 import { GithubOriginal } from "devicons-react";
-import { FaChevronLeft, FaHome } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import Link from "next/link";
-import { BsChevronLeft } from "react-icons/bs";
 
 const ProjectDetails = async ({ params }) => {
 	const { slug } = await params;
 
-	const documentId = slug;
+	const projectData = myData.projects.find((p) => p.document_id === slug);
 
-	const { projectData, error } = await getSingleProject(documentId);
-
-	if (error) {
-		console.error("Error fetching project:", error);
-		return <p className="text-red-500">Failed to load project data.</p>;
+	if (!projectData) {
+		return <p className="text-red-500">Project not found.</p>;
 	}
 
 	const mockupImgs = projectData?.mockup_images;
