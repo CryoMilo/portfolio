@@ -13,6 +13,7 @@ import {
 	ReduxOriginal,
 	PostgresqlOriginal,
 	NodejsOriginal,
+	VitejsOriginal,
 } from "devicons-react";
 import StrapiOriginal from "../../../../public/icons/StrapiOriginal";
 import GsapOriginal from "../../../../public/icons/GsapOriginal";
@@ -34,6 +35,7 @@ export const techSkillIcons = {
 	redux: ReduxOriginal,
 	postgres: PostgresqlOriginal,
 	nodejs: NodejsOriginal,
+	vite: VitejsOriginal,
 };
 
 export const getTechSkillIcon = (skillName) => {

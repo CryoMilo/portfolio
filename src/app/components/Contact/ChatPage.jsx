@@ -27,7 +27,7 @@ const ChatPage = ({ openModal }) => {
 	// Let's set up Gemini with a clear identity
 	const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
 	const model = genAI.getGenerativeModel({
-		model: "gemini-3.5-flash",
+		model: "gemini-2.5-flash-lite",
 		systemInstruction: `You are Milo, the friendly and professional AI assistant for Oak Soe Htoo Aung (Oak). 
 		Your job is to help visitors learn about Oak's skills, projects, and experience.
 		

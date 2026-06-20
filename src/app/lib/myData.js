@@ -113,7 +113,7 @@ export const myData = {
 	resume: "/documents/resume.pdf",
 	projects: [
 		{
-			project_name: "Shal Phyoke POS",
+			project_name: "Shal Phyoke Management",
 			intro_text:
 				"POS system for a real-life Burmese restaurant with inventory and order handling.",
 			description:
@@ -121,19 +121,19 @@ export const myData = {
 			demo_link: "https://shal-phyoke-pos.netlify.app/order",
 			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
 			document_id: "shal-phyoke-pos",
-			responsive: false,
-			splash_video: { url: "/videos/me-working-fast.webm" },
+			responsive: true,
+			splash_video: { url: "/videos/pos.webm" },
 			mockup_images: [
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/pos-showcase/pos-1.png", width: 1000, height: 600 },
+				{ url: "/images/pos-showcase/pos-2.png", width: 1000, height: 600 },
+				{ url: "/images/pos-showcase/pos-3.png", width: 1000, height: 600 },
 			],
 			highlight_images: [
 				{ url: "/images/project-background.png" },
 				{ url: "/images/project-background.png" },
 				{ url: "/images/project-background.png" },
 			],
-			tech_list: ["javascript", "nextjs", "supabase", "tailwind"],
+			tech_list: ["javascript", "vite", "supabase", "tailwind"],
 			palette: [
 				{ name: "Brand", color: "#EF4444" },
 				{ name: "Accent", color: "#F59E0B" },
@@ -159,13 +159,13 @@ export const myData = {
 				},
 				{
 					url: "/images/portfolio-showcase/portfolio-2.webp",
-					width: 1000,
-					height: 600,
+					width: 400,
+					height: 200,
 				},
 				{
 					url: "/images/portfolio-showcase/portfolio-3.webp",
-					width: 1000,
-					height: 600,
+					width: 200,
+					height: 100,
 				},
 			],
 			highlight_images: [
@@ -192,9 +192,9 @@ export const myData = {
 			responsive: true,
 			splash_video: { url: "/videos/urban-coffee-club-hero.mp4" },
 			mockup_images: [
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
-				{ url: "/images/project-background.png", width: 1000, height: 600 },
+				{ url: "/images/urban-showcase/urban-1.png", width: 1000, height: 600 },
+				{ url: "/images/urban-showcase/urban-2.png", width: 400, height: 200 },
+				{ url: "/images/urban-showcase/urban-3.png", width: 200, height: 100 },
 			],
 			highlight_images: [
 				{ url: "/images/project-background.png" },
