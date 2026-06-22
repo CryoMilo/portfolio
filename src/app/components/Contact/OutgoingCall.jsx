@@ -45,7 +45,9 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 									src="/images/profile-background.jpg"
 									alt="profile-pic"
 									fill
-									className="object-cover"
+									priority
+									sizes="(max-width: 768px) 300px, 400px"
+									className="object-cover object-center rounded-full bg-black shadow-xl -z-10"
 								/>
 							</div>
 						</div>

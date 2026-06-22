@@ -30,7 +30,7 @@ const DemoBtn = ({ color, link }) => {
 			onClick={handleClick}
 			style={{ backgroundColor: color }}
 			className={`w-[200px] h-[100px] rounded-tr-full rounded-tl-full absolute left-1/2 bottom-0 -translate-x-1/2 grid place-items-center cursor-pointer`}>
-			<p className="text-lg translate-y-1/2 text-white">Demo</p>
+			<p className="text-lg translate-y-1/2 text-white">See More</p>
 			<div
 				ref={btnRef}
 				className={`rounded-full absolute w-20 h-20 -z-10`}

@@ -183,13 +183,20 @@ const Hero = () => {
 							Soe Htoo Aung
 						</span>
 					</h1>
-					<h2 className="font-body text-base sm:text-lg font-[400] max-w-[500px]">
+					{/* <h2 className="font-body text-base sm:text-lg font-[400] max-w-[500px]">
 						Fueled by coffee and curiosity, I&apos;ve been navigating the
 						ever-evolving world of{" "}
 						<span className="font-semibold underline underline-offset-4 decoration-primary-light decoration-solid decoration-2">
 							software development
 						</span>{" "}
 						for the past three years, constantly learning and growing.
+					</h2> */}
+					<h2 className="font-body text-base sm:text-lg font-[400] max-w-[500px]">
+						Driven by shipping fast and figuring it out, I leverage my skills in{" "}
+						<span className="font-semibold underline underline-offset-4 decoration-primary-light decoration-solid decoration-2">
+							software development
+						</span>{" "}
+						to collaborate with AI and build high-impact digital solutions.
 					</h2>
 				</div>
 

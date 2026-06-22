@@ -81,7 +81,7 @@ const skillIcons = [
 		animation: "md:animate-float-3",
 	},
 	{
-		skillName: "postgres",
+		skillName: "git",
 		size: "4em",
 		position: { top: "80%", left: "85%" },
 		animation: "md:animate-float-3",

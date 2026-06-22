@@ -113,7 +113,7 @@ export const myData = {
 	resume: "/documents/resume.pdf",
 	projects: [
 		{
-			project_name: "Shal Phyoke Management",
+			project_name: "ShalPhyoke Admin",
 			intro_text:
 				"POS system for a real-life Burmese restaurant with inventory and order handling.",
 			description:
@@ -122,7 +122,7 @@ export const myData = {
 			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
 			document_id: "shal-phyoke-pos",
 			responsive: true,
-			splash_video: { url: "/videos/pos.webm" },
+			splash_video: { url: "/videos/pos.mov" },
 			mockup_images: [
 				{ url: "/images/pos-showcase/pos-1.png", width: 1000, height: 600 },
 				{ url: "/images/pos-showcase/pos-2.png", width: 1000, height: 600 },
