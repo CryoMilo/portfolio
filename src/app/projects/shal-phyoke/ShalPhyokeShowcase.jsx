@@ -13,9 +13,8 @@ import {
 	FaBolt,
 	FaCloud,
 	FaChartBar,
-	FaUserShield,
 } from "react-icons/fa";
-import { LuLayoutGrid, LuPrinter } from "react-icons/lu";
+import { LuLayoutGrid, LuPrinter, LuBox } from "react-icons/lu";
 import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
 import Image from "next/image";
 
@@ -28,7 +27,6 @@ gsap.registerPlugin(ScrollTrigger);
 const STATS = [
 	{ value: "18", label: "Database Tables" },
 	{ value: "17", label: "Routes" },
-	{ value: "46", label: "Components" },
 	{ value: "05", label: "Major Features" },
 	{ value: "02", label: "User Roles" },
 ];
@@ -72,31 +70,31 @@ const FEATURES = [
 		icon: LuLayoutGrid,
 		title: "High-Speed POS",
 		copy: "Staff create orders, customize dishes, split items, assign tables, and process payments in seconds.",
-		imgKey: "pos-1",
+		imgKey: "/images/pos-showcase/feature-1.png",
 	},
 	{
 		icon: FaChartBar,
 		title: "Dynamic Weekly Menu",
 		copy: "Managers schedule menus for different days of the week without touching a single line of code.",
-		imgKey: "pos-2",
+		imgKey: "/images/pos-showcase/feature-2.png",
 	},
 	{
 		icon: LuPrinter,
 		title: "Real-Time Kitchen Printing",
 		copy: "Orders appear in the kitchen automatically through a cloud-based printing workflow.",
-		imgKey: "pos-3",
+		imgKey: "/images/pos-showcase/feature-3.png",
 	},
 	{
-		icon: FaUserShield,
-		title: "Staff Permissions",
-		copy: "Administrators control exactly what each staff member can access — no redeploy required.",
-		imgKey: "pos-4",
+		icon: LuBox,
+		title: "Inventory",
+		copy: "Administrators and Staffs control exactly what to buy for next grocery cycle.",
+		imgKey: "/images/pos-showcase/feature-4.png",
 	},
 	{
 		icon: FaBolt,
 		title: "Analytics Dashboard",
 		copy: "Full visibility into sales, expenses, and operational performance, at a glance.",
-		imgKey: "pos-5",
+		imgKey: "/images/pos-showcase/feature-5.png",
 	},
 ];
 
@@ -151,6 +149,22 @@ const CHALLENGES = [
 	{
 		challenge: "Managing staff permissions.",
 		solution: "A dynamic, role-based access system.",
+	},
+	{
+		challenge: "Kitchen communication during rush hours.",
+		solution: "Color-coded order cards prioritizing oldest tickets.",
+	},
+	{
+		challenge: "Tracking floating cash and registers.",
+		solution: "A secure digital register with daily audit trails.",
+	},
+	{
+		challenge: "Keeping menu items and stock in sync.",
+		solution: "Instant, real-time sync across all staff devices.",
+	},
+	{
+		challenge: "Scattered daily sales analytics.",
+		solution: "A consolidated dashboard showing cost vs revenue.",
 	},
 ];
 
@@ -369,11 +383,8 @@ export default function ShalPhyokeShowcase() {
 			{/* ============================================================ */}
 			{/* 1. HERO                                                        */}
 			{/* ============================================================ */}
-			<section className="relative pt-16 pb-12 sm:pb-16 px-6 sm:px-10 lg:px-16">
+			<section className="relative sm:mt-10 pt-16 pb-12 sm:pb-16 px-6 sm:px-10 lg:px-16">
 				<div className="max-w-6xl mx-auto">
-					{/* <p className="hero-kicker font-mono text-xs tracking-[0.3em] uppercase text-ember mb-5">
-						Case Study — Shal Phyoke
-					</p> */}
 					<h1 className="hero-title font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] max-w-3xl">
 						Building a Restaurant
 						<span className="block text-ember">Operating System.</span>
@@ -399,9 +410,11 @@ export default function ShalPhyokeShowcase() {
 					</div>
 
 					{/* Stats strip */}
-					{/* <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-5 gap-6 sm:gap-4 border-y border-char/10 py-7">
+					<div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 sm:place-items-center sm:justify-center gap-6 sm:gap-4 border-y border-char/10 py-7">
 						{STATS.map((s) => (
-							<div key={s.label} className="hero-stat text-center sm:text-left">
+							<div
+								key={s.label}
+								className="hero-stat text-center sm:text-center">
 								<p className="font-mono text-2xl sm:text-3xl font-medium text-ember">
 									{s.value}
 								</p>
@@ -410,7 +423,7 @@ export default function ShalPhyokeShowcase() {
 								</p>
 							</div>
 						))}
-					</div> */}
+					</div>
 
 					{/* Tech stack pills */}
 					<div className="flex place-content-end gap-2 mt-7">
@@ -568,10 +581,14 @@ export default function ShalPhyokeShowcase() {
 									className={`reveal grid md:grid-cols-2 gap-10 md:gap-14 items-center ${
 										reversed ? "md:[&>*:first-child]:order-2" : ""
 									}`}>
-									<ImgPlaceholder
-										label={`Screenshot — ${f.title}`}
-										className="aspect-[16/10] w-full"
-									/>
+									<div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-25px_rgba(28,25,23,0.35)]">
+										<Image
+											src={f.imgKey}
+											alt={f.title}
+											fill
+											className="object-fit"
+										/>
+									</div>
 									<div>
 										<div className="w-11 h-11 rounded-lg bg-ember/10 text-ember flex items-center justify-center mb-5">
 											<Icon className="text-lg" />
@@ -778,22 +795,6 @@ export default function ShalPhyokeShowcase() {
 							<FaArrowLeft className="text-xs" />
 							Back to Portfolio
 						</Link>
-						<a
-							href="https://github.com/OakSoeHtooAung/shal-phyoke-pos"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-char/20 text-char font-medium hover:border-ember hover:text-ember transition-colors">
-							<FaGithub />
-							View Github
-						</a>
-						<a
-							href="https://shal-phyoke-pos.netlify.app/order"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-char/20 text-char font-medium hover:border-ember hover:text-ember transition-colors">
-							<FaPlay className="text-xs" />
-							Live Demo
-						</a>
 					</div>
 				</div>
 			</section>
