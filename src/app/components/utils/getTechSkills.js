@@ -18,6 +18,7 @@ import {
 } from "devicons-react";
 import StrapiOriginal from "../../../../public/icons/StrapiOriginal";
 import GsapOriginal from "../../../../public/icons/GsapOriginal";
+import ZustandOriginal from "../../../../public/icons/ZustandOriginal";
 
 export const techSkillIcons = {
 	css: Css3Original,
@@ -38,6 +39,7 @@ export const techSkillIcons = {
 	nodejs: NodejsOriginal,
 	vite: VitejsOriginal,
 	git: GitOriginal,
+	zustand: ZustandOriginal,
 };
 
 export const getTechSkillIcon = (skillName) => {

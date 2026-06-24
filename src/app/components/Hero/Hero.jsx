@@ -7,6 +7,8 @@ import { useEffect, useRef } from "react";
 import ProfileNav from "./ProfileNav";
 import ScrollGuide from "../ui/scroll-guide";
 import SocialBar from "../ui/socal-bar";
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -198,6 +200,12 @@ const Hero = () => {
 						</span>{" "}
 						to collaborate with AI and build high-impact digital solutions.
 					</h2>
+					<Link
+						href="/projects/shal-phyoke"
+						className="group inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full bg-primary-light text-white text-sm font-medium hover:bg-primary transition-colors w-fit">
+						Dive into my Featured Project
+						<FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
+					</Link>
 				</div>
 
 				{/* Profile Picture */}
