@@ -21,6 +21,7 @@ import {
 	LEARNED,
 	ROADMAP_NODES,
 } from "./constants";
+import Roadmap from "@/app/components/Showcase/Roadmap";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -184,60 +185,53 @@ export default function ShalPhyokeShowcase() {
 				);
 			});
 
-			const progressLine = document.querySelector(".roadmap-progress-line");
-			const nodes = document.querySelectorAll(".roadmap-node");
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: ".roadmap-track",
+					start: "top 70%",
+				},
+			});
 
-			if (progressLine && nodes.length > 0) {
-				// Animate the progress line from left to right
-				gsap.to(progressLine, {
-					width: `${progress}%`,
+			tl.from(".roadmap-card", {
+				y: 40,
+				opacity: 0,
+				stagger: 0.12,
+				duration: 0.7,
+				ease: "power3.out",
+			});
+
+			tl.from(
+				".roadmap-node",
+				{
+					scale: 0,
+					stagger: 0.12,
+					duration: 0.45,
+					ease: "back.out(2)",
+				},
+				"-=0.4"
+			);
+
+			tl.to(
+				".roadmap-progress-line",
+				{
+					width: "66.666%",
 					duration: 1.8,
-					ease: "power2.inOut",
-					delay: 0.8,
-					scrollTrigger: {
-						trigger: progressLine.closest("section"),
-						start: "top 80%",
-						toggleActions: "play none none reverse",
-					},
-				});
+					ease: "power3.inOut",
+				},
+				"-=0.5"
+			);
 
-				// Animate each node with stagger
-				gsap.fromTo(
-					nodes,
-					{
-						opacity: 0,
-						y: 20,
-						scale: 0.8,
-					},
-					{
-						opacity: 1,
-						y: 0,
-						scale: 1,
-						duration: 0.6,
-						ease: "back.out(1.7)",
-						stagger: 0.12,
-						delay: 0.4,
-						scrollTrigger: {
-							trigger: progressLine.closest("section"),
-							start: "top 80%",
-							toggleActions: "play none none reverse",
-						},
-					}
-				);
-
-				// Add subtle pulse to "I'm Here" node
-				const hereNode = document.querySelector(".roadmap-node .ring-4");
-				if (hereNode) {
-					gsap.to(hereNode.closest(".roadmap-node"), {
-						scale: 1.05,
-						duration: 1.5,
-						ease: "sine.inOut",
-						repeat: -1,
-						yoyo: true,
-						delay: 1.5,
-					});
-				}
-			}
+			tl.from(
+				".roadmap-pin",
+				{
+					y: -30,
+					scale: 0,
+					opacity: 0,
+					duration: 0.7,
+					ease: "back.out(2)",
+				},
+				"-=0.2"
+			);
 
 			/* Challenges Carousel - Infinite Flow */
 			const carousel = carouselRef.current;
@@ -302,7 +296,7 @@ export default function ShalPhyokeShowcase() {
 			{/* ============================================================ */}
 			<section className="relative sm:mt-10 pt-16 pb-12 sm:pb-12 px-6 sm:px-10 lg:px-16">
 				<div className="max-w-6xl mx-auto">
-					<h1 className="hero-title font-heading font-bold text-4xl sm:text-5xl leading-[1.05] max-w-3xl">
+					<h1 className="hero-title font-heading text-primary font-bold text-4xl sm:text-5xl leading-[1.05] max-w-3xl">
 						Building a Restaurant
 						<span className="block text-ember">Operating System.</span>
 					</h1>
@@ -634,106 +628,23 @@ export default function ShalPhyokeShowcase() {
 			</section>
 
 			{/* ============================================================ */}
-			{/* FUTURE VISION */}
+			{/* 9. FUTURE VISION                                              */}
 			{/* ============================================================ */}
-			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 overflow-hidden">
-				<div className="max-w-6xl mx-auto">
+			<section className="px-6 sm:px-10 lg:px-16 py-24">
+				<div className="max-w-7xl mx-auto">
 					<SectionLabel>Future Vision</SectionLabel>
 
-					<h2 className="font-heading font-bold text-3xl sm:text-4xl mb-14 reveal">
-						The roadmap stays alive.
+					<h2 className="font-heading font-bold text-4xl mb-5 reveal">
+						From Restaurant POS to Restaurant OS
 					</h2>
 
-					<div className="overflow-x-auto pb-6 hide-scrollbar">
-						<div className="relative min-w-[950px] px-4 py-12">
-							{/* Base Timeline */}
-							<div className="absolute left-8 right-8 top-[48px] h-[2px] bg-char/15" />
+					<p className="text-char/60 max-w-2xl mb-20 reveal">
+						Every version solves a real operational problem. The goal is to
+						evolve beyond a POS into a complete operating system for
+						restaurants.
+					</p>
 
-							{/* Animated Progress */}
-							<div
-								className="roadmap-progress-line absolute left-8 top-[48px] h-[2px] bg-ember"
-								style={{ width: "0%" }}
-							/>
-
-							{/* Nodes */}
-							<div className="relative flex justify-between">
-								{ROADMAP_NODES.map((node, index) => {
-									const CURRENT_NODE = 4;
-
-									const isPast = index <= CURRENT_NODE;
-									const isHere = index === CURRENT_NODE;
-									const isTop = index % 2 === 0;
-
-									return (
-										<div
-											key={node.label}
-											className="roadmap-node relative flex flex-col items-center w-[130px] group">
-											{/* Current Position */}
-											{isHere && (
-												<div className="absolute -top-10 left-1/2 -translate-x-1/2 z-20">
-													<FaMapMarkerAlt className="text-3xl text-ember drop-shadow-lg animate-bounce" />
-												</div>
-											)}
-
-											{/* Top Labels */}
-											{isTop && (
-												<div className="mb-8 text-center">
-													<p
-														className={`font-semibold text-sm leading-tight ${
-															isHere
-																? "text-ember"
-																: isPast
-																? "text-char"
-																: "text-char/40"
-														}`}>
-														{node.label}
-													</p>
-
-													<p className="text-xs text-char/50 mt-1">
-														{node.description}
-													</p>
-												</div>
-											)}
-
-											{/* Connector */}
-											{isTop && <div className="h-8 w-px bg-char/15" />}
-
-											{/* Node */}
-											<div
-												className={`relative z-10 w-5 h-5 rounded-full border-2 transition-all duration-300
-										${isPast ? "bg-ember border-ember" : "bg-cream border-char/20"}
-										${isHere ? "ring-4 ring-ember/30" : ""}
-										group-hover:scale-110`}
-											/>
-
-											{/* Connector */}
-											{!isTop && <div className="h-8 w-px bg-char/15" />}
-
-											{/* Bottom Labels */}
-											{!isTop && (
-												<div className="mt-8 text-center">
-													<p
-														className={`font-semibold text-sm leading-tight ${
-															isHere
-																? "text-ember"
-																: isPast
-																? "text-char"
-																: "text-char/40"
-														}`}>
-														{node.label}
-													</p>
-
-													<p className="text-xs text-char/50 mt-1">
-														{node.description}
-													</p>
-												</div>
-											)}
-										</div>
-									);
-								})}
-							</div>
-						</div>
-					</div>
+					<Roadmap nodes={ROADMAP_NODES} current={4} />
 				</div>
 			</section>
 

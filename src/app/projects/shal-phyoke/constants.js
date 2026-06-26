@@ -149,7 +149,10 @@ export const ROADMAP_NODES = [
 	{ label: "Research Tech Stacks", description: "Technology selection" },
 	{ label: "Create MVP of POS", description: "Core feature development" },
 	{ label: "Trials and Errors", description: "Testing & iteration" },
-	{ label: "Fully Working POS", description: "Live system" },
+	{
+		label: "Fully Working POS",
+		description: "Live system supporting my resturant today",
+	},
 	{ label: "Inventory Management", description: "Stock control" },
 	{ label: "AI Self Order System", description: "Future enhancement" },
 ];
