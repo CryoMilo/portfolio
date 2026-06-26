@@ -4,188 +4,25 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-	FaArrowLeft,
-	FaGithub,
-	FaPlay,
-	FaDatabase,
-	FaShieldAlt,
-	FaBolt,
-	FaCloud,
-	FaChartBar,
-} from "react-icons/fa";
-import { LuLayoutGrid, LuPrinter, LuBox } from "react-icons/lu";
+import { FaArrowLeft, FaMapMarkerAlt } from "react-icons/fa";
+import { LuLayoutGrid } from "react-icons/lu";
 import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
 import Image from "next/image";
+import {
+	STACK,
+	STATS,
+	PROBLEMS,
+	JOURNEY,
+	FEATURES,
+	BEHIND_SCENES,
+	AI_ASSISTED,
+	AI_FLOW,
+	CHALLENGES,
+	LEARNED,
+	ROADMAP_NODES,
+} from "./constants";
 
 gsap.registerPlugin(ScrollTrigger);
-
-/* ------------------------------------------------------------------ */
-/* Static content                                                      */
-/* ------------------------------------------------------------------ */
-
-const STATS = [
-	{ value: "18", label: "Database Tables" },
-	{ value: "17", label: "Routes" },
-	{ value: "05", label: "Major Features" },
-	{ value: "02", label: "User Roles" },
-];
-
-const STACK = ["react", "vite", "supabase", "zustand", "tailwind"];
-
-const PROBLEMS = [
-	"Orders were tracked by hand, on paper, under pressure.",
-	"Kitchen communication broke down during the rush.",
-	"Every menu change meant repetitive manual work.",
-	"Business data was scattered across five different tools.",
-];
-
-const JOURNEY = [
-	{ hash: "a1f9c2e", msg: "Opened a Burmese food business" },
-	{ hash: "c44e810", msg: "Managed every order by hand" },
-	{ hash: "7b03d5a", msg: "Built first menu management tools" },
-	{ hash: "e29f114", msg: "Shipped a rough POS prototype" },
-	{ hash: "f5a8b3c", msg: "Wired up real-time kitchen printing" },
-	{ hash: "9d2c6f0", msg: "Designed the complete restaurant platform" },
-];
-
-const SOLUTION_FLOW = [
-	{
-		role: "Staff",
-		steps: ["POS Dashboard", "Cloud Database", "Kitchen Printer"],
-	},
-	{ role: "Admin", steps: ["Analytics", "Menu Management"] },
-];
-
-const SYSTEM_DOES = [
-	"Manage restaurant menus",
-	"Process customer orders",
-	"Route tickets to the kitchen",
-	"Control staff permissions",
-	"Track business performance",
-];
-
-const FEATURES = [
-	{
-		icon: LuLayoutGrid,
-		title: "High-Speed POS",
-		copy: "Staff create orders, customize dishes, split items, assign tables, and process payments in seconds.",
-		imgKey: "/images/pos-showcase/feature-1.png",
-	},
-	{
-		icon: FaChartBar,
-		title: "Dynamic Weekly Menu",
-		copy: "Managers schedule menus for different days of the week without touching a single line of code.",
-		imgKey: "/images/pos-showcase/feature-2.png",
-	},
-	{
-		icon: LuPrinter,
-		title: "Real-Time Kitchen Printing",
-		copy: "Orders appear in the kitchen automatically through a cloud-based printing workflow.",
-		imgKey: "/images/pos-showcase/feature-3.png",
-	},
-	{
-		icon: LuBox,
-		title: "Inventory",
-		copy: "Administrators and Staffs control exactly what to buy for next grocery cycle.",
-		imgKey: "/images/pos-showcase/feature-4.png",
-	},
-	{
-		icon: FaBolt,
-		title: "Analytics Dashboard",
-		copy: "Full visibility into sales, expenses, and operational performance, at a glance.",
-		imgKey: "/images/pos-showcase/feature-5.png",
-	},
-];
-
-const BEHIND_SCENES = [
-	{
-		icon: FaDatabase,
-		title: "Database Design",
-		copy: "18 PostgreSQL tables, modeled directly around how a restaurant actually runs.",
-	},
-	{
-		icon: FaBolt,
-		title: "State Management",
-		copy: "Built on Zustand for fast order creation and snappy, predictable interactions.",
-	},
-	{
-		icon: FaShieldAlt,
-		title: "Role-Based Access",
-		copy: "Dynamic permissions implemented with Supabase authentication metadata.",
-	},
-	{
-		icon: FaCloud,
-		title: "Cloud Infrastructure",
-		copy: "A serverless architecture on Supabase — no dedicated backend server required.",
-	},
-];
-
-const AI_FLOW = [
-	"Restaurant Problems",
-	"My Requirements",
-	"AI-Assisted Development",
-	"Testing In Real Workflows",
-	"Final Product",
-];
-
-const AI_ASSISTED = [
-	"Research",
-	"Architecture exploration",
-	"Refactoring",
-	"UI generation",
-	"Documentation",
-];
-
-const CHALLENGES = [
-	{
-		challenge: "Managing complex order modifications.",
-		solution: "A custom order-splitting system.",
-	},
-	{
-		challenge: "Printing kitchen tickets instantly.",
-		solution: "A cloud-based print queue.",
-	},
-	{
-		challenge: "Managing staff permissions.",
-		solution: "A dynamic, role-based access system.",
-	},
-	{
-		challenge: "Kitchen communication during rush hours.",
-		solution: "Color-coded order cards prioritizing oldest tickets.",
-	},
-	{
-		challenge: "Tracking floating cash and registers.",
-		solution: "A secure digital register with daily audit trails.",
-	},
-	{
-		challenge: "Keeping menu items and stock in sync.",
-		solution: "Instant, real-time sync across all staff devices.",
-	},
-	{
-		challenge: "Scattered daily sales analytics.",
-		solution: "A consolidated dashboard showing cost vs revenue.",
-	},
-];
-
-const LEARNED = [
-	"Product thinking",
-	"Database design",
-	"Role management",
-	"State architecture",
-	"Operational workflows",
-	"Balancing business and technical requirements",
-];
-
-const ROADMAP = [
-	{ label: "POS System", done: true },
-	{ label: "Weekly Menu Management", done: true },
-	{ label: "Staff Access Control", done: true },
-	{ label: "Inventory Management", done: false },
-	{ label: "Procurement Tracking", done: false },
-	{ label: "Financial Reporting", done: false },
-	{ label: "Multi-Branch Support", done: false },
-];
 
 /* ------------------------------------------------------------------ */
 /* Small building blocks                                               */
@@ -216,6 +53,10 @@ const ImgPlaceholder = ({ label, className = "" }) => (
 export default function ShalPhyokeShowcase() {
 	const rootRef = useRef(null);
 	const heroVideoRef = useRef(null);
+	const carouselRef = useRef(null);
+	const carouselInnerRef = useRef(null);
+	const CURRENT_NODE = 4;
+	const progress = (CURRENT_NODE / (ROADMAP_NODES.length - 1)) * 100;
 
 	useEffect(() => {
 		const ctx = gsap.context(() => {
@@ -343,28 +184,104 @@ export default function ShalPhyokeShowcase() {
 				);
 			});
 
-			/* Roadmap progress line */
-			const roadmapLine = document.querySelector(".roadmap-line-fill");
-			if (roadmapLine) {
+			const progressLine = document.querySelector(".roadmap-progress-line");
+			const nodes = document.querySelectorAll(".roadmap-node");
+
+			if (progressLine && nodes.length > 0) {
+				// Animate the progress line from left to right
+				gsap.to(progressLine, {
+					width: `${progress}%`,
+					duration: 1.8,
+					ease: "power2.inOut",
+					delay: 0.8,
+					scrollTrigger: {
+						trigger: progressLine.closest("section"),
+						start: "top 80%",
+						toggleActions: "play none none reverse",
+					},
+				});
+
+				// Animate each node with stagger
 				gsap.fromTo(
-					roadmapLine,
-					{ scaleX: 0 },
+					nodes,
 					{
-						scaleX: 3 / 7,
-						ease: "power2.out",
-						duration: 1.2,
-						transformOrigin: "left",
+						opacity: 0,
+						y: 20,
+						scale: 0.8,
+					},
+					{
+						opacity: 1,
+						y: 0,
+						scale: 1,
+						duration: 0.6,
+						ease: "back.out(1.7)",
+						stagger: 0.12,
+						delay: 0.4,
 						scrollTrigger: {
-							trigger: ".roadmap-track",
-							start: "top 70%",
+							trigger: progressLine.closest("section"),
+							start: "top 80%",
+							toggleActions: "play none none reverse",
 						},
 					}
 				);
+
+				// Add subtle pulse to "I'm Here" node
+				const hereNode = document.querySelector(".roadmap-node .ring-4");
+				if (hereNode) {
+					gsap.to(hereNode.closest(".roadmap-node"), {
+						scale: 1.05,
+						duration: 1.5,
+						ease: "sine.inOut",
+						repeat: -1,
+						yoyo: true,
+						delay: 1.5,
+					});
+				}
+			}
+
+			/* Challenges Carousel - Infinite Flow */
+			const carousel = carouselRef.current;
+			const inner = carouselInnerRef.current;
+
+			if (carousel && inner) {
+				// Duplicate cards for infinite effect
+				const cards = inner.querySelectorAll(".challenge-card");
+				const totalWidth = inner.scrollWidth / 2;
+
+				// Create the animation
+				const tl = gsap.to(inner, {
+					x: -totalWidth,
+					duration: 30,
+					ease: "none",
+					repeat: -1,
+					modifiers: {
+						x: (x) => {
+							// When we've scrolled far enough, wrap around
+							if (parseFloat(x) <= -totalWidth) {
+								return 0;
+							}
+							return x;
+						},
+					},
+				});
+
+				// Pause on hover
+				carousel.addEventListener("mouseenter", () => tl.pause());
+				carousel.addEventListener("mouseleave", () => tl.play());
+
+				return () => {
+					tl.kill();
+					carousel.removeEventListener("mouseenter", () => tl.pause());
+					carousel.removeEventListener("mouseleave", () => tl.play());
+				};
 			}
 		}, rootRef);
 
 		return () => ctx.revert();
 	}, []);
+
+	// Duplicate challenges for infinite scroll
+	const infiniteChallenges = [...CHALLENGES, ...CHALLENGES, ...CHALLENGES];
 
 	return (
 		<div ref={rootRef} className="bg-cream text-char overflow-x-clip">
@@ -383,20 +300,20 @@ export default function ShalPhyokeShowcase() {
 			{/* ============================================================ */}
 			{/* 1. HERO                                                        */}
 			{/* ============================================================ */}
-			<section className="relative sm:mt-10 pt-16 pb-12 sm:pb-16 px-6 sm:px-10 lg:px-16">
+			<section className="relative sm:mt-10 pt-16 pb-12 sm:pb-12 px-6 sm:px-10 lg:px-16">
 				<div className="max-w-6xl mx-auto">
-					<h1 className="hero-title font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] max-w-3xl">
+					<h1 className="hero-title font-heading font-bold text-4xl sm:text-5xl leading-[1.05] max-w-3xl">
 						Building a Restaurant
 						<span className="block text-ember">Operating System.</span>
 					</h1>
-					<p className="hero-subtitle font-body text-base sm:text-lg text-char/70 max-w-xl mt-6 leading-relaxed">
+					<p className="hero-subtitle font-body text-base sm:text-md text-char/70 max-w-4xl mt-6 leading-relaxed">
 						A real-world POS and restaurant management platform, built from
 						challenges I encountered while operating my own Burmese food
 						business.
 					</p>
 
 					{/* Hero media — video */}
-					<div className="hero-media relative mt-12 rounded-2xl overflow-hidden border border-char/10 shadow-[0_30px_60px_-25px_rgba(28,25,23,0.35)] bg-char">
+					<div className="hero-media relative mt-6 rounded-2xl overflow-hidden border border-char/10 shadow-[0_30px_60px_-25px_rgba(28,25,23,0.35)] bg-char">
 						<video
 							ref={heroVideoRef}
 							src="/videos/pos.mov"
@@ -410,7 +327,7 @@ export default function ShalPhyokeShowcase() {
 					</div>
 
 					{/* Stats strip */}
-					<div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 sm:place-items-center sm:justify-center gap-6 sm:gap-4 border-y border-char/10 py-7">
+					<div className="mt-10 sm:mt-6 grid grid-cols-2 sm:grid-cols-4 sm:place-items-center sm:justify-center gap-6 sm:gap-4 border-y border-char/10 py-7">
 						{STATS.map((s) => (
 							<div
 								key={s.label}
@@ -445,10 +362,6 @@ export default function ShalPhyokeShowcase() {
 			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-char text-cream">
 				<div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 					<div className="reveal order-2 md:order-1">
-						{/* <ImgPlaceholder
-							label="Restaurant operation photo"
-							className="aspect-[4/5] w-full"
-						/> */}
 						<Image
 							src="/images/pos-showcase/manual-process.jpg"
 							alt="manual-operations"
@@ -513,56 +426,7 @@ export default function ShalPhyokeShowcase() {
 			</section>
 
 			{/* ============================================================ */}
-			{/* 4. SOLUTION OVERVIEW                                           */}
-			{/* ============================================================ */}
-			{/* <section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-sand">
-				<div className="max-w-6xl mx-auto">
-					<SectionLabel>Solution Overview</SectionLabel>
-					<h2 className="font-heading font-bold text-3xl sm:text-4xl mb-14 reveal">
-						How the pieces fit together.
-					</h2>
-
-					<div className="grid sm:grid-cols-2 gap-8 reveal-group">
-						{SOLUTION_FLOW.map((flow) => (
-							<div
-								key={flow.role}
-								className="reveal-item rounded-2xl bg-cream border border-char/10 p-7 sm:p-8">
-								<p className="font-mono text-xs uppercase tracking-[0.2em] text-ember mb-5">
-									{flow.role}
-								</p>
-								<div className="flex flex-col">
-									{flow.steps.map((step, i) => (
-										<div key={step}>
-											<p className="font-body text-lg text-char">{step}</p>
-											{i < flow.steps.length - 1 && (
-												<div className="my-3 ml-2 h-5 w-px bg-char/20" />
-											)}
-										</div>
-									))}
-								</div>
-							</div>
-						))}
-					</div>
-
-					<div className="mt-12 reveal">
-						<p className="font-heading font-semibold text-xl mb-5">
-							What the system does
-						</p>
-						<div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-							{SYSTEM_DOES.map((item) => (
-								<div
-									key={item}
-									className="rounded-xl bg-cream border border-char/10 px-4 py-4 text-sm font-medium text-char/80">
-									{item}
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
-			</section> */}
-
-			{/* ============================================================ */}
-			{/* 5. FEATURE SHOWCASE                                            */}
+			{/* 4. FEATURE SHOWCASE                                            */}
 			{/* ============================================================ */}
 			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
 				<div className="max-w-6xl mx-auto">
@@ -608,7 +472,7 @@ export default function ShalPhyokeShowcase() {
 			</section>
 
 			{/* ============================================================ */}
-			{/* 6. BEHIND THE SCENES                                           */}
+			{/* 5. BEHIND THE SCENES                                           */}
 			{/* ============================================================ */}
 			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-char text-cream">
 				<div className="max-w-6xl mx-auto">
@@ -637,7 +501,7 @@ export default function ShalPhyokeShowcase() {
 			</section>
 
 			{/* ============================================================ */}
-			{/* 7. AI COLLABORATION                                            */}
+			{/* 6. AI COLLABORATION                                            */}
 			{/* ============================================================ */}
 			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-sand">
 				<div className="max-w-5xl mx-auto">
@@ -687,40 +551,68 @@ export default function ShalPhyokeShowcase() {
 			</section>
 
 			{/* ============================================================ */}
-			{/* 8. CHALLENGES SOLVED                                           */}
+			{/* 7. CHALLENGES SOLVED - INFINITE CAROUSEL                       */}
 			{/* ============================================================ */}
-			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 overflow-hidden">
 				<div className="max-w-6xl mx-auto">
 					<SectionLabel>Challenges Solved</SectionLabel>
 					<h2 className="font-heading font-bold text-3xl sm:text-4xl mb-14 reveal">
 						Friction, and what removed it.
 					</h2>
 
-					<div className="grid sm:grid-cols-3 gap-5 reveal-group">
-						{CHALLENGES.map((c) => (
+					{/* Carousel Container with Faded Ends */}
+					<div className="relative">
+						{/* Left fade */}
+						<div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-cream via-cream/80 to-transparent z-10 pointer-events-none" />
+
+						{/* Right fade */}
+						<div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-cream via-cream/80 to-transparent z-10 pointer-events-none" />
+
+						{/* Carousel */}
+						<div
+							ref={carouselRef}
+							className="overflow-hidden cursor-grab active:cursor-grabbing">
 							<div
-								key={c.challenge}
-								className="reveal-item rounded-xl border border-char/10 p-6 bg-sand/60">
-								<p className="font-mono text-[10px] uppercase tracking-[0.2em] text-char/40 mb-2">
-									Challenge
-								</p>
-								<p className="font-body text-char mb-5 leading-snug">
-									{c.challenge}
-								</p>
-								<p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ember mb-2">
-									Solution
-								</p>
-								<p className="font-body text-char/75 leading-snug">
-									{c.solution}
-								</p>
+								ref={carouselInnerRef}
+								className="flex gap-5 will-change-transform"
+								style={{ width: "max-content" }}>
+								{infiniteChallenges.map((c, index) => (
+									<div
+										key={`${c.challenge}-${index}`}
+										className="challenge-card flex-shrink-0 w-[280px] sm:w-[320px] rounded-xl border border-char/10 p-6 bg-sand/60 hover:border-ember/30 transition-colors">
+										<p className="font-mono text-[10px] uppercase tracking-[0.2em] text-char/40 mb-2">
+											Challenge
+										</p>
+										<p className="font-body text-char mb-5 leading-snug min-h-[48px]">
+											{c.challenge}
+										</p>
+										<div className="border-t border-char/5 pt-4">
+											<p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ember mb-2">
+												Solution
+											</p>
+											<p className="font-body text-char/75 leading-snug">
+												{c.solution}
+											</p>
+										</div>
+									</div>
+								))}
 							</div>
-						))}
+						</div>
+					</div>
+
+					{/* Optional: Scroll indicator */}
+					<div className="flex justify-center gap-1.5 mt-8">
+						<span className="w-1.5 h-1.5 rounded-full bg-ember" />
+						<span className="w-1.5 h-1.5 rounded-full bg-ember/30" />
+						<span className="w-1.5 h-1.5 rounded-full bg-ember/30" />
+						<span className="w-1.5 h-1.5 rounded-full bg-ember/30" />
+						<span className="w-1.5 h-1.5 rounded-full bg-ember/30" />
 					</div>
 				</div>
 			</section>
 
 			{/* ============================================================ */}
-			{/* 9. WHAT I LEARNED                                              */}
+			{/* 8. WHAT I LEARNED                                              */}
 			{/* ============================================================ */}
 			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 bg-char text-cream">
 				<div className="max-w-4xl mx-auto">
@@ -742,41 +634,111 @@ export default function ShalPhyokeShowcase() {
 			</section>
 
 			{/* ============================================================ */}
-			{/* 10. FUTURE VISION                                              */}
+			{/* FUTURE VISION */}
 			{/* ============================================================ */}
-			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
-				<div className="max-w-4xl mx-auto">
+			<section className="px-6 sm:px-10 lg:px-16 py-20 sm:py-28 overflow-hidden">
+				<div className="max-w-6xl mx-auto">
 					<SectionLabel>Future Vision</SectionLabel>
+
 					<h2 className="font-heading font-bold text-3xl sm:text-4xl mb-14 reveal">
 						The roadmap stays alive.
 					</h2>
 
-					<div className="roadmap-track relative">
-						<div className="absolute top-[7px] left-0 right-0 h-px bg-char/15" />
-						<div className="roadmap-line-fill absolute top-[7px] left-0 h-px bg-ember w-full" />
-						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6">
-							{ROADMAP.map((r) => (
-								<div key={r.label} className="relative pt-6">
-									<span
-										className={`absolute top-0 left-0 w-3.5 h-3.5 rounded-full -translate-y-1/2 ${
-											r.done ? "bg-ember" : "bg-cream border-2 border-char/25"
-										}`}
-									/>
-									<p
-										className={`text-sm sm:text-base font-medium ${
-											r.done ? "text-char" : "text-char/45"
-										}`}>
-										{r.label}
-									</p>
-								</div>
-							))}
+					<div className="overflow-x-auto pb-6 hide-scrollbar">
+						<div className="relative min-w-[950px] px-4 py-12">
+							{/* Base Timeline */}
+							<div className="absolute left-8 right-8 top-[48px] h-[2px] bg-char/15" />
+
+							{/* Animated Progress */}
+							<div
+								className="roadmap-progress-line absolute left-8 top-[48px] h-[2px] bg-ember"
+								style={{ width: "0%" }}
+							/>
+
+							{/* Nodes */}
+							<div className="relative flex justify-between">
+								{ROADMAP_NODES.map((node, index) => {
+									const CURRENT_NODE = 4;
+
+									const isPast = index <= CURRENT_NODE;
+									const isHere = index === CURRENT_NODE;
+									const isTop = index % 2 === 0;
+
+									return (
+										<div
+											key={node.label}
+											className="roadmap-node relative flex flex-col items-center w-[130px] group">
+											{/* Current Position */}
+											{isHere && (
+												<div className="absolute -top-10 left-1/2 -translate-x-1/2 z-20">
+													<FaMapMarkerAlt className="text-3xl text-ember drop-shadow-lg animate-bounce" />
+												</div>
+											)}
+
+											{/* Top Labels */}
+											{isTop && (
+												<div className="mb-8 text-center">
+													<p
+														className={`font-semibold text-sm leading-tight ${
+															isHere
+																? "text-ember"
+																: isPast
+																? "text-char"
+																: "text-char/40"
+														}`}>
+														{node.label}
+													</p>
+
+													<p className="text-xs text-char/50 mt-1">
+														{node.description}
+													</p>
+												</div>
+											)}
+
+											{/* Connector */}
+											{isTop && <div className="h-8 w-px bg-char/15" />}
+
+											{/* Node */}
+											<div
+												className={`relative z-10 w-5 h-5 rounded-full border-2 transition-all duration-300
+										${isPast ? "bg-ember border-ember" : "bg-cream border-char/20"}
+										${isHere ? "ring-4 ring-ember/30" : ""}
+										group-hover:scale-110`}
+											/>
+
+											{/* Connector */}
+											{!isTop && <div className="h-8 w-px bg-char/15" />}
+
+											{/* Bottom Labels */}
+											{!isTop && (
+												<div className="mt-8 text-center">
+													<p
+														className={`font-semibold text-sm leading-tight ${
+															isHere
+																? "text-ember"
+																: isPast
+																? "text-char"
+																: "text-char/40"
+														}`}>
+														{node.label}
+													</p>
+
+													<p className="text-xs text-char/50 mt-1">
+														{node.description}
+													</p>
+												</div>
+											)}
+										</div>
+									);
+								})}
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* ============================================================ */}
-			{/* 11. CLOSING                                                    */}
+			{/* 10. CLOSING                                                    */}
 			{/* ============================================================ */}
 			<section className="px-6 sm:px-10 lg:px-16 py-24 sm:py-32 bg-sand text-center">
 				<div className="max-w-2xl mx-auto reveal">
