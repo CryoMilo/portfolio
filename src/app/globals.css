@@ -64,16 +64,24 @@ html {
 	}
 
 	.orbit-btn {
-		@apply grid place-content-center absolute w-[23%] hover:w-[25%] aspect-square rounded-full bg-light z-20;
+		@apply grid place-content-center absolute w-[23%] hover:w-[25%] aspect-square rounded-full z-20;
+		background: rgba(255, 255, 255, 0.25);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		box-shadow: 0 8px 32px 0 rgba(106, 66, 194, 0.15);
+		color: var(--color-primary-light);
+		transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+	}
 
-		/* Neumorphic effect */
-		box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2),
-			/* Dark shadow */ -6px -6px 12px rgba(255, 255, 255, 0.6); /* Light shadow */
-		transition: all 0.1s ease-in-out;
+	.orbit-btn:hover {
+		background: rgba(255, 255, 255, 0.4);
+		border-color: rgba(255, 255, 255, 0.6);
+		box-shadow: 0 8px 32px 0 rgba(106, 66, 194, 0.3);
+		color: var(--color-primary);
 	}
 
 	.orbit-btn:active {
-		box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.2),
-			/* Inner dark shadow */ inset -4px -4px 10px rgba(255, 255, 255, 0.6); /* Inner light shadow */
+		background: rgba(255, 255, 255, 0.55);
 	}
 }

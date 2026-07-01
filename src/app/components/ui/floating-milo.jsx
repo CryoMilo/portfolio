@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const FloatingMilo = () => {
 	const [showPopup, setShowPopup] = useState(false);
 	const [playCount, setPlayCount] = useState(0);
 	const videoRef = useRef(null);
+	const router = useRouter();
 
 	useEffect(() => {
 		const showTimer = setTimeout(() => {
@@ -26,6 +28,9 @@ const FloatingMilo = () => {
 		const contactSection = document.getElementById("contact");
 		if (contactSection) {
 			contactSection.scrollIntoView({ behavior: "smooth" });
+			setShowPopup(false);
+		} else {
+			router.push("/#contact");
 			setShowPopup(false);
 		}
 	};

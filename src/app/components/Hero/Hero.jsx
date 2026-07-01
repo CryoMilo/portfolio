@@ -140,9 +140,8 @@ const Hero = () => {
 				scrollTrigger: {
 					trigger: sectionRef.current,
 					start: "top top",
-					end: "bottom bottom",
+					end: "top+=200 top",
 					scrub: true,
-					toggleActions: "play none none reverse",
 				},
 			});
 		}, sectionRef);
@@ -217,14 +216,14 @@ const Hero = () => {
 			{/* Social Bar */}
 			<div
 				id="social-bar"
-				className="absolute bottom-0 left-[4vw] hidden xl:block opacity-100 transition-opacity duration-500">
+				className="absolute bottom-0 left-[4vw] hidden xl:block">
 				<SocialBar />
 			</div>
 
 			{/* Scroll Guide */}
 			<div
 				id="scroll-guide"
-				className="absolute hidden md:block bottom-4 left-1/2 -translate-x-1/2 opacity-100 transition-opacity duration-500">
+				className="absolute hidden md:block bottom-4 left-1/2 -translate-x-1/2">
 				<ScrollGuide text="Scroll To Explore" />
 			</div>
 		</section>
