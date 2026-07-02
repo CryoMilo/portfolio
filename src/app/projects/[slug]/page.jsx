@@ -36,13 +36,12 @@ const ProjectDetails = async ({ params }) => {
 							alt={img.url}
 							width={img.width * 0.7}
 							height={img.height * 0.7}
-							className={`absolute ${
-								index === 0
-									? "top-[12%] right-[50%] translate-x-[50%]"
-									: index === 1
+							className={`absolute ${index === 0
+								? "top-[12%] right-[50%] translate-x-[50%]"
+								: index === 1
 									? "top-[28%] right-[6%]"
 									: "top-[44%] right-[30%]"
-							}`}
+								}`}
 						/>
 					))}
 				</div>
@@ -78,7 +77,7 @@ const ProjectDetails = async ({ params }) => {
 						{projectData.palette.map((color, index) => (
 							<div key={index} className="flex flex-col items-center">
 								<div
-									className="w-20 h-20"
+									className="w-20 h-20 border border"
 									style={{ backgroundColor: color.color }}></div>
 								<p className="mt-2">{color.name}</p>
 							</div>

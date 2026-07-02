@@ -113,11 +113,11 @@ export const myData = {
 	resume: "/documents/resume.pdf",
 	projects: [
 		{
-			project_name: "ShalPhyoke Admin",
+			project_name: "ShalPhyoke OS",
 			intro_text:
-				"POS system for a real-life Burmese restaurant with inventory and order handling.",
+				"An Operating System for a real-life Burmese restaurant with inventory and order handling.",
 			description:
-				"Built a functional POS system for a real Burmese restaurant using Next.js and Supabase. Included features like inventory, order handling, and authentication. UI was enhanced with GSAP.",
+				"Built a functional POS system for a real Burmese restaurant using Vite and Supabase. Included features like inventory, order handling, and authentication.",
 			demo_link: "https://shal-phyoke-pos.netlify.app/order",
 			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
 			document_id: "shal-phyoke-pos",
@@ -129,15 +129,16 @@ export const myData = {
 				{ url: "/images/pos-showcase/pos-3.png", width: 1000, height: 600 },
 			],
 			highlight_images: [
-				{ url: "/images/project-background.png" },
-				{ url: "/images/project-background.png" },
-				{ url: "/images/project-background.png" },
+				{ url: "/images/pos-showcase/feature-1.png" },
+				{ url: "/images/pos-showcase/pos-hl-2.png" },
+				{ url: "/images/pos-showcase/pos-hl-3.png" },
+				{ url: "/images/pos-showcase/feature-3.png" },
 			],
 			tech_list: ["javascript", "vite", "supabase", "tailwind"],
 			palette: [
-				{ name: "Brand", color: "#EF4444" },
-				{ name: "Accent", color: "#F59E0B" },
-				{ name: "Dark", color: "#1F2937" },
+				{ name: "Brand", color: "#FCC700" },
+				{ name: "Accent", color: "#FFFFFF" },
+				{ name: "Text", color: "#2F2F2F" },
 			],
 		},
 		{
@@ -169,9 +170,10 @@ export const myData = {
 				},
 			],
 			highlight_images: [
-				{ url: "/images/portfolio-showcase/portfolio-hl-1.jpeg" },
-				{ url: "/images/portfolio-showcase/portfolio-hl-1.jpeg" },
-				{ url: "/images/portfolio-showcase/portfolio-hl-1.jpeg" },
+				{ url: "/images/portfolio-showcase/portfolio-hl-1.png" },
+				{ url: "/images/portfolio-showcase/portfolio-hl-2.png" },
+				{ url: "/images/portfolio-showcase/portfolio-hl-3.png" },
+				{ url: "/images/portfolio-showcase/portfolio-hl-4.jpeg" },
 			],
 			tech_list: ["javascript", "nextjs", "gsap", "tailwind"],
 			palette: [
@@ -197,9 +199,10 @@ export const myData = {
 				{ url: "/images/urban-showcase/urban-3.png", width: 200, height: 100 },
 			],
 			highlight_images: [
-				{ url: "/images/project-background.png" },
-				{ url: "/images/project-background.png" },
-				{ url: "/images/project-background.png" },
+				{ url: "/images/urban-showcase/urban-hl-1.png" },
+				{ url: "/images/urban-showcase/urban-hl-2.png" },
+				{ url: "/images/urban-showcase/urban-hl-3.png" },
+				{ url: "/images/urban-showcase/urban-hl-4.png" },
 			],
 			tech_list: ["javascript", "gsap", "tailwind"],
 			palette: [
