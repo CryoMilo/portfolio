@@ -119,7 +119,7 @@ export const myData = {
 			description:
 				"Built a functional POS system for a real Burmese restaurant using Vite and Supabase. Included features like inventory, order handling, and authentication.",
 			demo_link: "https://shal-phyoke-pos.netlify.app/order",
-			github_link: "https://github.com/OakSoeHtooAung/shal-phyoke-pos",
+			github_link: null,
 			document_id: "shal-phyoke-pos",
 			responsive: true,
 			splash_video: { url: "/videos/pos.mov" },

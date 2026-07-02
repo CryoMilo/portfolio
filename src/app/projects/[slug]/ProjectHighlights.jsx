@@ -30,7 +30,7 @@ const ProjectHighlights = ({ images }) => {
 		<div
 			ref={imageGrid}
 			id="imageGrid"
-			className="absolute md:right-0 bottom-0 w-[500px] xl:w-[40%] h-full grid grid-cols-3 gap-5 -rotate-[28deg]">
+			className="absolute md:right-0 bottom-0 w-[90%] md:w-[440px] lg:w-[480px] xl:w-[42%] h-full grid grid-cols-3 gap-3 md:gap-5 -rotate-[28deg]">
 			{images?.map((image, index) => {
 				const isFirst = index === 0;
 				const isFourth = index === 3;
