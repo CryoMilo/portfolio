@@ -1,18 +1,13 @@
-import { useFormContext } from "react-hook-form";
 import { IoSend } from "react-icons/io5";
 
-const MessageInput = () => {
-	const {
-		register,
-		formState: { errors },
-	} = useFormContext();
-
+const MessageInput = ({ msg, setMsg, error }) => {
 	return (
 		<div className="p-4 border-y bg-white rounded-b-xl">
 			<div className="flex items-center">
 				<input
-					{...register("msg", { required: "Message is required" })}
 					type="text"
+					value={msg}
+					onChange={(e) => setMsg(e.target.value)}
 					placeholder="Write your message..."
 					className="flex-1 p-3 border rounded-full focus:outline-none"
 				/>
@@ -22,9 +17,9 @@ const MessageInput = () => {
 					<IoSend size={20} />
 				</button>
 			</div>
-			<p className="text-red-500 text-sm pl-4 pt-2">
-				{errors.msg?.message || errors.msg?.message}
-			</p>
+			{error === "msg" && (
+				<p className="text-red-500 text-sm pl-4 pt-2">Message is required</p>
+			)}
 		</div>
 	);
 };
