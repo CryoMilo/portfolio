@@ -111,6 +111,11 @@ export const myData = {
 		},
 	],
 	resume: "/documents/resume.pdf",
+	aboutme: `I founded a small Burmese food business here in Bangkok and, to keep things running smoothly, I built our entire POS system from scratch using Vite (React), Supabase, Tailwind/DaisyUI, and Zustand. I even built a decoupled printing system to handle kitchen tickets and receipts on third-party thermal printers.
+
+Honestly, I had so much fun building it alongside AI, and seeing it run our stall's daily operations now is incredibly rewarding. 
+
+If I had to describe my approach, I’m very much a doer and a learner. If a tool doesn’t exist or off-the-shelf software doesn't fit, I don't hesitate I dive in, do research and build it. Moving between frontend logic, database schemas, and hardware communication meant picking up a lot of new concepts on the fly. I genuinely enjoy the process of not knowing how to do something and figuring it out until it works perfectly in the real world.`,
 	projects: [
 		{
 			project_name: "ShalPhyoke OS",

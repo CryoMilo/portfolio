@@ -1,11 +1,5 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getTechSkillIcon } from "../utils/getTechSkills";
-
-gsap.registerPlugin(ScrollTrigger);
+import StaggeredScrollReveal from "../ui/staggered-scroll-reveal";
 
 const skillIcons = [
 	{
@@ -103,30 +97,6 @@ const capitalizeFirstLetter = (text) => {
 };
 
 const Skills = () => {
-	const iconRefs = useRef([]);
-
-	useEffect(() => {
-		iconRefs.current.forEach((el, index) => {
-			if (!el) return;
-			gsap.fromTo(
-				el,
-				{ opacity: 0, y: 50 },
-				{
-					opacity: 1,
-					y: 0,
-					duration: 0.8,
-					delay: index * 0.1,
-					ease: "power2.out",
-					scrollTrigger: {
-						trigger: el,
-						start: "top 85%",
-						toggleActions: "play none none reverse",
-					},
-				}
-			);
-		});
-	}, []);
-
 	return (
 		<div className="my-40 md:mb-36 md:mt-0 container md:p-0">
 			<div className="md:h-[70vh] relative overflow-hidden">
@@ -136,13 +106,12 @@ const Skills = () => {
 					</p>
 					<p>I am confident in these</p>
 				</div>
-				<div className="flex flex-wrap gap-8 justify-evenly text-center">
+				<StaggeredScrollReveal className="flex flex-wrap gap-8 justify-evenly text-center">
 					{skillIcons.map(({ skillName, size, position, animation }, index) => {
 						const Icon = getTechSkillIcon(skillName);
 						return Icon ? (
 							<div
 								key={index}
-								ref={(el) => (iconRefs.current[index] = el)}
 								className={`icon md:absolute group ${animation}`}
 								style={{ top: position.top, left: position.left }}>
 								<Icon size={size} />
@@ -152,7 +121,7 @@ const Skills = () => {
 							</div>
 						) : null;
 					})}
-				</div>
+				</StaggeredScrollReveal>
 			</div>
 		</div>
 	);

@@ -1,9 +1,5 @@
-"use client";
-
 import { cn } from "@/app/lib/utils";
 import Image from "next/image";
-import { useRef } from "react";
-import { gsap } from "gsap";
 import Link from "next/link";
 import { getTechSkillIcon } from "../utils/getTechSkills";
 
@@ -27,39 +23,12 @@ export const BentoGridItem = ({
 	demoLink,
 	techList,
 }) => {
-	const imageContainerRef = useRef(null);
-
-	const handleMouseEnter = () => {
-		const container = imageContainerRef.current;
-		gsap.fromTo(
-			container,
-			{ y: "60%" },
-			{
-				y: "0%",
-				duration: 8,
-				ease: "power1.in",
-				repeat: 0,
-			}
-		);
-	};
-
-	const handleMouseLeave = () => {
-		const container = imageContainerRef.current;
-		gsap.to(container, {
-			y: "60%", // Return to initial position
-			duration: 5,
-			ease: "none",
-		});
-	};
-
 	return (
 		<div
 			className={cn(
 				"w-full rounded-xl h-[18rem] group hover:shadow-xl transition duration-200 shadow-input hover:bg-background-dark justify-between flex flex-col space-y-4",
 				className
-			)}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}>
+			)}>
 			<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden relative group">
 				<video
 					src={videoSrc}
@@ -86,7 +55,6 @@ export const BentoGridItem = ({
 						</div>
 						<Link
 							href={`projects/${documentId}`}
-							// href={githubLink}
 							className="bg-white/30 border-none backdrop-blur-2xl rounded-md px-4 py-2 text-white hover:bg-white/40 transition mr-4">
 							See More
 						</Link>
@@ -98,8 +66,7 @@ export const BentoGridItem = ({
 					</div>
 					{responsive ? (
 						<div
-							ref={imageContainerRef}
-							className="absolute hidden lg:flex bottom-0 right-[3%] xl:right-[8%] flex-col items-center gap-6 overflow-hidden p-8">
+							className="absolute hidden lg:flex bottom-0 right-[3%] xl:right-[8%] flex-col items-center gap-6 p-8 translate-y-[60%] group-hover:translate-y-0 transition-transform duration-[5000ms] ease-in-out">
 							{images.map(({ url, width, height }, index) => (
 								<Image
 									key={index}

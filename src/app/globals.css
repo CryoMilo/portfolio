@@ -85,3 +85,17 @@ html {
 		background: rgba(255, 255, 255, 0.55);
 	}
 }
+
+.skip-splash #splash,
+.skip-splash #splash-text {
+	display: none !important;
+}
+
+.skip-splash body {
+	overflow: auto !important;
+}
+
+.skip-splash #oak,
+.skip-splash #soehtooaung {
+	opacity: 1 !important;
+}

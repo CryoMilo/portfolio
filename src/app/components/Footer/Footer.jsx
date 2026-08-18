@@ -1,5 +1,3 @@
-"use client";
-
 import { socialLinks } from "../ui/socal-bar";
 import footerLinks from "./footerLinks.json";
 import { FaCoffee } from "react-icons/fa";
