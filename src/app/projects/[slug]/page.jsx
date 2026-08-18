@@ -74,8 +74,8 @@ const ProjectDetails = async ({ params }) => {
 					{projectData.tech_list.map((tech, index) => {
 						const Icon = getTechSkillIcon(tech);
 						return Icon ? (
-							<div key={index} className="w-8 h-8 md:w-10 md:h-10">
-								<Icon size="80%" />
+							<div key={index} className="w-8 h-8 md:w-10 md:h-10" role="img" aria-label={tech}>
+								<Icon size="80%" aria-hidden="true" />
 							</div>
 						) : null;
 					})}

@@ -8,7 +8,8 @@ const ContactSidebar = ({ name, setName, error }) => {
 				<div className="flex justify-center mb-2">
 					<Image
 						src="/images/profile-placeholder.png"
-						alt="Profile"
+						alt=""
+						aria-hidden="true"
 						width={60}
 						height={60}
 						className="rounded-full"
@@ -20,6 +21,7 @@ const ContactSidebar = ({ name, setName, error }) => {
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						placeholder="You are?"
+						aria-label="Your name"
 						className="font-semibold text-center bg-transparent border-none outline-none"
 					/>
 					{error === "name" && <p className="text-red-500 text-sm">Please insert your name</p>}
@@ -32,7 +34,8 @@ const ContactSidebar = ({ name, setName, error }) => {
 						<div className="relative rounded-full">
 							<Image
 								src="/images/Milo.png"
-								alt="milo"
+								alt=""
+								aria-hidden="true"
 								width={100}
 								height={100}
 							/>

@@ -57,11 +57,15 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 					{/* Call Actions */}
 					<div className="flex justify-center gap-6 pb-4">
 						{/* Mute */}
-						<button className="flex items-center justify-center w-12 h-12 bg-secondary hover:bg-gray-500 rounded-full">
+						<button
+							aria-label="Mute microphone"
+							className="flex items-center justify-center w-12 h-12 bg-secondary hover:bg-gray-500 rounded-full">
 							<BsMicMute />
 						</button>
 						{/* Video Off */}
-						<button className="flex items-center justify-center w-12 h-12 bg-secondary hover:bg-gray-500 rounded-full">
+						<button
+							aria-label="Turn off camera"
+							className="flex items-center justify-center w-12 h-12 bg-secondary hover:bg-gray-500 rounded-full">
 							<BsCameraVideoOff />
 						</button>
 						{/* End Call */}
@@ -70,6 +74,7 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 								audioRef.current.pause();
 								setHungUp(true);
 							}}
+							aria-label="End call"
 							className="flex items-center justify-center w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full">
 							<MdOutlineCallEnd />
 						</button>
@@ -105,6 +110,7 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 								setCallEnded(true);
 								setHungUp(false);
 							}}
+							aria-label="Chat with Milo"
 							className="flex items-center justify-center w-12 h-12 bg-secondary rounded-full">
 							<FaMessage />
 						</button>

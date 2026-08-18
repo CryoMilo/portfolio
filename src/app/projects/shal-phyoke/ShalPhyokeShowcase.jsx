@@ -37,7 +37,7 @@ const SectionLabel = ({ children }) => (
 
 const ImgPlaceholder = ({ label, className = "" }) => (
 	<div
-		className={`relative flex items-center justify-center rounded-xl border-2 border-dashed border-char/15 bg-cream/60 text-char/40 overflow-hidden ${className}`}>
+		className={`relative flex items-center justify-center rounded-xl border-2 border-dashed border-char/15 bg-cream/60 overflow-hidden ${className}`}>
 		<div className="flex flex-col items-center gap-2 px-4 text-center">
 			<LuLayoutGrid className="text-2xl" />
 			<span className="font-mono text-[11px] tracking-wide uppercase">
@@ -326,7 +326,7 @@ export default function ShalPhyokeShowcase() {
 								<p className="font-mono text-2xl sm:text-3xl font-medium text-ember">
 									{s.value}
 								</p>
-								<p className="text-xs sm:text-sm text-char/60 mt-1">
+								<p className="text-xs sm:text-sm mt-1">
 									{s.label}
 								</p>
 							</div>
@@ -570,7 +570,7 @@ export default function ShalPhyokeShowcase() {
 									<div
 										key={`${c.challenge}-${index}`}
 										className="challenge-card flex-shrink-0 w-[280px] sm:w-[320px] rounded-xl border border-char/10 p-6 bg-sand/60 hover:border-ember/30 transition-colors">
-										<p className="font-mono text-[10px] uppercase tracking-[0.2em] text-char/40 mb-2">
+										<p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-2">
 											Challenge
 										</p>
 										<p className="font-body text-char mb-5 leading-snug min-h-[48px]">
@@ -580,7 +580,7 @@ export default function ShalPhyokeShowcase() {
 											<p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ember mb-2">
 												Solution
 											</p>
-											<p className="font-body text-char/75 leading-snug">
+											<p className="font-body leading-snug">
 												{c.solution}
 											</p>
 										</div>
@@ -634,7 +634,7 @@ export default function ShalPhyokeShowcase() {
 						From Restaurant POS to Restaurant OS
 					</h2>
 
-					<p className="text-char/60 max-w-2xl mb-20 reveal">
+					<p className="max-w-2xl mb-20 reveal">
 						Every version solves a real operational problem. The goal is to
 						evolve beyond a POS into a complete operating system for
 						restaurants.

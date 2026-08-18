@@ -32,7 +32,7 @@ const SocialBar = () => {
 	return (
 		<div className="flex flex-col gap-4 items-center text-2xl">
 			{socialLinks.map((link) => (
-				<Link key={link.id} target="__blank" href={link.url}>
+				<Link key={link.id} target="__blank" href={link.url} aria-label={link.name}>
 					{link.icon}
 				</Link>
 			))}

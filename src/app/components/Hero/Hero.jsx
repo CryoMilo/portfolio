@@ -9,6 +9,7 @@ import ScrollGuide from "../ui/scroll-guide";
 import SocialBar from "../ui/socal-bar";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { socialLinks } from "../ui/socal-bar";
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -218,6 +219,21 @@ const Hero = () => {
 						Dive into my Featured Project
 						<FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
 					</Link>
+
+					{/* Mobile Social Links (Frosted Glass Buttons) */}
+					<div className="flex md:hidden gap-4 mt-6 items-center justify-center">
+						{socialLinks.map((link) => (
+							<Link
+								key={link.id}
+								href={link.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="w-12 h-12 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-primary text-xl shadow-lg hover:bg-white/30 active:scale-95 transition-all"
+								aria-label={link.name}>
+								{link.icon}
+							</Link>
+						))}
+					</div>
 				</div>
 
 				{/* Profile Picture */}

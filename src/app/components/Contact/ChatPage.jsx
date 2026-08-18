@@ -121,11 +121,15 @@ const ChatPage = ({ openModal }) => {
 					<div className="flex gap-4">
 						<button
 							type="button"
+							aria-label="Start voice call"
 							className="font-medium"
 							onClick={() => openModal()}>
 							<IoCallOutline size={20} />
 						</button>
-						<button type="button" className="font-medium">
+						<button
+							type="button"
+							aria-label="Start video call"
+							className="font-medium">
 							<IoVideocamOutline size={24} />
 						</button>
 					</div>

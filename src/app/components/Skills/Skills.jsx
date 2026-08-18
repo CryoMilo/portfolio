@@ -101,9 +101,9 @@ const Skills = () => {
 		<div className="my-40 md:mb-36 md:mt-0 container md:p-0">
 			<div className="md:h-[70vh] relative overflow-hidden">
 				<div className="md:absolute top-1/2 left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:text-center pb-20">
-					<p className="text-4xl md:text-5xl font-bold font-body">
+					<h2 className="text-4xl md:text-5xl font-bold font-body">
 						My <span className="text-primary-light">Skills</span>
-					</p>
+					</h2>
 					<p>I am confident in these</p>
 				</div>
 				<StaggeredScrollReveal className="flex flex-wrap gap-8 justify-evenly text-center">
@@ -113,9 +113,11 @@ const Skills = () => {
 							<div
 								key={index}
 								className={`icon md:absolute group ${animation}`}
-								style={{ top: position.top, left: position.left }}>
-								<Icon size={size} />
-								<p className="group-hover:block hidden pt-2">
+								style={{ top: position.top, left: position.left }}
+								role="img"
+								aria-label={capitalizeFirstLetter(skillName)}>
+								<Icon size={size} aria-hidden="true" />
+								<p className="group-hover:block hidden pt-2" aria-hidden="true">
 									{capitalizeFirstLetter(skillName)}
 								</p>
 							</div>

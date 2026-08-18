@@ -14,9 +14,9 @@ const Contact = () => {
 	return (
 		<div id="contact" className="container relative">
 			<>
-				<h3 className="text-4xl pb-10 font-body">
+				<h2 className="text-4xl pb-10 font-body">
 					Get To Know <span className="text-primary-light">Me</span> Better
-				</h3>
+				</h2>
 
 				<ChatPage openModal={openModal} />
 			</>

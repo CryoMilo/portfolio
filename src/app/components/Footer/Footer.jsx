@@ -34,6 +34,7 @@ export default function Footer() {
 							href={social.url}
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label={social.name}
 							className="text-2xl hover:text-primary-light transition">
 							{social.icon}
 						</a>

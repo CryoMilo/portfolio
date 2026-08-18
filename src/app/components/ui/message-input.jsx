@@ -9,10 +9,12 @@ const MessageInput = ({ msg, setMsg, error }) => {
 					value={msg}
 					onChange={(e) => setMsg(e.target.value)}
 					placeholder="Write your message..."
+					aria-label="Write your message..."
 					className="flex-1 p-3 border rounded-full focus:outline-none"
 				/>
 				<button
 					type="submit"
+					aria-label="Send message"
 					className="ml-4 bg-primary-light text-white p-3 rounded-full hover:bg-primary">
 					<IoSend size={20} />
 				</button>
