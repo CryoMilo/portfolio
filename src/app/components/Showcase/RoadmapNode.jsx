@@ -14,7 +14,7 @@ export default function RoadmapNode({ node, index, current }) {
 			{/* ================================================= */}
 
 			{isTop && (
-				<div className="absolute bottom-12 w-56">
+				<div className="roadmap-card absolute bottom-12 w-56">
 					<div
 						className={`
 							group
@@ -59,7 +59,7 @@ export default function RoadmapNode({ node, index, current }) {
 			{/* ================================================= */}
 
 			{!isTop && (
-				<div className="absolute top-12 w-56">
+				<div className="roadmap-card absolute top-12 w-56">
 					<div
 						className={`
 							group

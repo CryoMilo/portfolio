@@ -63,11 +63,6 @@ export default function ShalPhyokeShowcase() {
 		const ctx = gsap.context(() => {
 			/* Hero entrance */
 			gsap.fromTo(
-				".hero-kicker",
-				{ opacity: 0, y: 16 },
-				{ opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }
-			);
-			gsap.fromTo(
 				".hero-title",
 				{ opacity: 0, y: 28 },
 				{ opacity: 1, y: 0, duration: 0.9, ease: "power3.out", delay: 0.1 }
@@ -129,22 +124,24 @@ export default function ShalPhyokeShowcase() {
 			/* Staggered reveal for groups */
 			gsap.utils.toArray(".reveal-group").forEach((group) => {
 				const items = group.querySelectorAll(".reveal-item");
-				gsap.fromTo(
-					items,
-					{ opacity: 0, y: 28 },
-					{
-						opacity: 1,
-						y: 0,
-						duration: 0.7,
-						stagger: 0.1,
-						ease: "power3.out",
-						scrollTrigger: {
-							trigger: group,
-							start: "top 85%",
-							toggleActions: "play none none reverse",
-						},
-					}
-				);
+				if (items.length > 0) {
+					gsap.fromTo(
+						items,
+						{ opacity: 0, y: 28 },
+						{
+							opacity: 1,
+							y: 0,
+							duration: 0.7,
+							stagger: 0.1,
+							ease: "power3.out",
+							scrollTrigger: {
+								trigger: group,
+								start: "top 85%",
+								toggleActions: "play none none reverse",
+							},
+						}
+					);
+				}
 			});
 
 			/* Journey timeline — line draws in, nodes pop */
@@ -436,9 +433,8 @@ export default function ShalPhyokeShowcase() {
 							return (
 								<div
 									key={f.title}
-									className={`reveal grid md:grid-cols-2 gap-10 md:gap-14 items-center ${
-										reversed ? "md:[&>*:first-child]:order-2" : ""
-									}`}>
+									className={`reveal grid md:grid-cols-2 gap-10 md:gap-14 items-center ${reversed ? "md:[&>*:first-child]:order-2" : ""
+										}`}>
 									<div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-[0_30px_60px_-25px_rgba(28,25,23,0.35)]">
 										<Image
 											src={f.imgKey}

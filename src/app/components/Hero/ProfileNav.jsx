@@ -77,6 +77,8 @@ const ProfileNav = () => {
 				src="/images/profile-background.jpg"
 				alt="profile-pic"
 				fill
+				priority
+				sizes="(max-width: 768px) 300px, (max-width: 1280px) 28vw, 400px"
 				className="object-cover object-center rounded-full bg-black shadow-xl -z-10"
 			/>
 		</div>
