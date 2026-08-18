@@ -46,75 +46,88 @@ const Hero = () => {
 						text: "Oak",
 						duration: 0.8,
 						ease: "none",
-					})
-					.to(splashHi, {
-						opacity: 0,
-						duration: 0.4,
-						delay: 0.6,
-					})
-					// --- The handoff: measure where the real heading's "Oak" sits
-					// RIGHT NOW (so it's correct at the current screen size) and
-					// fly the splash text there, shrinking to match.
-					.add(() => {
-						// Get the EXACT baseline y-position of an inline element by
-						// inserting a zero-size inline-block marker inside it with
-						// vertical-align: baseline. Per CSS spec, a zero-height
-						// inline-block aligned to "baseline" sits exactly on the
-						// text baseline — so the marker's own top edge IS the
-						// baseline's y-coordinate. This works correctly no matter
-						// what line-height, font-size, or breakpoint is active, so
-						// there's no constant to tune per screen size.
-						const getBaselineY = (el) => {
-							const marker = document.createElement("span");
-							marker.style.display = "inline-block";
-							marker.style.width = "0";
-							marker.style.height = "0";
-							marker.style.verticalAlign = "baseline";
-							el.appendChild(marker);
-							const y = marker.getBoundingClientRect().top;
-							marker.remove();
-							return y;
-						};
-
-						const from = splashOak.getBoundingClientRect();
-						const to = oak.getBoundingClientRect();
-
-						const fromFontSize = parseFloat(
-							getComputedStyle(splashOak).fontSize
-						);
-						const targetStyle = window.getComputedStyle(oak);
-						const targetFontSize = parseFloat(targetStyle.fontSize);
-
-						const fromBaseline = getBaselineY(splashOak);
-						const toBaseline = getBaselineY(oak);
-
-						const deltaX = to.left - from.left;
-						const deltaY = toBaseline - fromBaseline;
-						const scale = targetFontSize / fromFontSize;
-
-						gsap.set(splashOak, { transformOrigin: "left top" });
-
-						gsap
-							.timeline({
-								defaults: { duration: 0.7, ease: "power3.inOut" },
-								onComplete: () => {
-									// Swap the moving clone out for the real heading in
-									// one frame so there's no visible seam.
-									gsap.set(splashOak, { opacity: 0 });
-									gsap.set(oak, { opacity: 1 });
-								},
-							})
-							.to(splashOak, {
-								x: deltaX,
-								y: deltaY,
-								scale,
-								fontWeight: targetStyle.fontWeight,
-								color: targetStyle.color,
-							})
-							.to(soehtooaung, { opacity: 1, duration: 0.5 }, 0.3)
-							.to(splash, { opacity: 0, duration: 0.7 }, 0.15)
-							.set(splash, { zIndex: -99 });
 					});
+					const isMobile = window.innerWidth < 768;
+
+					if (isMobile) {
+						t1.to([splashHi, splashOak], {
+							opacity: 0,
+							duration: 0.4,
+							delay: 0.6,
+						})
+							.to(splash, { opacity: 0, duration: 0.7 }, "-=0.2")
+							.set(splash, { zIndex: -99 })
+							.set([oak, soehtooaung], { opacity: 1 }, "-=0.7");
+					} else {
+						t1.to(splashHi, {
+							opacity: 0,
+							duration: 0.4,
+							delay: 0.6,
+						})
+						// --- The handoff: measure where the real heading's "Oak" sits
+						// RIGHT NOW (so it's correct at the current screen size) and
+						// fly the splash text there, shrinking to match.
+						.add(() => {
+							// Get the EXACT baseline y-position of an inline element by
+							// inserting a zero-size inline-block marker inside it with
+							// vertical-align: baseline. Per CSS spec, a zero-height
+							// inline-block aligned to "baseline" sits exactly on the
+							// text baseline — so the marker's own top edge IS the
+							// baseline's y-coordinate. This works correctly no matter
+							// what line-height, font-size, or breakpoint is active, so
+							// there's no constant to tune per screen size.
+							const getBaselineY = (el) => {
+								const marker = document.createElement("span");
+								marker.style.display = "inline-block";
+								marker.style.width = "0";
+								marker.style.height = "0";
+								marker.style.verticalAlign = "baseline";
+								el.appendChild(marker);
+								const y = marker.getBoundingClientRect().top;
+								marker.remove();
+								return y;
+							};
+
+							const from = splashOak.getBoundingClientRect();
+							const to = oak.getBoundingClientRect();
+
+							const fromFontSize = parseFloat(
+								getComputedStyle(splashOak).fontSize
+							);
+							const targetStyle = window.getComputedStyle(oak);
+							const targetFontSize = parseFloat(targetStyle.fontSize);
+
+							const fromBaseline = getBaselineY(splashOak);
+							const toBaseline = getBaselineY(oak);
+
+							const deltaX = to.left - from.left;
+							const deltaY = toBaseline - fromBaseline;
+							const scale = targetFontSize / fromFontSize;
+
+							gsap.set(splashOak, { transformOrigin: "left top" });
+
+							gsap
+								.timeline({
+									defaults: { duration: 0.7, ease: "power3.inOut" },
+									onComplete: () => {
+										// Swap the moving clone out for the real heading in
+										// one frame so there's no visible seam.
+										gsap.set(splashOak, { opacity: 0 });
+										gsap.set(oak, { opacity: 1 });
+									},
+								})
+								.to(splashOak, {
+									x: deltaX,
+									y: deltaY,
+									scale,
+									fontWeight: targetStyle.fontWeight,
+									color: targetStyle.color,
+								})
+								.to(soehtooaung, { opacity: 1, duration: 0.5 }, 0.3)
+								.to(splash, { opacity: 0, duration: 0.7 }, 0.15)
+								.set(splash, { zIndex: -99 });
+						});
+					}
 			}, sectionRef);
 
 			return () => {

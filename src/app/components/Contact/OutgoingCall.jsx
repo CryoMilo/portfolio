@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { BsCameraVideoOff, BsMicMute } from "react-icons/bs";
 import { MdOutlineCallEnd } from "react-icons/md";
-import { FaPhoneAlt } from "react-icons/fa";
 import { FaMessage } from "react-icons/fa6";
 
 const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
