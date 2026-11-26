@@ -10,6 +10,7 @@ import SocialBar from "../ui/socal-bar";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { socialLinks } from "../ui/socal-bar";
+import { prefersReducedMotion } from "@/app/lib/reducedMotion";
 
 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -25,11 +26,13 @@ const Hero = () => {
 		const oak = document.getElementById("oak");
 		const soehtooaung = document.getElementById("soehtooaung");
 
-		if (!hasPlayed) {
+		let splashCtx;
+
+		if (!hasPlayed && !prefersReducedMotion()) {
 			// Stop scrolling while the intro plays
 			document.body.style.overflow = "hidden";
 
-			const ctx = gsap.context(() => {
+			splashCtx = gsap.context(() => {
 				const t1 = gsap.timeline({
 					defaults: { duration: 0.6, ease: "power2.inOut" },
 					onComplete: () => {
@@ -130,11 +133,6 @@ const Hero = () => {
 						});
 					}
 			}, sectionRef);
-
-			return () => {
-				ctx.revert();
-				document.body.style.overflow = "auto";
-			};
 		} else {
 			// Already played this session — jump straight to the end state.
 			if (splashHi) splashHi.style.opacity = "0";
@@ -148,7 +146,7 @@ const Hero = () => {
 			document.body.style.overflow = "auto";
 		}
 
-		const ctx = gsap.context(() => {
+		const scrollCtx = gsap.context(() => {
 			gsap.to("#social-bar, #scroll-guide", {
 				opacity: 0,
 				scrollTrigger: {
@@ -161,7 +159,9 @@ const Hero = () => {
 		}, sectionRef);
 
 		return () => {
-			ctx.revert();
+			splashCtx?.revert();
+			scrollCtx.revert();
+			document.body.style.overflow = "auto";
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -198,14 +198,6 @@ const Hero = () => {
 							Soe Htoo Aung
 						</span>
 					</h1>
-					{/* <h2 className="font-body text-base sm:text-lg font-[400] max-w-[500px]">
-						Fueled by coffee and curiosity, I&apos;ve been navigating the
-						ever-evolving world of{" "}
-						<span className="font-semibold underline underline-offset-4 decoration-primary-light decoration-solid decoration-2">
-							software development
-						</span>{" "}
-						for the past three years, constantly learning and growing.
-					</h2> */}
 					<h2 className="font-body text-base sm:text-lg font-[400] max-w-[500px]">
 						Driven by shipping fast and figuring it out, I leverage my skills in{" "}
 						<span className="font-semibold underline underline-offset-4 decoration-primary-light decoration-solid decoration-2">

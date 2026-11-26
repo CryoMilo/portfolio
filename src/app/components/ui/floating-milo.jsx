@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { prefersReducedMotion } from "@/app/lib/reducedMotion";
 
 const FloatingMilo = () => {
 	const [showPopup, setShowPopup] = useState(false);
@@ -25,6 +26,10 @@ const FloatingMilo = () => {
 			clearTimeout(showTimer);
 			clearTimeout(hideTimer);
 		};
+	}, []);
+
+	useEffect(() => {
+		if (prefersReducedMotion()) videoRef.current?.pause();
 	}, []);
 
 	useEffect(() => {
@@ -70,7 +75,7 @@ const FloatingMilo = () => {
 	};
 
 	const handleVideoEnd = () => {
-		if (playCount < 3) {
+		if (playCount < 3 && !prefersReducedMotion()) {
 			setPlayCount((prev) => prev + 1);
 			if (videoRef.current) {
 				videoRef.current.play();

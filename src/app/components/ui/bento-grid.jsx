@@ -1,6 +1,10 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getTechSkillIcon } from "../utils/getTechSkills";
+import { prefersReducedMotion } from "@/app/lib/reducedMotion";
 
 export const BentoGrid = ({ children }) => {
 	return (
@@ -21,11 +25,18 @@ export const BentoGridItem = ({
 	demoLink,
 	techList,
 }) => {
+	const videoRef = useRef(null);
+
+	useEffect(() => {
+		if (prefersReducedMotion()) videoRef.current?.pause();
+	}, []);
+
 	return (
 		<div
 			className="w-full rounded-xl h-[18rem] group hover:shadow-xl transition duration-200 shadow-input hover:bg-background-dark justify-between flex flex-col space-y-4">
 			<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden relative group">
 				<video
+					ref={videoRef}
 					src={videoSrc}
 					alt={title}
 					className="w-full h-full object-cover lg:group-hover:blur-md lg:group-focus-within:blur-md"

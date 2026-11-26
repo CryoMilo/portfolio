@@ -7,6 +7,7 @@ import { LuInfo } from "react-icons/lu";
 import { RiContactsBookLine } from "react-icons/ri";
 import { FaCode } from "react-icons/fa6";
 import Link from "next/link";
+import { prefersReducedMotion } from "@/app/lib/reducedMotion";
 
 const ProfileNav = () => {
 	const containerRef = useRef(null);
@@ -14,7 +15,8 @@ const ProfileNav = () => {
 	const buttonAnimation = useRef(null);
 
 	useEffect(() => {
-		// GSAP animations
+		if (prefersReducedMotion()) return;
+
 		orbitAnimation.current = gsap.to("#orbit", {
 			rotate: 360,
 			duration: 30,
@@ -31,20 +33,20 @@ const ProfileNav = () => {
 
 		// Cleanup
 		return () => {
-			orbitAnimation.current.kill();
-			buttonAnimation.current.kill();
+			orbitAnimation.current?.kill();
+			buttonAnimation.current?.kill();
 		};
 	}, []);
 
 	// Pause/Resume animations on hover
 	const handleMouseEnter = () => {
-		orbitAnimation.current.pause();
-		buttonAnimation.current.pause();
+		orbitAnimation.current?.pause();
+		buttonAnimation.current?.pause();
 	};
 
 	const handleMouseLeave = () => {
-		orbitAnimation.current.play();
-		buttonAnimation.current.play();
+		orbitAnimation.current?.play();
+		buttonAnimation.current?.play();
 	};
 
 	return (
