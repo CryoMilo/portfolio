@@ -6,6 +6,7 @@ const MessageInput = ({ msg, setMsg, error, disabled }) => {
 			<div className="flex items-center">
 				<input
 					type="text"
+					maxLength={1000}
 					value={msg}
 					onChange={(e) => setMsg(e.target.value)}
 					placeholder="Write your message..."

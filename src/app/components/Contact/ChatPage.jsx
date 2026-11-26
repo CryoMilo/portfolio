@@ -11,7 +11,7 @@ import IncomingMsg from "../ui/incoming-msg";
 
 const ChatPage = ({ openModal }) => {
 	const chatContainerRef = useRef(null);
-	const messagesEndRef = useRef(null);
+	const messagesPaneRef = useRef(null);
 	const [msg, setMsg] = useState("");
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -66,7 +66,10 @@ const ChatPage = ({ openModal }) => {
 	};
 
 	useEffect(() => {
-		messagesEndRef.current?.scrollIntoView({ block: "nearest" });
+		const pane = messagesPaneRef.current;
+		if (pane && (messages.length > 1 || loading)) {
+			pane.scrollTop = pane.scrollHeight;
+		}
 	}, [messages, loading]);
 
 	useEffect(() => {
@@ -115,14 +118,13 @@ const ChatPage = ({ openModal }) => {
 				</div>
 
 				{/* Messages */}
-				<div className="flex-1 overflow-y-auto bg-gray-50">
+				<div ref={messagesPaneRef} className="flex-1 overflow-y-auto bg-gray-50">
 					<MessageList messages={messages} />
 					{loading && (
 						<div className="p-3">
 							<IncomingMsg text="Typing..." />
 						</div>
 					)}
-					<div ref={messagesEndRef}></div>
 				</div>
 
 				{/* Input */}

@@ -2,6 +2,10 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { myData } from "@/app/lib/myData";
 import { validateChatRequest } from "./validate.mjs";
 
+// phone is withheld from the model so Milo cannot recite it
+const { phone: _phone, ...publicContact } = myData.contact;
+const publicData = { ...myData, contact: publicContact };
+
 // shortcut: no rate limit, add one if the Gemini bill or abuse grows
 export async function POST(request) {
 	let body;
@@ -27,7 +31,7 @@ export async function POST(request) {
 			systemInstruction: `You are Milo, the friendly and professional AI assistant for Oak Soe Htoo Aung (Oak). 
 		Your job is to help visitors learn about Oak's skills, projects, and experience.
 		
-		Here is the "source of truth" about Oak: ${JSON.stringify(myData)}.
+		Here is the "source of truth" about Oak: ${JSON.stringify(publicData)}.
 		
 		Keep your responses helpful, concise, and stay in character as Milo. 
 		If you don't know something, just say so politely and suggest they contact Oak directly via email.`,

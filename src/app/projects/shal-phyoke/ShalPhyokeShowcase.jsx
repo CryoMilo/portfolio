@@ -566,7 +566,7 @@ export default function ShalPhyokeShowcase() {
 						{/* Carousel */}
 						<div
 							ref={carouselRef}
-							className="overflow-hidden cursor-grab active:cursor-grabbing">
+							className="overflow-hidden motion-reduce:overflow-x-auto cursor-grab active:cursor-grabbing">
 							<div
 								ref={carouselInnerRef}
 								className="flex gap-5 will-change-transform"
