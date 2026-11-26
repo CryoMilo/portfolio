@@ -107,7 +107,8 @@ const ChatPage = ({ openModal }) => {
 						<button
 							type="button"
 							aria-label="Start video call"
-							className="font-medium">
+							className="font-medium"
+							onClick={() => openModal()}>
 							<IoVideocamOutline size={24} />
 						</button>
 					</div>

@@ -6,6 +6,7 @@ import { GithubOriginal } from "devicons-react";
 import { FaHome } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const ProjectDetails = async ({ params }) => {
 	const { slug } = await params;
@@ -13,12 +14,10 @@ const ProjectDetails = async ({ params }) => {
 	const projectData = myData.projects.find((p) => p.document_id === slug);
 
 	if (!projectData) {
-		return <p className="text-red-500">Project not found.</p>;
+		notFound();
 	}
 
-	const primaryColor =
-		projectData.palette.find((color) => color.name === "Primary")?.color ||
-		"var(--color-primary-light)";
+	const primaryColor = "var(--color-primary-light)";
 
 	return (
 		<section className="container pt-2">
