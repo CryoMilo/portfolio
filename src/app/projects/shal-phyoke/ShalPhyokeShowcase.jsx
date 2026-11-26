@@ -8,6 +8,7 @@ import { FaArrowLeft, FaMapMarkerAlt } from "react-icons/fa";
 import { LuLayoutGrid } from "react-icons/lu";
 import { getTechSkillIcon } from "@/app/components/utils/getTechSkills";
 import Image from "next/image";
+import { prefersReducedMotion } from "@/app/lib/reducedMotion";
 import {
 	STACK,
 	STATS,
@@ -60,6 +61,8 @@ export default function ShalPhyokeShowcase() {
 	const progress = (CURRENT_NODE / (ROADMAP_NODES.length - 1)) * 100;
 
 	useEffect(() => {
+		if (prefersReducedMotion()) heroVideoRef.current?.pause();
+
 		const ctx = gsap.context(() => {
 			/* Hero entrance */
 			gsap.fromTo(
@@ -234,7 +237,7 @@ export default function ShalPhyokeShowcase() {
 			const carousel = carouselRef.current;
 			const inner = carouselInnerRef.current;
 
-			if (carousel && inner) {
+			if (carousel && inner && !prefersReducedMotion()) {
 				// Duplicate cards for infinite effect
 				const cards = inner.querySelectorAll(".challenge-card");
 				const totalWidth = inner.scrollWidth / 2;
@@ -257,13 +260,15 @@ export default function ShalPhyokeShowcase() {
 				});
 
 				// Pause on hover
-				carousel.addEventListener("mouseenter", () => tl.pause());
-				carousel.addEventListener("mouseleave", () => tl.play());
+				const handleEnter = () => tl.pause();
+				const handleLeave = () => tl.play();
+				carousel.addEventListener("mouseenter", handleEnter);
+				carousel.addEventListener("mouseleave", handleLeave);
 
 				return () => {
 					tl.kill();
-					carousel.removeEventListener("mouseenter", () => tl.pause());
-					carousel.removeEventListener("mouseleave", () => tl.play());
+					carousel.removeEventListener("mouseenter", handleEnter);
+					carousel.removeEventListener("mouseleave", handleLeave);
 				};
 			}
 		}, rootRef);
@@ -561,7 +566,7 @@ export default function ShalPhyokeShowcase() {
 						{/* Carousel */}
 						<div
 							ref={carouselRef}
-							className="overflow-hidden cursor-grab active:cursor-grabbing">
+							className="overflow-hidden motion-reduce:overflow-x-auto cursor-grab active:cursor-grabbing">
 							<div
 								ref={carouselInnerRef}
 								className="flex gap-5 will-change-transform"

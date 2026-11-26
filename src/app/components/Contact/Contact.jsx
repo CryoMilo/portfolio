@@ -6,7 +6,6 @@ import ChatPage from "./ChatPage";
 
 const Contact = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [callEnded, setCallEnded] = useState(false);
 
 	const openModal = () => setIsModalOpen(true);
 	const closeModal = () => setIsModalOpen(false);
@@ -25,8 +24,6 @@ const Contact = () => {
 			<OutgoingCallModal
 				isOpen={isModalOpen}
 				onClose={closeModal}
-				callEnded={callEnded}
-				setCallEnded={setCallEnded}
 			/>
 		</div>
 	);

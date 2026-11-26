@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { BsCameraVideoOff, BsMicMute } from "react-icons/bs";
 import { MdOutlineCallEnd } from "react-icons/md";
 import { FaMessage } from "react-icons/fa6";
 
-const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
+const OutgoingCallModal = ({ isOpen, onClose }) => {
 	const audioRef = useRef(null);
 	const [hungUp, setHungUp] = useState(false);
 
@@ -56,18 +55,6 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 
 					{/* Call Actions */}
 					<div className="flex justify-center gap-6 pb-4">
-						{/* Mute */}
-						<button
-							aria-label="Mute microphone"
-							className="flex items-center justify-center w-12 h-12 bg-secondary hover:bg-gray-500 rounded-full">
-							<BsMicMute />
-						</button>
-						{/* Video Off */}
-						<button
-							aria-label="Turn off camera"
-							className="flex items-center justify-center w-12 h-12 bg-secondary hover:bg-gray-500 rounded-full">
-							<BsCameraVideoOff />
-						</button>
 						{/* End Call */}
 						<button
 							onClick={() => {
@@ -107,7 +94,6 @@ const OutgoingCallModal = ({ isOpen, onClose, setCallEnded }) => {
 						<button
 							onClick={() => {
 								onClose();
-								setCallEnded(true);
 								setHungUp(false);
 							}}
 							aria-label="Chat with Milo"

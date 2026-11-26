@@ -87,29 +87,6 @@ export const myData = {
 			],
 		},
 	],
-	project_highlights: [
-		{
-			name: "Portfolio Website",
-			description:
-				"Designed and developed a minimalist, SEO-optimized portfolio site using Next.js. Integrated a chatbot using Gemini AI via OpenRouter and added smooth transitions with GSAP. Visuals were AI-generated for consistency.",
-			stack: ["JavaScript", "Next.js", "GSAP"],
-			url: "https://portfolio-de-oak.netlify.app/",
-		},
-		{
-			name: "Urban Coffee Club Website",
-			description:
-				"Created a responsive, animation-rich coffee shop website using Vite.js and GSAP. Focused on showcasing animation design skills and clean UX.",
-			stack: ["JavaScript", "Vite.js", "GSAP"],
-			url: "https://urban-coffee-club.vercel.app/",
-		},
-		{
-			name: "Shal Phyoke POS Web App (MVP)",
-			description:
-				"Built a functional POS system for a real Burmese restaurant using Next.js and Supabase. Included features like inventory, order handling, and authentication. UI was enhanced with GSAP.",
-			stack: ["JavaScript", "Next.js", "Supabase", "GSAP", "Tailwind"],
-			url: "https://shal-phyoke-pos.netlify.app/order",
-		},
-	],
 	resume: "/documents/resume.pdf",
 	aboutme: `I founded a small Burmese food business here in Bangkok and, to keep things running smoothly, I built our entire POS system from scratch using Vite (React), Supabase, Tailwind/DaisyUI, and Zustand. I even built a decoupled printing system to handle kitchen tickets and receipts on third-party thermal printers.
 

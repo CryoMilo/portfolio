@@ -1,17 +1,17 @@
-import { Inter, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import FloatingMilo from "./components/ui/floating-milo";
-import { ThemeProvider } from "next-themes";
 
-const montserrat = Montserrat({
-	subsets: ["latin"],
-	weights: ["400", "500"],
+// Self-hosted (Latin variable fonts from Google Fonts) so builds never fetch from Google; that fetch crashed the Netlify build.
+const montserrat = localFont({
+	src: "./fonts/montserrat-latin.woff2",
+	weight: "100 900",
 	variable: "--font-body",
 });
 
-const inter = Inter({
-	subsets: ["latin"],
-	weight: ["600", "700"],
+const inter = localFont({
+	src: "./fonts/inter-latin.woff2",
+	weight: "600 700",
 	variable: "--font-heading",
 });
 
@@ -37,10 +37,8 @@ export default function RootLayout({ children }) {
 				/>
 			</head>
 			<body className={`${montserrat.variable} ${inter.variable} antialiased`}>
-				<ThemeProvider attribute="class" defaultTheme="light">
-					{children}
-					<FloatingMilo />
-				</ThemeProvider>
+				{children}
+				<FloatingMilo />
 			</body>
 		</html>
 	);

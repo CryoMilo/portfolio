@@ -7,15 +7,11 @@ import ContactSidebar from "../ui/contact-sidebar";
 import MessageInput from "../ui/message-input";
 import MessageList from "../ui/message-list";
 
-import { myData } from "@/app/lib/myData";
 import IncomingMsg from "../ui/incoming-msg";
-
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const ChatPage = ({ openModal }) => {
 	const chatContainerRef = useRef(null);
-	const messagesEndRef = useRef(null);
-	const [name, setName] = useState("");
+	const messagesPaneRef = useRef(null);
 	const [msg, setMsg] = useState("");
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -26,57 +22,35 @@ const ChatPage = ({ openModal }) => {
 		},
 	]);
 
-	// Let's set up Gemini with a clear identity
-	const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
-	const model = genAI.getGenerativeModel({
-		model: "gemini-2.5-flash-lite",
-		systemInstruction: `You are Milo, the friendly and professional AI assistant for Oak Soe Htoo Aung (Oak). 
-		Your job is to help visitors learn about Oak's skills, projects, and experience.
-		
-		Here is the "source of truth" about Oak: ${JSON.stringify(myData)}.
-		
-		Keep your responses helpful, concise, and stay in character as Milo. 
-		If you don't know something, just say so politely and suggest they contact Oak directly via email.`,
-	});
-
 	const onSubmit = (e) => {
 		e.preventDefault();
-		if (!name.trim()) {
-			setError("name");
-			return;
-		}
+		if (loading) return;
 		if (!msg.trim()) {
 			setError("msg");
 			return;
 		}
 		setError("");
 
-		const userMessage = { type: "outgoing", text: msg };
-		// We update the UI immediately
-		setMessages((prev) => [...prev, userMessage]);
-
-		// And then we trigger the API call with the full context
-		sendMessage(msg, name);
+		setMessages((prev) => [...prev, { type: "outgoing", text: msg }]);
+		sendMessage(msg);
 		setMsg("");
 	};
 
-	const sendMessage = async (text, sender) => {
+	const sendMessage = async (text) => {
 		setLoading(true);
 		try {
 			const history = messages.slice(1).map((m) => ({
 				role: m.type === "outgoing" ? "user" : "model",
-				parts: [{ text: m.text }],
+				text: m.text,
 			}));
-
-			// Start a fresh chat session with the existing history
-			const chat = model.startChat({ history });
-
-			// Send the new message and wait for the magic
-			const result = await chat.sendMessage(text);
-			const response = await result.response;
-			const botText = response.text();
-
-			setMessages((prev) => [...prev, { type: "incoming", text: botText }]);
+			const res = await fetch("/api/chat", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ message: text, history }),
+			});
+			if (!res.ok) throw new Error(`Chat request failed: ${res.status}`);
+			const { reply } = await res.json();
+			setMessages((prev) => [...prev, { type: "incoming", text: reply }]);
 		} catch (error) {
 			console.error("Milo had a hiccup:", error);
 			setMessages((prev) => [
@@ -90,6 +64,13 @@ const ChatPage = ({ openModal }) => {
 			setLoading(false);
 		}
 	};
+
+	useEffect(() => {
+		const pane = messagesPaneRef.current;
+		if (pane && (messages.length > 1 || loading)) {
+			pane.scrollTop = pane.scrollHeight;
+		}
+	}, [messages, loading]);
 
 	useEffect(() => {
 		gsap.fromTo(
@@ -111,7 +92,7 @@ const ChatPage = ({ openModal }) => {
 			ref={chatContainerRef}
 			onSubmit={onSubmit}>
 			{/* Sidebar */}
-			<ContactSidebar name={name} setName={setName} error={error} />
+			<ContactSidebar />
 
 			{/* Main Chat */}
 			<div className="flex h-[80vh] flex-col flex-1 bg-white rounded-xl border-2">
@@ -129,25 +110,25 @@ const ChatPage = ({ openModal }) => {
 						<button
 							type="button"
 							aria-label="Start video call"
-							className="font-medium">
+							className="font-medium"
+							onClick={() => openModal()}>
 							<IoVideocamOutline size={24} />
 						</button>
 					</div>
 				</div>
 
 				{/* Messages */}
-				<div className="flex-1 overflow-y-auto bg-gray-50">
+				<div ref={messagesPaneRef} className="flex-1 overflow-y-auto bg-gray-50">
 					<MessageList messages={messages} />
 					{loading && (
 						<div className="p-3">
 							<IncomingMsg text="Typing..." />
 						</div>
 					)}
-					<div ref={messagesEndRef}></div>
 				</div>
 
 				{/* Input */}
-				<MessageInput msg={msg} setMsg={setMsg} error={error} />
+				<MessageInput msg={msg} setMsg={setMsg} error={error} disabled={loading} />
 			</div>
 		</form>
 	);

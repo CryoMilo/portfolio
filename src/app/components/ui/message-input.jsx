@@ -1,11 +1,12 @@
 import { IoSend } from "react-icons/io5";
 
-const MessageInput = ({ msg, setMsg, error }) => {
+const MessageInput = ({ msg, setMsg, error, disabled }) => {
 	return (
 		<div className="p-4 border-y bg-white rounded-b-xl">
 			<div className="flex items-center">
 				<input
 					type="text"
+					maxLength={1000}
 					value={msg}
 					onChange={(e) => setMsg(e.target.value)}
 					placeholder="Write your message..."
@@ -14,8 +15,9 @@ const MessageInput = ({ msg, setMsg, error }) => {
 				/>
 				<button
 					type="submit"
+					disabled={disabled}
 					aria-label="Send message"
-					className="ml-4 bg-primary-light text-white p-3 rounded-full hover:bg-primary">
+					className="ml-4 bg-primary-light text-white p-3 rounded-full hover:bg-primary disabled:opacity-50">
 					<IoSend size={20} />
 				</button>
 			</div>
