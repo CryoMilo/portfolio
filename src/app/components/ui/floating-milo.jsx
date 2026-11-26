@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 const FloatingMilo = () => {
 	const [showPopup, setShowPopup] = useState(false);
 	const [playCount, setPlayCount] = useState(0);
+	// Hidden while the chat itself is on screen (the button would cover its send button),
+	// and on phones until the visitor scrolls past the hero (it would cover the hero's button).
+	const [hidden, setHidden] = useState(false);
 	const videoRef = useRef(null);
 	const router = useRouter();
 
@@ -21,6 +24,37 @@ const FloatingMilo = () => {
 		return () => {
 			clearTimeout(showTimer);
 			clearTimeout(hideTimer);
+		};
+	}, []);
+
+	useEffect(() => {
+		let contactVisible = false;
+		const update = () => {
+			const isPhone = window.innerWidth < 768;
+			const pastHero = window.scrollY > window.innerHeight * 0.6;
+			setHidden(contactVisible || (isPhone && !pastHero));
+		};
+
+		const contact = document.getElementById("contact");
+		let observer;
+		if (contact) {
+			observer = new IntersectionObserver(
+				([entry]) => {
+					contactVisible = entry.isIntersecting;
+					update();
+				},
+				{ threshold: 0.15 }
+			);
+			observer.observe(contact);
+		}
+
+		update();
+		window.addEventListener("scroll", update, { passive: true });
+		window.addEventListener("resize", update);
+		return () => {
+			observer?.disconnect();
+			window.removeEventListener("scroll", update);
+			window.removeEventListener("resize", update);
 		};
 	}, []);
 
@@ -45,7 +79,11 @@ const FloatingMilo = () => {
 	};
 
 	return (
-		<div className="fixed bottom-8 right-8 z-50 flex items-center gap-4 pointer-events-none">
+		<div
+			className={`fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-center gap-4 pointer-events-none transition-opacity duration-300 ${
+				hidden ? "opacity-0 invisible" : "opacity-100 visible"
+			}`}
+			aria-hidden={hidden}>
 			<div
 				className={`relative group transition-all duration-700 ease-out ${
 					showPopup ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
@@ -58,7 +96,8 @@ const FloatingMilo = () => {
 			</div>
 			<button
 				onClick={handleClick}
-				className="w-20 h-20 rounded-full overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-md bg-gray-400/30 border border-white/20 transition-transform hover:scale-110 active:scale-95 group relative pointer-events-auto"
+				tabIndex={hidden ? -1 : 0}
+				className="w-14 h-14 md:w-20 md:h-20 rounded-full overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-md bg-gray-400/30 border border-white/20 transition-transform hover:scale-110 active:scale-95 group relative pointer-events-auto"
 				aria-label="Scroll to Chat">
 				<video
 					ref={videoRef}
