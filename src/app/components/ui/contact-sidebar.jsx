@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const ContactSidebar = ({ name, setName, error }) => {
+const ContactSidebar = () => {
 	return (
 		<div className="lg:w-80 bg-white flex-col border-2 rounded-xl">
 			{/* Profile */}
@@ -14,17 +14,6 @@ const ContactSidebar = ({ name, setName, error }) => {
 						height={60}
 						className="rounded-full"
 					/>
-				</div>
-				<div className="flex items-center flex-col">
-					<input
-						type="text"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-						placeholder="You are?"
-						aria-label="Your name"
-						className="font-semibold text-center bg-transparent border-none outline-none"
-					/>
-					{error === "name" && <p className="text-red-500 text-sm">Please insert your name</p>}
 				</div>
 			</div>
 
