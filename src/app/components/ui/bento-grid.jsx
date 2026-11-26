@@ -1,18 +1,16 @@
-import { cn } from "@/app/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { getTechSkillIcon } from "../utils/getTechSkills";
 
-export const BentoGrid = ({ className, children }) => {
+export const BentoGrid = ({ children }) => {
 	return (
-		<div className={cn("flex flex-col gap-8 mx-auto", className)}>
+		<div className="flex flex-col gap-8 mx-auto">
 			{children}
 		</div>
 	);
 };
 
 export const BentoGridItem = ({
-	className,
 	videoSrc,
 	githubLink,
 	images = [],
@@ -25,10 +23,7 @@ export const BentoGridItem = ({
 }) => {
 	return (
 		<div
-			className={cn(
-				"w-full rounded-xl h-[18rem] group hover:shadow-xl transition duration-200 shadow-input hover:bg-background-dark justify-between flex flex-col space-y-4",
-				className
-			)}>
+			className="w-full rounded-xl h-[18rem] group hover:shadow-xl transition duration-200 shadow-input hover:bg-background-dark justify-between flex flex-col space-y-4">
 			<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden relative group">
 				<video
 					src={videoSrc}
